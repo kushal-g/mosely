@@ -3,7 +3,7 @@ import React from 'react'
 export default function FormPage() {
     return (
         <div>
-            <form action="http://127.0.0.1:5000/" method="post">
+            <form action="http://127.0.0.1:5000/" enctype="multipart/form-data" method="post">
                 <input type="file" multiple name="file"/>
                 <select name="language">
                     <option value="c">C</option>
