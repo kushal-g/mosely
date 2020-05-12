@@ -49,6 +49,8 @@ export default function FormPage() {
                 <select name="language" onChange={e=>changeLanguage(e.target.value)}>
                     <option value="c">C</option>
                     <option value="cc">C++</option>
+                    <option value="cHash">C#</option>
+                    <option value="visualBasic">Visual Basic</option>
                     <option value="java">Java</option>
                     <option value="ml">ML</option>
                     <option value="pascal">Pascal</option>
@@ -67,7 +69,7 @@ export default function FormPage() {
                     <option value="spice">Spice</option>
                     <option value="vb">Visual Basic</option>
                     <option value="csharp">C#</option>
-                    <option value="modula2">Modula2</option>
+                    <option value="modula2">Modula 2</option>
                     <option value="a8086">a8086 Assembly</option>
                     <option value="javascript">Javascript</option>
                 </select>
