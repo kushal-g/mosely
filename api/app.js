@@ -2,6 +2,8 @@ require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const chalk = require('chalk')
+
+
 const teacherRouter = require('./routes/teacherRoutes')
 const studentRouter = require('./routes/studentRoutes')
 const adminRouter = require('./routes/adminRoutes')
