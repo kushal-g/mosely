@@ -4,6 +4,7 @@ import {BrowserRouter,Route} from 'react-router-dom';
 import {AuthProvider} from './context/Auth'
 
 import TeacherRegister from './pages/Teacher/TeacherRegister';
+import LandingPage from './pages/LandingPage';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <Route exact path="/teacher/register" component={TeacherRegister} />
+          <Route exact path="/" component={LandingPage} />
         </div>
       </BrowserRouter>
     </AuthProvider>

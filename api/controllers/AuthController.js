@@ -6,8 +6,7 @@ admin.initializeApp({
 });
 
 
-//TODO: Test it
-module.exports.AuthController = (req,res,next)=>{
+module.exports.CheckAuthentication = (req,res,next)=>{
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer ')){
         let idToken = req.headers.authorization.split('Bearer ')[1]  
         admin.auth().verifyIdToken(idToken)
@@ -26,4 +25,25 @@ module.exports.AuthController = (req,res,next)=>{
             error:'Unauthorized'
         })
     }
+}
+
+module.exports.createTeacher = (req,res,next)=>{
+    console.log(chalk.green('Setting account to teacher'))
+    admin.auth().getUserByEmail(req.user.email)
+    .then(user=>admin.auth().setCustomUserClaims(user.uid,{
+        role:{
+            teacher:true,
+            student:false
+        }
+    }))
+    .then(()=>{
+        console.log(chalk.yellow('Account set to teacher'))
+        res.status(200).send({
+            message:"Successfully created Teacher Account"
+        })
+    })
+    .catch(e=>{
+        console.log(chalk.red(e))
+        res.status(500).send({message:"Internal Server Error"})
+    })
 }

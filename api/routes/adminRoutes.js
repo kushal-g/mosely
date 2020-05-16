@@ -1,13 +1,17 @@
 const express = require('express')
-const Authcontroller = require('../controllers/AuthController').AuthController
+const Authcontroller = require('../controllers/AuthController')
 
 const router = express.Router()
 
-router.get('/',Authcontroller,(req,res)=>{
+const {CheckAuthentication, createTeacher} = Authcontroller;
+
+router.get('/',CheckAuthentication,(req,res)=>{
     res.status(200).send({
         msg:"Authorized",
         user:req.user
     })
 })
+
+router.post("/teacher/create",CheckAuthentication,createTeacher)
 
 module.exports = router

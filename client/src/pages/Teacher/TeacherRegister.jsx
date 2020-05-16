@@ -9,7 +9,14 @@ export default function TeacherLogin() {
         e.preventDefault()
         app.auth().createUserWithEmailAndPassword(email,password)
         .then(user=>app.auth().currentUser.getIdToken())
-        .then(token=>console.log(token))
+        .then(token=>fetch(`${process.env.REACT_APP_URL}/teacher/create`,{
+            method:'post',
+            headers:{
+                'Authorization':`Bearer ${token}`
+            }
+        }))
+        .then(response=>response.json())
+        .then(body=>console.log(body))
         .catch(e=>{console.log(e)})
     }
 
@@ -17,8 +24,12 @@ export default function TeacherLogin() {
         <div>
             <h1>Register Teacher</h1>
             <form onSubmit={registerUser}>
-                <input type="email" value={email} onChange={e=>setEmail(e.target.value)}/>
-                <input type="password" value={password} onChange={e=>setPassword(e.target.value)}/>
+                <div>
+                    <input type="email" value={email} onChange={e=>setEmail(e.target.value)}/>
+                </div>
+                <div>
+                    <input type="password" value={password} onChange={e=>setPassword(e.target.value)}/>
+                </div>
                 <button type="submit">Submit</button>
             </form>
         </div>
