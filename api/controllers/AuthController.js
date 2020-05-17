@@ -47,3 +47,23 @@ module.exports.createTeacher = (req,res,next)=>{
         res.status(500).send({message:"Internal Server Error"})
     })
 }
+
+module.exports.checkRole = (req,res,next) =>{
+    admin.auth().getUserByEmail(req.body.email)
+    .then(user=>{
+        res.status(200).send({
+            "statusCode":200,
+            "data":{
+                "role":user.customClaims.role
+            }
+        })
+    })
+    .catch(e=>{
+        res.status(500).send({
+            "statusCode":500,
+            "data":{
+                "msg": e.message
+            }
+        })
+    })
+}
