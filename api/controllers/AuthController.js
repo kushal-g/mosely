@@ -1,10 +1,6 @@
-const admin = require('firebase-admin');
+const admin = require('../utils/base');
 const chalk = require('chalk')
-admin.initializeApp({
-    credential: admin.credential.applicationDefault(),
-    databaseURL: 'https://moss-web-55761.firebaseio.com'
-});
-
+const teachersDb = require('../models/teachers')
 
 module.exports.CheckAuthentication = (req,res,next)=>{
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer ')){
@@ -28,7 +24,8 @@ module.exports.CheckAuthentication = (req,res,next)=>{
 }
 
 module.exports.createTeacher = (req,res,next)=>{
-    console.log(chalk.green('Setting account to teacher'))
+    console.log(chalk.yellow('Setting account to teacher...'))
+    console.log(req.body)
     admin.auth().getUserByEmail(req.user.email)
     .then(user=>admin.auth().setCustomUserClaims(user.uid,{
         role:{
@@ -37,7 +34,13 @@ module.exports.createTeacher = (req,res,next)=>{
         }
     }))
     .then(()=>{
-        console.log(chalk.yellow('Account set to teacher'))
+        console.log(chalk.green('Account set to teacher'))
+    })
+    .then(()=>{
+        const {name, mossId} = req.body;
+        return teachersDb.createTeacherEntry(req.user.uid,name,mossId)
+    })
+    .then(()=>{
         res.status(200).send({
             message:"Successfully created Teacher Account"
         })
