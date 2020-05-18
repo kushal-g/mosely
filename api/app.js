@@ -12,8 +12,8 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
-app.use(teacherRouter)
-app.use(studentRouter)
+app.use('/teacher',teacherRouter)
+app.use('/student',studentRouter)
 app.use(adminRouter)
 
 app.listen(process.env.PORT,()=>{

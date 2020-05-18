@@ -1,7 +1,8 @@
 const express = require('express')
-const TeacherController = require('../controllers/TeacherController')
-
+const {createClass} = require('../controllers/TeacherController')
+const {teacherAuthentication} = require('../controllers/AuthController')
 const router = express.Router()
 
+router.post('/class/create',teacherAuthentication,createClass)
 
 module.exports = router

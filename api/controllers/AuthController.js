@@ -10,18 +10,55 @@ module.exports.CheckAuthentication = (req,res,next)=>{
             req.user = decodedToken
             next()
         }).catch(e=>{
-            console.log(chalk.red("Error in authorizing token"));
+            console.log(chalk.red(e.message));
             res.status(403).json({
-                error:'Unauthorized'
+                statusCode:403,
+                data:{
+                    msg:e.message
+                }
             })
         })
     }else{
         console.log(chalk.red("Token not present"));  
         res.status(403).json({
-            error:'Unauthorized'
+            statusCode:403,
+            data:{
+                msg:'Unauthorized'
+            }
         })
     }
 }
+
+
+module.exports.teacherAuthentication = (req,res,next)=>{
+    if(req.headers.authorization && req.headers.authorization.startsWith('Bearer ')){
+        let idToken = req.headers.authorization.split('Bearer ')[1]  
+        admin.auth().verifyIdToken(idToken)
+        .then(decodedToken=>{   
+            if(decodedToken.role.teacher){
+                req.user = decodedToken
+                next()
+            }
+        }).catch(e=>{
+            console.log(chalk.red(e.message));
+            res.status(403).json({
+                statusCode:403,
+                data:{
+                    msg:e.message
+                }
+            })
+        })
+    }else{
+        console.log(chalk.red("Token not present"));  
+        res.status(403).json({
+            statusCode:403,
+            data:{
+                msg:'Unauthorized'
+            }
+        })
+    }
+}
+
 
 module.exports.createTeacher = (req,res,next)=>{
     console.log(chalk.yellow('Setting account to teacher...'))
@@ -42,12 +79,20 @@ module.exports.createTeacher = (req,res,next)=>{
     })
     .then(()=>{
         res.status(200).send({
-            message:"Successfully created Teacher Account"
+            statusCode:200,
+            data:{
+                message:"Successfully created Teacher Account"
+            }
         })
     })
     .catch(e=>{
-        console.log(chalk.red(e))
-        res.status(500).send({message:"Internal Server Error"})
+        console.log(chalk.red(e.message))
+        res.status(500).send({
+            statusCode:500,
+            data:{
+                msg:e.message
+            }
+        })
     })
 }
 
