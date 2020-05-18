@@ -72,6 +72,13 @@ module.exports.createTeacher = (req,res,next)=>{
     }))
     .then(()=>{
         console.log(chalk.green('Account set to teacher'))
+        return admin.auth().getUserByEmail(req.user.email)
+        
+    })
+    .then(user=>{
+        admin.auth().updateUser(user.uid,{
+            displayName:req.body.name
+        })
     })
     .then(()=>{
         const {name, mossId} = req.body;

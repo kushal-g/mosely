@@ -5,7 +5,7 @@ const classesDb = require('../models/classes')
 
 
 module.exports.createClass = (req,res,next) =>{
-    classesDb.createClass(req.user.uid,req.body.name)
+    classesDb.createClass(req.user,req.body.name)
     .then(()=>{
         res.status(200).send({
             statusCode:200,
@@ -20,4 +20,27 @@ module.exports.createClass = (req,res,next) =>{
             msg:e.message
         }
     }))
+}
+
+module.exports.viewClasses = (req,res,next) =>{
+    try{
+        classesDb.viewClasses(req.user.uid)
+        .then(classes=>{
+            console.log(chalk.green('Got classes'))
+            res.status(200).send({
+                statusCode:200,
+                data:{
+                    classes:classes
+                }
+            })
+        })
+    }catch(e){
+        console.log(chalk.red(e.message))
+        res.status(500),send({
+            statusCode:500,
+            data:{
+                msg:e.message
+            }
+        })
+    }
 }
