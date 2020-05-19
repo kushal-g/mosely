@@ -43,6 +43,21 @@ module.exports.viewClasses = (teacherId) =>{
     
 }
 
+module.exports.renameClass = (classId,teacherUid,className) =>{
+    return new Promise((resolve,reject)=>{
+        let docRef = db.collection('/classes').doc(classId)
+        docRef.get().then(doc=>{
+            if(doc.data().assignedTeachers.indexOf(teacherUid)!=-1){
+                docRef.update({
+                    name:className
+                }).then(()=>resolve())
+            }else{
+                reject('Not authorized to access this class')
+            }
+        })
+    })  
+}
+
 function getTeachers(teacherIDs){
     return new Promise((resolve,reject)=>{
         const teachers = []
@@ -57,7 +72,6 @@ function getTeachers(teacherIDs){
                     resolve(teachers)
                 }
             })
-
         })              
     })
 }

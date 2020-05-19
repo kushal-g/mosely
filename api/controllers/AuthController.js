@@ -11,8 +11,8 @@ module.exports.CheckAuthentication = (req,res,next)=>{
             next()
         }).catch(e=>{
             console.log(chalk.red(e.message));
-            res.status(403).json({
-                statusCode:403,
+            res.status(401).json({
+                statusCode:401,
                 data:{
                     msg:e.message
                 }
@@ -20,8 +20,8 @@ module.exports.CheckAuthentication = (req,res,next)=>{
         })
     }else{
         console.log(chalk.red("Token not present"));  
-        res.status(403).json({
-            statusCode:403,
+        res.status(401).json({
+            statusCode:401,
             data:{
                 msg:'Unauthorized'
             }
@@ -41,8 +41,8 @@ module.exports.teacherAuthentication = (req,res,next)=>{
             }
         }).catch(e=>{
             console.log(chalk.red(e.message));
-            res.status(403).json({
-                statusCode:403,
+            res.status(401).json({
+                statusCode:401,
                 data:{
                     msg:e.message
                 }
@@ -50,8 +50,8 @@ module.exports.teacherAuthentication = (req,res,next)=>{
         })
     }else{
         console.log(chalk.red("Token not present"));  
-        res.status(403).json({
-            statusCode:403,
+        res.status(401).json({
+            statusCode:401,
             data:{
                 msg:'Unauthorized'
             }
