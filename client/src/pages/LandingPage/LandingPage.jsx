@@ -8,14 +8,14 @@ function LandingPage(){
   
 
   return (
-    <div className="container center">
-    <nav className="menu">
-        <h1 className="menu__logo">mosely</h1>
+    <div className="landingPage_container landingPage_center">
+    <nav className="landingPage_menu">
+        <h1 className="landingPage_menu__logo">mosely</h1>
 
-        <div className="menu__right">
-            <ul className="menu__list">
-            <li className="menu__list-item"><a class={`menu__link ${tabSelected=="teacher"?"menu__link--active":""}`}  onClick={e=>setTabSelected("teacher")}>Teacher</a></li>
-            <li className="menu__list-item"><a class={`menu__link ${tabSelected=="student"?"menu__link--active":""}`} onClick={e=>setTabSelected("student")}>Student</a></li>
+        <div className="landingPage_menu__right">
+            <ul className="landingPage_menu__list">
+            <li className="landingPage_menu__list-item"><a class={`landingPage_menu__link ${tabSelected=="teacher"?"landingPage_menu__link--active":""}`}  onClick={e=>setTabSelected("teacher")}>Teacher</a></li>
+            <li className="landingPage_menu__list-item"><a class={`landingPage_menu__link ${tabSelected=="student"?"landingPage_menu__link--active":""}`} onClick={e=>setTabSelected("student")}>Student</a></li>
             </ul>
         </div>
         

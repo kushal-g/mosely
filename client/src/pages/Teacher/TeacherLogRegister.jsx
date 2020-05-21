@@ -5,7 +5,7 @@ import "./TeacherLogRegister.css"
 export default function TeacherLogin() {
 
     function Change(){
-        document.querySelector('.cont').classList.toggle('s--signup');
+        document.querySelector('.teacherLogRegister_cont').classList.toggle('s--signup');
    
     }
 
@@ -18,13 +18,14 @@ export default function TeacherLogin() {
     
 
     const signIn = e =>{
+        e.preventDefault()
         fetch(`${process.env.REACT_APP_URL}/role`,{
             method:'post',
             headers:{
                 'Content-type':'application/json'
             },
             body:JSON.stringify({
-                email:"kushalgarg2000@gmail.com"
+                email:loginEmail
             })
         }).then(response=>response.json())
         .then(body=>{
@@ -37,6 +38,7 @@ export default function TeacherLogin() {
     }
 
      const registerUser = e =>{
+
         app.auth().createUserWithEmailAndPassword(signUpEmail,signUpPassword)
         .then(user=>app.auth().currentUser.getIdToken())
         .then(token=>fetch(`${process.env.REACT_APP_URL}/teacher/create`,{
@@ -56,54 +58,54 @@ export default function TeacherLogin() {
     } 
 
     return <div>
-        <div className="cont">
-      <div className="form sign-in" >
-        <h2 className="Landing-center">Welcome back,</h2>
-        <label>
-          <span>Email</span>
-          <input type="email"  value={loginEmail} onChange={e=>setLoginEmail(e.target.value)}/>
+    <div className="teacherLogRegister_cont">
+      <div className="teacherLogRegister_form sign-in" >
+        <h2 className="teacherLogRegister_Landing-center">Welcome back,</h2>
+        <label className="teacherLogRegister_label">
+          <span className="teacherLogRegister_span">Email</span>
+          <input className="teacherLogRegister_input" type="email"  value={loginEmail} onChange={e=>setLoginEmail(e.target.value)}/>
         </label>
-        <label>
-          <span>Password</span>
-          <input type="password"  value={loginPassword} onChange={e=>setLoginPassword(e.target.value)}/>
+        <label className="teacherLogRegister_label">
+          <span className="teacherLogRegister_span">Password</span>
+          <input className="teacherLogRegister_input" type="password"  value={loginPassword} onChange={e=>setLoginPassword(e.target.value)}/>
         </label>
-        <p className="forgot-pass"><a href="#">Forgot password?</a></p>
-        <button onClick={signIn} type="button" className="submit">Sign In</button>
+        <p className="teacherLogRegister_forgot-pass"><a href="#">Forgot password?</a></p>
+        <button onClick={signIn} type="button" className="teacherLogRegister_submit">Sign In</button>
       </div>
-      <div className="sub-cont">
+      <div className="teacherLogRegister_sub-cont">
         <div className="img">
           <div className="img__text m--up">
-            <h2>New here?</h2>
+            <h2 className="teacherLogRegister_h2">New here?</h2>
             <p>Sign up and get ready to solve problems!</p>
           </div>
           <div className="img__text m--in">
-            <h2>One of us?</h2>
+            <h2 className="teacherLogRegister_h2">One of us?</h2>
             <p>If you already has an account, just sign in. We've missed you!</p>
           </div>
           <div className="img__btn" onClick={Change}>
-            <span  className="m--up">Sign Up</span>
-            <span className="m--in">Sign In</span>
+            <span  className="teacherLogRegister_span m--up">Sign Up</span>
+            <span className="teacherLogRegister_span m--in">Sign In</span>
           </div>
         </div>
-        <div className="form sign-up">
-          <h2>Time to feel like home,</h2>
-          <label>
-            <span>Name</span>
-            <input  value={name} onChange={e=>setName(e.target.value)}type="text" />
+        <div className="teacherLogRegister_form sign-up">
+          <h2 className="teacherLogRegister_h2">Time to feel like home,</h2>
+          <label className="teacherLogRegister_label">
+            <span className="teacherLogRegister_span">Name</span>
+            <input className="teacherLogRegister_input"  value={name} onChange={e=>setName(e.target.value)}type="text" />
           </label>
-          <label>
-            <span>Email</span>
-            <input  value={signUpEmail} onChange={e=>setSignUpEmail(e.target.value)}type="email" />
+          <label className="teacherLogRegister_label">
+            <span className="teacherLogRegister_span">Email</span>
+            <input className="teacherLogRegister_input"  value={signUpEmail} onChange={e=>setSignUpEmail(e.target.value)}type="email" />
           </label>
-          <label>
-            <span>MOSS Id</span>
-            <input type="text"  value={mossId} onChange={e=>setMossId(e.target.value)}/>
+          <label className="teacherLogRegister_label">
+            <span className="teacherLogRegister_span">MOSS Id</span>
+            <input className="teacherLogRegister_input" type="text"  value={mossId} onChange={e=>setMossId(e.target.value)}/>
           </label>
-          <label>
-            <span>Password</span>
-            <input type="password"  value={signUpPassword} onChange={e=>setSignUpPassword(e.target.value)} />
+          <label className="teacherLogRegister_label">
+            <span className="teacherLogRegister_span">Password</span>
+            <input className="teacherLogRegister_input" type="password"  value={signUpPassword} onChange={e=>setSignUpPassword(e.target.value)} />
           </label>
-          <button onClick={registerUser}type="button" className="submit">Sign Up</button>
+          <button onClick={registerUser}type="button" className="teacherLogRegister_submit">Sign Up</button>
 
         </div>
       </div>
