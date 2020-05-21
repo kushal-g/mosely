@@ -19,6 +19,8 @@ export default function TeacherLogin() {
         .then(body=>{
             if(body.data.role.teacher){
                 app.auth().signInWithEmailAndPassword(email,password)
+                .then(user=>app.auth().currentUser.getIdToken())
+                .then(result=>console.log(result))
             }
         }).catch(e=>console.log(e))
     }
