@@ -74,6 +74,37 @@ module.exports.deleteClass = (teacherUid, classId) =>{
     })  
 }
 
+
+module.exports.createAssignment = (teacherUid, classId, assignmentName, dueDate, description, language, marks) =>{
+    return new Promise((resolve,reject)=>{
+        let docRef = db.collection('/classes').doc(classId)
+        console.log(chalk.yellow('Checking if class belongs to teacher...'))
+        docRef.get().then(doc=>{
+            if(doc.data().assignedTeachers.indexOf(teacherUid)!=-1){
+                console.log(chalk.green('Class belongs to teacher'))
+                console.log(chalk.yellow('Adding new assignment'))
+                docRef.collection('/assignments').add({
+                  assignmentName:assignmentName,
+                  dueDate:new Date(dueDate),
+                  description:description,
+                  language:language,
+                  marks:marks,
+                  dateCreated: new Date(),
+                  isDeleted:false  
+                }).then(()=>{
+                    console.log(chalk.green('Succesfully created an assignment'))
+                    resolve('Succesfully created an assignment')
+                })
+            }else{
+                console.log(chalk.red("Class doesn't belong to teacher"))
+                reject('Not authorized to access this class')
+            }   
+        }).catch(e=>{
+            reject(e.message)
+        })
+    })    
+}
+
 function getTeachers(teacherIDs){
     return new Promise((resolve,reject)=>{
         const teachers = []

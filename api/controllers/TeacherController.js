@@ -2,7 +2,7 @@ const admin = require('../utils/base');
 const chalk = require('chalk')
 const teachersDb = require('../models/teachers')
 const classesDb = require('../models/classes')
-
+const languagesAllowed = require('../models/languagesAllowed')
 
 module.exports.createClass = (req,res,next) =>{
     classesDb.createClass(req.user,req.body.name)
@@ -93,4 +93,31 @@ module.exports.deleteClass = (req,res,next) =>{
             }
         })
     })
+}
+
+module.exports.createAssignment = (req,res,next) =>{
+    console.log(chalk.yellow('Creating an assignment...'))
+    const {classId, assignmentName, dueDate, description, language, marks} = req.body
+    if(languagesAllowed.indexOf(language)!=-1){
+        classesDb.createAssignment(req.user.uid, classId, assignmentName, dueDate, description, language, marks)
+        .then(msg=>res.status(200).send({
+            statusCode:200,
+            data:{
+                msg:msg
+            }
+        }))
+        .catch(e=>res.status(500).send({
+            statusCode:500,
+            data:{
+                msg:e.message
+            }
+        }))
+    }else{
+        res.status(400).send({
+            statusCode:400,
+            data:{
+                msg:"Language not allowed"
+            }
+        })
+    }   
 }
