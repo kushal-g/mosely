@@ -18,14 +18,13 @@ export default function TeacherLogin() {
     
 
     const signIn = e =>{
-        e.preventDefault()
         fetch(`${process.env.REACT_APP_URL}/role`,{
             method:'post',
             headers:{
                 'Content-type':'application/json'
             },
             body:JSON.stringify({
-                email:loginEmail
+                email:"kushalgarg2000@gmail.com"
             })
         }).then(response=>response.json())
         .then(body=>{
@@ -38,7 +37,6 @@ export default function TeacherLogin() {
     }
 
      const registerUser = e =>{
-        e.preventDefault()
         app.auth().createUserWithEmailAndPassword(signUpEmail,signUpPassword)
         .then(user=>app.auth().currentUser.getIdToken())
         .then(token=>fetch(`${process.env.REACT_APP_URL}/teacher/create`,{

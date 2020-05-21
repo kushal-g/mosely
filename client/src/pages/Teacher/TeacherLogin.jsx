@@ -1,10 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import app from '../../utils/base'
+import { AuthContext } from '../../context/Auth'
 
 export default function TeacherLogin() {
     const [email,setEmail] = useState("")
     const [password, setPassword] = useState("")
-
+    
     const signIn = e =>{
         e.preventDefault()
         fetch(`${process.env.REACT_APP_URL}/role`,{

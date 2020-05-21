@@ -4,7 +4,6 @@ import app from '../utils/base'
 export const AuthContext = React.createContext();
 
 export const AuthProvider = ({children}) => {
-
     const [currentUser,setCurrentUser] = useState(null)
 
     useEffect(()=>{
