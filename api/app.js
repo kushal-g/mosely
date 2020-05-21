@@ -17,5 +17,5 @@ app.use('/student',studentRouter)
 app.use(adminRouter)
 
 app.listen(process.env.PORT,()=>{
-    console.log(chalk.yellow(`Server is running at port ${process.env.PORT}`))
+    console.log(chalk.magenta(`Server is running at port ${process.env.PORT}`))
 })

@@ -69,3 +69,28 @@ module.exports.renameClass = (req,res,next) =>{
         })
     })
 }
+
+module.exports.deleteClass = (req,res,next) =>{
+    console.log(chalk.yellow('Deleting class...'))
+    classesDb.deleteClass(req.user.uid,req.body.classId)
+    .then(()=>{
+        console.log(chalk.green('Successfully deleted class'))
+        res.status(200).send({
+            statusCode:200,
+            data:{
+                msg:"Successfully deleted class"
+            }
+        })
+    })
+    .catch(e=>{
+        res.send(500).send({
+            statusCode:500,
+            data:{
+                statusCode:500,
+                data:{
+                    msg:e.message
+                }
+            }
+        })
+    })
+}

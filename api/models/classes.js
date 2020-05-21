@@ -9,20 +9,21 @@ module.exports.createClass = (teacher,name) =>{
         assignedTeachers:[
             teacher.uid
         ],
-        assignedStudents:[]
+        assignedStudents:[],
+        dateCreated: new Date(),
+        isDeleted:false
     })
     .then(()=>{
         console.log(chalk.green('Class created'))
     })
 }
 
-module.exports.viewClasses = (teacherId) =>{
-       
+module.exports.viewClasses = (teacherId) =>{       
     return new Promise((resolve,reject)=>{
         console.log(chalk.yellow('Getting classes...'))
         const classes = []
         let teachersPromise = []
-        db.collection('/classes').where('assignedTeachers','array-contains',teacherId)
+        db.collection('/classes').where('assignedTeachers','array-contains',teacherId).where('isDeleted','==',false)
         .get()
         .then(snapshot=>{
             snapshot.forEach((doc,index) => {
@@ -50,6 +51,21 @@ module.exports.renameClass = (classId,teacherUid,className) =>{
             if(doc.data().assignedTeachers.indexOf(teacherUid)!=-1){
                 docRef.update({
                     name:className
+                }).then(()=>resolve())
+            }else{
+                reject('Not authorized to access this class')
+            }
+        })
+    })  
+}
+
+module.exports.deleteClass = (teacherUid, classId) =>{
+    return new Promise((resolve,reject)=>{
+        let docRef = db.collection('/classes').doc(classId)
+        docRef.get().then(doc=>{
+            if(doc.data().assignedTeachers.indexOf(teacherUid)!=-1){
+                docRef.update({
+                    isDeleted:true
                 }).then(()=>resolve())
             }else{
                 reject('Not authorized to access this class')
