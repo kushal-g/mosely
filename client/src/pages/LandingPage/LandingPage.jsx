@@ -1,20 +1,19 @@
-import React from "react";
-function Change(){
-  console.log("yessss")
-  document.querySelector('.img__btn').addEventListener('click', function() {
-    document.querySelector('.cont').classList.toggle('s--signup');
-  });
-}
+import React from 'react'
+import "./LandingPage.css"
 
-function SignUp() {
-  
-  return <div>
-   
-    <p className="tip"></p>
-    <h1>MOSS based Project Submission</h1>
+export default function LandingPage() {
+    
+function Change(){
+      document.querySelector('.cont').classList.toggle('s--signup');
+ 
+  }
+
+
+    return <div>
+    <h1>mosely</h1>
     <div className="cont">
       <div className="form sign-in" >
-        <h2>Welcome back,</h2>
+        <h2 className="Landing-center">Welcome back,</h2>
         <label>
           <span>Email</span>
           <input type="email" />
@@ -36,9 +35,9 @@ function SignUp() {
             <h2>One of us?</h2>
             <p>If you already has an account, just sign in. We've missed you!</p>
           </div>
-          <div className="img__btn">
-            <span onClick={e=>{console.log("hiii")}} className="m--up">Sign Up</span>
-            <span  onClick={e=>Change()} className="m--in">Sign In</span>
+          <div className="img__btn" onClick={Change}>
+            <span  className="m--up">Sign Up</span>
+            <span className="m--in">Sign In</span>
           </div>
         </div>
         <div className="form sign-up">
@@ -66,6 +65,5 @@ function SignUp() {
     </div>
   </div>
  
+    
 }
-
-export default SignUp;
