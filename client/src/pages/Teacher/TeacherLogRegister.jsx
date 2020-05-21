@@ -56,8 +56,7 @@ export default function TeacherLogin() {
     } 
 
     return <div>
-    <h1>mosely</h1>
-    <div className="cont">
+        <div className="cont">
       <div className="form sign-in" >
         <h2 className="Landing-center">Welcome back,</h2>
         <label>
