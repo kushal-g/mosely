@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import TeacherLogRegister from "../Teacher/TeacherLogRegister"
 import StudentLogRegister from "../Student/StudentLogRegister"
 import "./LandingPage.css"
@@ -7,7 +7,6 @@ function LandingPage(){
 
   const [tabSelected,setTabSelected]=useState("student");
   
-
   return (
     <div className="landingPage_container landingPage_center">
     <nav className="landingPage_menu">

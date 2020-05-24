@@ -5,6 +5,8 @@ import {AuthProvider} from './context/Auth'
 import TeacherLogRegister from "./pages/Teacher/TeacherLogRegister"
 import "./App.css"
 import LandingPage from './pages/LandingPage/LandingPage';
+import PrivateTeacherRoute from './components/PrivateTeacherRoute';
+import PrivateStudentRoute from './components/PrivateStudentRoute';
 
 function App() {
   return (
@@ -12,7 +14,6 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <Route exact path="/" component={LandingPage} />
-        
         </div>
       </BrowserRouter>
     </AuthProvider>
