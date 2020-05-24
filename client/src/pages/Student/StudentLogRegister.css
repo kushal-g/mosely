@@ -1,5 +1,5 @@
 
-.teacherLogRegister_input,
+.studentLogRegister_input,
 button {
   border: none;
   outline: none;
@@ -9,7 +9,7 @@ button {
 
 
 
-.teacherLogRegister_cont {
+.studentLogRegister_cont {
   overflow: hidden;
   position: relative;
   width: 900px;
@@ -20,7 +20,7 @@ button {
   border-radius: 5px;
 }
 
-.teacherLogRegister_form {
+.studentLogRegister_form {
   position: relative;
   width: 640px;
   height: 100%;
@@ -30,10 +30,10 @@ button {
   transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
   padding: 50px 30px 0;
 }
-.teacherLogRegister_Landing-center{
+.studentLogRegister_Landing-center{
     padding: 30px 0 0 ;
 }
-.teacherLogRegister_sub-cont {
+.studentLogRegister_sub-cont {
   overflow: hidden;
   position: absolute;
   left: 640px;
@@ -47,7 +47,7 @@ button {
   transition: transform 1.2s ease-in-out;
   transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
 }
-.teacherLogRegister_cont.s--signup .teacherLogRegister_sub-cont {
+.studentLogRegister_cont.s--signup .studentLogRegister_sub-cont {
   -webkit-transform: translate3d(-640px, 0, 0);
           transform: translate3d(-640px, 0, 0);
 }
@@ -63,7 +63,7 @@ button {
   cursor: pointer;
 }
 
-.teacherLogRegister_img {
+.studentLogRegister_img {
   overflow: hidden;
   z-index: 2;
   position: absolute;
@@ -73,21 +73,21 @@ button {
   height: 100%;
   padding-top: 360px;
 }
-.teacherLogRegister_img:before {
+.studentLogRegister_img:before {
   content: "";
   position: absolute;
   right: 0;
   top: 0;
   width: 900px;
   height: 100%;
-  background-image: url("https://neilpatel.com/wp-content/uploads/2017/09/14-Editorial-Tools-to-Keep-Your-Content-Organized.jpg");
+  background-image: url("https://www.morebusiness.com/wp-content/uploads/2007/12/business-organization-696x459.jpg");
   background-size: cover;
   -webkit-transition: -webkit-transform 1.2s ease-in-out;
   transition: -webkit-transform 1.2s ease-in-out;
   transition: transform 1.2s ease-in-out;
   transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
 }
-.teacherLogRegister_img:after {
+.studentLogRegister_img:after {
   content: "";
   position: absolute;
   left: 0;
@@ -96,11 +96,11 @@ button {
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
 }
-.teacherLogRegister_cont.s--signup .teacherLogRegister_img:before {
+.studentLogRegister_cont.s--signup .studentLogRegister_img:before {
   -webkit-transform: translate3d(640px, 0, 0);
           transform: translate3d(640px, 0, 0);
 }
-.teacherLogRegister_img__text {
+.studentLogRegister_img__text {
   z-index: 2;
   position: absolute;
   left: 0;
@@ -114,27 +114,27 @@ button {
   transition: transform 1.2s ease-in-out;
   transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
 }
-.teacherLogRegister_img__text .teacherLogRegister_h2 {
+.studentLogRegister_img__text .studentLogRegister_h2 {
   margin-bottom: 10px;
   font-weight: normal;
 }
-.teacherLogRegister_img__text p {
+.studentLogRegister_img__text p {
   font-size: 14px;
   line-height: 1.5;
 }
-.teacherLogRegister_cont.s--signup .teacherLogRegister_img__text.m--up {
+.studentLogRegister_cont.s--signup .studentLogRegister_img__text.m--up {
   -webkit-transform: translateX(520px);
           transform: translateX(520px);
 }
-.teacherLogRegister_img__text.m--in {
+.studentLogRegister_img__text.m--in {
   -webkit-transform: translateX(-520px);
           transform: translateX(-520px);
 }
-.teacherLogRegister_cont.s--signup .teacherLogRegister_img__text.m--in {
+.studentLogRegister_cont.s--signup .studentLogRegister_img__text.m--in {
   -webkit-transform: translateX(0);
           transform: translateX(0);
 }
-.teacherLogRegister_img__btn {
+.studentLogRegister_img__btn {
   overflow: hidden;
   z-index: 2;
   position: relative;
@@ -147,7 +147,7 @@ button {
   font-size: 15px;
   cursor: pointer;
 }
-.teacherLogRegister_img__btn:after {
+.studentLogRegister_img__btn:after {
   content: "";
   z-index: 2;
   position: absolute;
@@ -158,7 +158,7 @@ button {
   border: 2px solid #fff;
   border-radius: 30px;
 }
-.teacherLogRegister_img__btn .teacherLogRegister_span {
+.studentLogRegister_img__btn .studentLogRegister_span {
   position: absolute;
   left: 0;
   top: 0;
@@ -175,38 +175,38 @@ button {
   transition: transform 1.2s;
   transition: transform 1.2s, -webkit-transform 1.2s;
 }
-.teacherLogRegister_img__btn .teacherLogRegister_span.m--in {
+.studentLogRegister_img__btn .studentLogRegister_span.m--in {
   -webkit-transform: translateY(-72px);
           transform: translateY(-72px);
 }
-.teacherLogRegister_cont.s--signup .teacherLogRegister_img__btn .teacherLogRegister_span.m--in {
+.studentLogRegister_cont.s--signup .studentLogRegister_img__btn .studentLogRegister_span.m--in {
   -webkit-transform: translateY(0);
           transform: translateY(0);
 }
-.teacherLogRegister_cont.s--signup .teacherLogRegister_img__btn .teacherLogRegister_span.m--up {
+.studentLogRegister_cont.s--signup .studentLogRegister_img__btn .studentLogRegister_span.m--up {
   -webkit-transform: translateY(72px);
           transform: translateY(72px);
 }
 
-.teacherLogRegister_h2 {
+.studentLogRegister_h2 {
   width: 100%;
   font-size: 26px;
   text-align: center;
 }
 
-.teacherLogRegister_label {
+.studentLogRegister_label {
   display: block;
   width: 260px;
   margin: 25px auto 0;
   text-align: center;
 }
-.teacherLogRegister_label .teacherLogRegister_span {
+.studentLogRegister_label .studentLogRegister_span {
   font-size: 12px;
   color: black;
   text-transform: uppercase;
 }
 
-.teacherLogRegister_input {
+.studentLogRegister_input {
   display: block;
   width: 100%;
   margin-top: 5px;
@@ -216,14 +216,14 @@ button {
   text-align: center;
 }
 
-.teacherLogRegister_forgot-pass {
+.studentLogRegister_forgot-pass {
   margin-top: 15px;
   text-align: center;
   font-size: 12px;
   color:  #900C3F;
 }
 
-.teacherLogRegister_submit {
+.studentLogRegister_submit {
   margin-top: 40px;
   margin-bottom: 20px;
   background: #900C3F;
@@ -234,7 +234,7 @@ button {
   border: 2px solid #d3dae9;
   color: #8fa1c7;
 }
-.fb-btn .teacherLogRegister_span {
+.fb-btn .studentLogRegister_span {
   font-weight: bold;
   color: #455a81;
 }
@@ -243,7 +243,7 @@ button {
   -webkit-transition-timing-function: ease-out;
           transition-timing-function: ease-out;
 }
-.teacherLogRegister_cont.s--signup .sign-in {
+.studentLogRegister_cont.s--signup .sign-in {
   -webkit-transition-timing-function: ease-in-out;
           transition-timing-function: ease-in-out;
   -webkit-transition-duration: 1.2s;
@@ -256,7 +256,7 @@ button {
   -webkit-transform: translate3d(-900px, 0, 0);
           transform: translate3d(-900px, 0, 0);
 }
-.teacherLogRegister_cont.s--signup .sign-up {
+.studentLogRegister_cont.s--signup .sign-up {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }

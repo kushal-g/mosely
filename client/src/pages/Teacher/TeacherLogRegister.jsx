@@ -73,16 +73,16 @@ export default function TeacherLogin() {
         <button onClick={signIn} type="button" className="teacherLogRegister_submit">Sign In</button>
       </div>
       <div className="teacherLogRegister_sub-cont">
-        <div className="img">
-          <div className="img__text m--up">
+        <div className="teacherLogRegister_img">
+          <div className="teacherLogRegister_img__text m--up">
             <h2 className="teacherLogRegister_h2">New here?</h2>
             <p>Sign up and get ready to solve problems!</p>
           </div>
-          <div className="img__text m--in">
+          <div className="teacherLogRegister_img__text m--in">
             <h2 className="teacherLogRegister_h2">One of us?</h2>
             <p>If you already has an account, just sign in. We've missed you!</p>
           </div>
-          <div className="img__btn" onClick={Change}>
+          <div className="teacherLogRegister_img__btn" onClick={Change}>
             <span  className="teacherLogRegister_span m--up">Sign Up</span>
             <span className="teacherLogRegister_span m--in">Sign In</span>
           </div>

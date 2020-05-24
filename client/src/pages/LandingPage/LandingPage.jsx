@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import TeacherLogRegister from "../Teacher/TeacherLogRegister"
+import StudentLogRegister from "../Student/StudentLogRegister"
 import "./LandingPage.css"
 
 function LandingPage(){
@@ -20,7 +21,7 @@ function LandingPage(){
         </div>
         
     </nav>
-    {tabSelected=="student"?<div></div>:<TeacherLogRegister />}
+    {tabSelected=="student"?<StudentLogRegister />:<TeacherLogRegister />}
 </div>
 
 );
