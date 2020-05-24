@@ -1,8 +1,10 @@
-
-.teacherLogRegister_input{
+  
+.teacherLogRegister_input,
+button {
   border: none;
   outline: none;
   background: none;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 
 
@@ -20,7 +22,6 @@
 
 .teacherLogRegister_form {
   position: relative;
-  align-items: center;
   width: 640px;
   height: 100%;
   -webkit-transition: -webkit-transform 1.2s ease-in-out;
@@ -199,49 +200,34 @@ button {
   margin: 25px auto 0;
   text-align: center;
 }
+.teacherLogRegister_label .teacherLogRegister_span {
+  font-size: 12px;
+  color: black;
+  text-transform: uppercase;
+}
 
 .teacherLogRegister_input {
   display: block;
   width: 100%;
-  margin-top: 50px;
-  margin-bottom:5px;
+  margin-top: 5px;
   padding-bottom: 5px;
   font-size: 16px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   text-align: center;
 }
 
-.teacherLogRegister_input::placeholder{
-  font-size: 12px;
-  color: black;
-  text-transform: uppercase;
-}
-
 .teacherLogRegister_forgot-pass {
   margin-top: 15px;
   text-align: center;
   font-size: 12px;
-  color: #ffaa3b;
-  
+  color:  #ffaa3b;
 }
 
 .teacherLogRegister_submit {
-  margin: 40px auto;
-  background-color: #ffaa3b;
-  height:40px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  background: #ffaa3b;
   text-transform: uppercase;
-  font-weight: 600;
-  font-size:15px;
-  letter-spacing: 2px;
-  border: none;
-  outline: none;
-  display: block;
-  width: 260px;
-  height: 36px;
-  border-radius: 30px;
-  color: #fff;
-  font-size: 15px;
-  cursor: pointer;
 }
 
 .fb-btn {
