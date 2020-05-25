@@ -10,6 +10,7 @@ export default function StudentLogin() {
     }
 
     const [name, setName] = useState("")
+    const [usn, setUSN] = useState("")
     const [loginEmail,setLoginEmail] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
     const [signUpEmail,setSignUpEmail] = useState("")
@@ -49,6 +50,7 @@ export default function StudentLogin() {
             },
             body:JSON.stringify({
                 name:name,
+                usn:usn
             })
         }))
         .then(response=>response.json())
@@ -87,10 +89,14 @@ export default function StudentLogin() {
           </div>
         </div>
         <div className="studentLogRegister_form sign-up">
-          <h2 className="studentLogRegister_h2">Time to feel like home,</h2>
+          <h2 className="studentLogRegister_h2">Welcome, Stranger</h2>
           <label className="studentLogRegister_label">
             <span className="studentLogRegister_span">Name</span>
             <input className="studentLogRegister_input"  value={name} onChange={e=>setName(e.target.value)}type="text" />
+          </label>
+          <label className="studentLogRegister_label">
+            <span className="studentLogRegister_span">USN</span>
+            <input className="studentLogRegister_input"  value={usn} onChange={e=>setUSN(e.target.value)}type="text" />
           </label>
           <label className="studentLogRegister_label">
             <span className="studentLogRegister_span">Email</span>

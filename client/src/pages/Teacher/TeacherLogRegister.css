@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-  
+
 .teacherLogRegister_input,
 button {
-=======
-
-.teacherLogRegister_input{
->>>>>>> 464982139b803c14fd4cbbd55b9ba728dd7010c1
   border: none;
   outline: none;
   background: none;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 
 
@@ -26,7 +22,6 @@ button {
 
 .teacherLogRegister_form {
   position: relative;
-  align-items: center;
   width: 640px;
   height: 100%;
   -webkit-transition: -webkit-transform 1.2s ease-in-out;
@@ -57,7 +52,6 @@ button {
           transform: translate3d(-640px, 0, 0);
 }
 
-<<<<<<< HEAD
 button {
   display: block;
   margin: 0 auto;
@@ -70,9 +64,6 @@ button {
 }
 
 .teacherLogRegister_img {
-=======
-.img {
->>>>>>> 464982139b803c14fd4cbbd55b9ba728dd7010c1
   overflow: hidden;
   z-index: 2;
   position: absolute;
@@ -209,29 +200,26 @@ button {
   margin: 25px auto 0;
   text-align: center;
 }
+.teacherLogRegister_label .teacherLogRegister_span {
+  font-size: 12px;
+  color: black;
+  text-transform: uppercase;
+}
 
 .teacherLogRegister_input {
   display: block;
   width: 100%;
-  margin-top: 50px;
-  margin-bottom:5px;
+  margin-top: 5px;
   padding-bottom: 5px;
   font-size: 16px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   text-align: center;
 }
 
-.teacherLogRegister_input::placeholder{
-  font-size: 12px;
-  color: black;
-  text-transform: uppercase;
-}
-
 .teacherLogRegister_forgot-pass {
   margin-top: 15px;
   text-align: center;
   font-size: 12px;
-<<<<<<< HEAD
   color:  #ffaa3b;
 }
 
@@ -239,29 +227,7 @@ button {
   margin-top: 40px;
   margin-bottom: 20px;
   background: #ffaa3b;
-=======
-  color: #ffaa3b;
-  
-}
-
-.teacherLogRegister_submit {
-  margin: 40px auto;
-  background-color: #ffaa3b;
-  height:40px;
->>>>>>> 464982139b803c14fd4cbbd55b9ba728dd7010c1
   text-transform: uppercase;
-  font-weight: 600;
-  font-size:15px;
-  letter-spacing: 2px;
-  border: none;
-  outline: none;
-  display: block;
-  width: 260px;
-  height: 36px;
-  border-radius: 30px;
-  color: #fff;
-  font-size: 15px;
-  cursor: pointer;
 }
 
 .fb-btn {
