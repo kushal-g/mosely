@@ -6,7 +6,6 @@ import TeacherLogRegister from "./pages/Teacher/TeacherLogRegister"
 import "./App.css"
 import LandingPage from './pages/LandingPage/LandingPage';
 import PrivateTeacherRoute from './components/PrivateTeacherRoute';
-import PrivateStudentRoute from './context/PrivateStudentRoute';
 
 function App() {
   return (
