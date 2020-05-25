@@ -61,16 +61,13 @@ export default function TeacherLogin() {
     return <div>
     <div className="teacherLogRegister_cont">
       <div className="teacherLogRegister_form sign-in" >
-        <h2 className="teacherLogRegister_Landing-center">Welcome back,</h2>
+        <h2 className="teacherLogRegister_Landing-center">Welcome back</h2>
         <label className="teacherLogRegister_label">
-          <span className="teacherLogRegister_span">Email</span>
-          <input className="teacherLogRegister_input" type="email"  value={loginEmail} onChange={e=>setLoginEmail(e.target.value)}/>
+          <input className="teacherLogRegister_input" type="email" placeholder="Email Address" value={loginEmail} onChange={e=>setLoginEmail(e.target.value)}/>
         </label>
         <label className="teacherLogRegister_label">
-          <span className="teacherLogRegister_span">Password</span>
-          <input className="teacherLogRegister_input" type="password"  value={loginPassword} onChange={e=>setLoginPassword(e.target.value)}/>
+          <input className="teacherLogRegister_input" type="password" placeholder="Password" value={loginPassword} onChange={e=>setLoginPassword(e.target.value)}/>
         </label>
-        <p className="teacherLogRegister_forgot-pass"><a href="#">Forgot password?</a></p>
         <button onClick={signIn} type="button" className="teacherLogRegister_submit">Sign In</button>
       </div>
       <div className="teacherLogRegister_sub-cont">
@@ -89,22 +86,23 @@ export default function TeacherLogin() {
           </div>
         </div>
         <div className="teacherLogRegister_form sign-up">
-          <h2 className="teacherLogRegister_h2">Time to feel like home,</h2>
+          <h2 className="teacherLogRegister_h2">Greetings, Stranger</h2>
           <label className="teacherLogRegister_label">
-            <span className="teacherLogRegister_span">Name</span>
-            <input className="teacherLogRegister_input"  value={name} onChange={e=>setName(e.target.value)}type="text" />
+            <input className="teacherLogRegister_input" placeholder="NAME" value={name} onChange={e=>setName(e.target.value)}type="text" />
           </label>
           <label className="teacherLogRegister_label">
-            <span className="teacherLogRegister_span">Email</span>
-            <input className="teacherLogRegister_input"  value={signUpEmail} onChange={e=>setSignUpEmail(e.target.value)}type="email" />
+            <input className="teacherLogRegister_input" placeholder="EMAIL" value={signUpEmail} onChange={e=>setSignUpEmail(e.target.value)}type="email" />
           </label>
           <label className="teacherLogRegister_label">
+<<<<<<< HEAD
           <span className="teacherLogRegister_span">MOSS-ID</span>
             <input className="teacherLogRegister_input" type="text" value={mossId} onChange={e=>setMossId(e.target.value)}/>
+=======
+            <input className="teacherLogRegister_input" type="text" placeholder="MOSS ID" value={mossId} onChange={e=>setMossId(e.target.value)}/>
+>>>>>>> 464982139b803c14fd4cbbd55b9ba728dd7010c1
           </label>
           <label className="teacherLogRegister_label">
-            <span className="teacherLogRegister_span">Password</span>
-            <input className="teacherLogRegister_input" type="password"  value={signUpPassword} onChange={e=>setSignUpPassword(e.target.value)} />
+            <input className="teacherLogRegister_input" type="password" placeholder="PASSWORD" value={signUpPassword} onChange={e=>setSignUpPassword(e.target.value)} />
           </label>
           <button onClick={registerUser}type="button" className="teacherLogRegister_submit">Sign Up</button>
 
