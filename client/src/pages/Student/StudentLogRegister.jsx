@@ -61,7 +61,7 @@ export default function StudentLogin() {
     return <div>
     <div className="studentLogRegister_cont">
       <div className="studentLogRegister_form sign-in" >
-        <h2 className="studentLogRegister_Landing-center">Welcome back,</h2>
+        <h2 className="studentLogRegister_Landing-center">Welcome back</h2>
         <label className="studentLogRegister_label">
           <span className="studentLogRegister_span">Email</span>
           <input className="studentLogRegister_input" type="email"  value={loginEmail} onChange={e=>setLoginEmail(e.target.value)}/>
@@ -89,7 +89,7 @@ export default function StudentLogin() {
           </div>
         </div>
         <div className="studentLogRegister_form sign-up">
-          <h2 className="studentLogRegister_h2">Welcome, Stranger</h2>
+          <h2 className="studentLogRegister_h2">Greetings, Stranger</h2>
           <label className="studentLogRegister_label">
             <span className="studentLogRegister_span">Name</span>
             <input className="studentLogRegister_input"  value={name} onChange={e=>setName(e.target.value)}type="text" />
