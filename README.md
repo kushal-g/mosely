@@ -1,0 +1,2 @@
+# mosely
+API documentation: [https://documenter.getpostman.com/view/8452453/SzmmVvBW?version=latest#2c976da8-30ae-4c06-bd58-f99f9e3fb256](https://documenter.getpostman.com/view/8452453/SzmmVvBW?version=latest#2c976da8-30ae-4c06-bd58-f99f9e3fb256)
