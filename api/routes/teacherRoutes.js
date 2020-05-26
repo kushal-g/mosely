@@ -3,10 +3,9 @@ const TeacherController = require('../controllers/TeacherController')
 const {teacherAuthentication} = require('../controllers/AuthController')
 const router = express.Router()
 
-router.post('/class/create',teacherAuthentication,TeacherController.createClass)
-router.post('/class/read',teacherAuthentication,TeacherController.viewClasses)
-router.post('/class/update',teacherAuthentication,TeacherController.renameClass)
-router.post('/class/delete',teacherAuthentication,TeacherController.deleteClass)
-router.post('/class/assignment/create',teacherAuthentication,TeacherController.createAssignment)
+router.post('/course',teacherAuthentication,TeacherController.createCourse)
+router.post('/course/read',teacherAuthentication,TeacherController.viewCourse)
+router.post('/course/update',teacherAuthentication,TeacherController.renameCourse)
+router.post('/course/delete',teacherAuthentication,TeacherController.deleteCourse)
 
 module.exports = router

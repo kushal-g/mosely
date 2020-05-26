@@ -1,16 +1,16 @@
 const admin = require('../utils/base');
 const chalk = require('chalk')
 const teachersDb = require('../models/teachers')
-const classesDb = require('../models/classes')
+const coursesDb = require('../models/courses')
 const languagesAllowed = require('../models/languagesAllowed')
 
-module.exports.createClass = (req,res,next) =>{
-    classesDb.createClass(req.user,req.body.name)
+module.exports.createCourse = (req,res,next) =>{
+    coursesDb.createCourse(req.user,req.body.name)
     .then(()=>{
         res.status(200).send({
             statusCode:200,
             data:{
-                msg:"Successfully created a class"
+                msg:"Successfully created a course"
             }
         })
     })
@@ -22,11 +22,11 @@ module.exports.createClass = (req,res,next) =>{
     }))
 }
 
-module.exports.viewClasses = (req,res,next) =>{
+module.exports.viewCourse = (req,res,next) =>{
     try{
-        classesDb.viewClasses(req.user.uid)
+        coursesDb.viewCourse(req.user.uid)
         .then(classes=>{
-            console.log(chalk.green('Got classes'))
+            console.log(chalk.green('Got courses'))
             res.status(200).send({
                 statusCode:200,
                 data:{
@@ -45,20 +45,20 @@ module.exports.viewClasses = (req,res,next) =>{
     }
 }
 
-module.exports.renameClass = (req,res,next) =>{
-    console.log(chalk.yellow('Renaming class...'))
-    classesDb.renameClass(req.body.classId,req.user.uid,req.body.className)
+module.exports.renameCourse = (req,res,next) =>{
+    console.log(chalk.yellow('Renaming course...'))
+    coursesDb.renameCourse(req.body.courseId,req.user.uid,req.body.className)
     .then(()=>{
-        console.log(chalk.green('Successfully renamed class'))
+        console.log(chalk.green('Successfully renamed course'))
         res.status(200).send({
             statusCode:200,
             data:{
-                msg:"Successfully renamed class"
+                msg:"Successfully renamed course"
             }
         })
     })
     .catch(e=>{
-        res.send(500).send({
+        res.status(500).send({
             statusCode:500,
             data:{
                 statusCode:500,
@@ -70,20 +70,20 @@ module.exports.renameClass = (req,res,next) =>{
     })
 }
 
-module.exports.deleteClass = (req,res,next) =>{
-    console.log(chalk.yellow('Deleting class...'))
-    classesDb.deleteClass(req.user.uid,req.body.classId)
+module.exports.deleteCourse = (req,res,next) =>{
+    console.log(chalk.yellow('Deleting course...'))
+    coursesDb.deleteCourse(req.user.uid,req.body.courseId)
     .then(()=>{
-        console.log(chalk.green('Successfully deleted class'))
+        console.log(chalk.green('Successfully deleted course'))
         res.status(200).send({
             statusCode:200,
             data:{
-                msg:"Successfully deleted class"
+                msg:"Successfully deleted course"
             }
         })
     })
     .catch(e=>{
-        res.send(500).send({
+        res.status(500).send({
             statusCode:500,
             data:{
                 statusCode:500,
@@ -93,31 +93,4 @@ module.exports.deleteClass = (req,res,next) =>{
             }
         })
     })
-}
-
-module.exports.createAssignment = (req,res,next) =>{
-    console.log(chalk.yellow('Creating an assignment...'))
-    const {classId, assignmentName, dueDate, description, language, marks} = req.body
-    if(languagesAllowed.indexOf(language)!=-1){
-        classesDb.createAssignment(req.user.uid, classId, assignmentName, dueDate, description, language, marks)
-        .then(msg=>res.status(200).send({
-            statusCode:200,
-            data:{
-                msg:msg
-            }
-        }))
-        .catch(e=>res.status(500).send({
-            statusCode:500,
-            data:{
-                msg:e.message
-            }
-        }))
-    }else{
-        res.status(400).send({
-            statusCode:400,
-            data:{
-                msg:"Language not allowed"
-            }
-        })
-    }   
 }
