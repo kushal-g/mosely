@@ -25,12 +25,12 @@ module.exports.createCourse = (req,res,next) =>{
 module.exports.viewCourse = (req,res,next) =>{
     try{
         coursesDb.viewCourse(req.user.uid)
-        .then(classes=>{
+        .then(courses=>{
             console.log(chalk.green('Got courses'))
             res.status(200).send({
                 statusCode:200,
                 data:{
-                    classes:classes
+                    courses:courses
                 }
             })
         })
