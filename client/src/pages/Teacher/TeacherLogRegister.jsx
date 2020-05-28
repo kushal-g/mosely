@@ -32,8 +32,7 @@ export default function TeacherLogin() {
         .then(body=>{
             if(body.data.role.teacher){
                 app.auth().signInWithEmailAndPassword(loginEmail,loginPassword)
-                .then(user=>app.auth().currentUser.getIdToken())
-                .then(result=>console.log(result))
+                .then(user=>window.location.href="/teacher/dashboard")
             }
         }).catch(e=>console.log(e))
     }
@@ -61,7 +60,7 @@ export default function TeacherLogin() {
     return <div>
     <div className="teacherLogRegister_cont">
       <div className="teacherLogRegister_form sign-in" >
-        <h2 className="teacherLogRegister_Landing-center">Welcome back</h2>
+        <h2 className="teacherLogRegister_Landing-center">Welcome back,</h2>
         <label className="teacherLogRegister_label">
           <span className="teacherLogRegister_span">Email</span>
           <input className="teacherLogRegister_input" type="email"  value={loginEmail} onChange={e=>setLoginEmail(e.target.value)}/>
@@ -77,7 +76,7 @@ export default function TeacherLogin() {
         <div className="teacherLogRegister_img">
           <div className="teacherLogRegister_img__text m--up">
             <h2 className="teacherLogRegister_h2">New here?</h2>
-            <p>Sign up and get access to our complete solution for class management!</p>
+            <p>Sign up and get ready to solve problems!</p>
           </div>
           <div className="teacherLogRegister_img__text m--in">
             <h2 className="teacherLogRegister_h2">One of us?</h2>
@@ -89,7 +88,7 @@ export default function TeacherLogin() {
           </div>
         </div>
         <div className="teacherLogRegister_form sign-up">
-          <h2 className="teacherLogRegister_h2">Time to feel like home</h2>
+          <h2 className="teacherLogRegister_h2">Time to feel like home,</h2>
           <label className="teacherLogRegister_label">
             <span className="teacherLogRegister_span">Name</span>
             <input className="teacherLogRegister_input"  value={name} onChange={e=>setName(e.target.value)}type="text" />
@@ -114,3 +113,6 @@ export default function TeacherLogin() {
   </div>
 
     }
+
+
+    
