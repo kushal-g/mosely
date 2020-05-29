@@ -5,7 +5,8 @@ const coursesDb = require('../models/courses')
 const languagesAllowed = require('../models/languagesAllowed')
 
 module.exports.createCourse = (req,res,next) =>{
-    coursesDb.createCourse(req.user,req.body.name)
+    const {courseName, courseCode, courseDesc} = req.body
+    coursesDb.createCourse(req.user,courseCode,courseName,courseDesc)
     .then(()=>{
         res.status(200).send({
             statusCode:200,
@@ -45,9 +46,12 @@ module.exports.viewCourse = (req,res,next) =>{
     }
 }
 
-module.exports.renameCourse = (req,res,next) =>{
+module.exports.editCourse = (req,res,next) =>{
     console.log(chalk.yellow('Renaming course...'))
-    coursesDb.renameCourse(req.body.courseId,req.user.uid,req.body.className)
+
+    const {courseId, courseName, courseCode, courseDesc} =req.body
+
+    coursesDb.editCourse(courseId,req.user.uid,courseCode,courseName,courseDesc)
     .then(()=>{
         console.log(chalk.green('Successfully renamed course'))
         res.status(200).send({

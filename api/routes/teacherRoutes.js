@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.post('/course',teacherAuthentication,TeacherController.createCourse)
 router.post('/course/read',teacherAuthentication,TeacherController.viewCourse)
-router.post('/course/update',teacherAuthentication,TeacherController.renameCourse)
+router.post('/course/update',teacherAuthentication,TeacherController.editCourse)
 router.post('/course/delete',teacherAuthentication,TeacherController.deleteCourse)
 
 module.exports = router
