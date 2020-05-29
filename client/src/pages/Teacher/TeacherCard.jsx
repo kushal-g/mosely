@@ -11,7 +11,7 @@ function TeacherCard(props){
       <div className="teacherCard_info">
       {props.courseCoordinator}
       <dt>
-      <button className="teacherCard_info_heading" >{props.name}</button>
+      <button className="teacherCard_info_heading" ></button>
     </dt>
     <dd>{props.description}</dd>
     </div>
