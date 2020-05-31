@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react'
-import TeacherHome from "./TeacherHome"
-import TeacherReports from "./TeacherReports"
-import TeacherCourses from "./TeacherCourses"
-import "./TeacherPanel.css"
+import TeacherHome from "../TeacherHome/TeacherHome"
+import TeacherReports from "../TeacherReports/TeacherReports"
+import TeacherCourses from "../TeacherCourses/TeacherCourses"
+import "../TeacherPanel.css"
 
 function TeacherPanel(props){
 

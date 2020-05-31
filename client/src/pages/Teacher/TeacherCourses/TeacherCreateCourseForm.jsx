@@ -17,11 +17,14 @@ function TeacherCreateCourseForm(props){
                 "Content-type":"application/json"
             },
             body:JSON.stringify({
-                name:courseId
+                courseCode:courseId,
+                courseName:courseName,
+                courseDesc:courseDesc
+
             })
         })
         .then(response=>response.json())
-        .then(body=>console.log(body))
+        .then(body=>{props.fetchCourses()})
     })
 
 }

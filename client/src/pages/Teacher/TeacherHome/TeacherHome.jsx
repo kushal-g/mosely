@@ -1,6 +1,6 @@
 import React from "react"
-import TeacherCard from "./TeacherCard"
-import "./TeacherPanel.css"
+import TeacherCard from "../TeacherCourses/TeacherCard"
+import "../TeacherPanel.css"
 function TeacherHome(){
     return <div className="teacherHome_container">
        <div className="teacherHome_colorBox">
