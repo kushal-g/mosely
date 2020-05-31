@@ -2,10 +2,12 @@ const admin = require('../utils/base')
 const chalk =require('chalk')
 const db =admin.firestore()
 
-module.exports.createCourse = (teacher,name) =>{
+module.exports.createCourse = (teacher,courseCode,courseName,courseDesc) =>{
     console.log(chalk.yellow('Creating a course...'))
     return db.collection('/courses').add({
-        name:name,
+        courseName:courseName,
+        courseCode:courseCode,
+        courseDesc:courseDesc,
         assignedTeachers:[
             teacher.uid
         ],
@@ -30,7 +32,7 @@ module.exports.viewCourse = (teacherId) =>{
                 teachersPromise.push(getTeachers(doc.data().assignedTeachers))
                 classes.push({
                     ...doc.data(),
-                    id:doc.id
+                    courseId:doc.id
                 })
             });
             Promise.all(teachersPromise).then(teachers=>{
@@ -44,13 +46,15 @@ module.exports.viewCourse = (teacherId) =>{
     
 }
 
-module.exports.renameCourse = (courseId,teacherUid,className) =>{
+module.exports.editCourse = (courseId,teacherUid,courseCode,courseName,courseDesc) =>{
     return new Promise((resolve,reject)=>{
         let docRef = db.collection('/courses').doc(courseId)
         docRef.get().then(doc=>{
             if(doc.data().assignedTeachers.indexOf(teacherUid)!=-1 && !doc.data().isDeleted){
                 docRef.update({
-                    name:className
+                    courseName:courseName,
+                    courseCode:courseCode,
+                    courseDesc:courseDesc
                 }).then(()=>resolve())
             }else{
                 reject('Not authorized to access this class')
