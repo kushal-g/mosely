@@ -1,11 +1,11 @@
 import React from 'react';
 import {BrowserRouter,Route} from 'react-router-dom';
-import TeacherPanel from "./pages/Teacher/TeacherPanel"
+import TeacherPanel from "./pages/Teacher/TeacherPanel/TeacherPanel"
 import {AuthProvider} from './context/Auth'
 import PrivateTeacherRoute from "./components/PrivateTeacherRoute"
 import "./App.css"
 import LandingPage from './pages/LandingPage/LandingPage';
-import TeacherCourses from './pages/Teacher/TeacherCourses';
+import TeacherCourses from './pages/Teacher/TeacherCourses/TeacherCourses';
 
 
 

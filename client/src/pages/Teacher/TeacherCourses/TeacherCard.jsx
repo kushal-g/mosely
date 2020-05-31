@@ -1,15 +1,15 @@
 import React, { useState } from "react"
-import "./TeacherPanel.css"
+import "../TeacherPanel.css"
 
 
 
 function TeacherCard(props){
-    return <div className="teacherCard">
+    return <div className="teacherCard" >
       <span className="teacherCard_letter" role="img">
-        {props.name}
+        S
       </span>
       <div className="teacherCard_info">
-      {props.courseCoordinator}
+      {props.id}
       <dt>
       <button className="teacherCard_info_heading" >{props.name}</button>
     </dt>

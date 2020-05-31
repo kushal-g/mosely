@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import app from '../../utils/base'
+import app from '../../../utils/base'
 import "./TeacherLogRegister.css"
 
 export default function TeacherLogin() {
