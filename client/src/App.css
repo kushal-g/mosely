@@ -1,3 +1,10 @@
+
+:root{
+  --primary-color:#8357eb;
+  --secondary-color: #ffaa3b;
+}
+
+
 *,
 *:before,
 *:after {
@@ -8,6 +15,5 @@
 
 body {
   font-family: "Poppins";
-  background:#8357eb;
-
+  background:var(--primary-color);
 }

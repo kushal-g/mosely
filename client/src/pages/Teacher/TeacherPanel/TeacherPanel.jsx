@@ -6,9 +6,11 @@ import "../TeacherPanel.css"
 
 function TeacherPanel(props){
 
+ document.getElementsByTagName("body")[0].style.backgroundColor="white";
   const [tabSelected,setTabSelected]=useState("home");
   
   return (
+
     <div className="teacherPanel_container teacherPanel_center">
     <nav className="teacherPanel_menu">
         <h1 className="teacherPanel_menu__logo">mosely</h1>

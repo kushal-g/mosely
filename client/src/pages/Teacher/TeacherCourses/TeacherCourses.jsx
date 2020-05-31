@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from "react"
 import TeacherCard from "./TeacherCard"
+import "./TeacherCourses.css"
 import TeacherCreateCourseForm from "./TeacherCreateCourseForm"
 
 
@@ -26,17 +27,18 @@ function TeacherCourses(props){
 
     
 useEffect(()=>{fetchCourses()},[])
-    return <div className="teacherHome_classes_courses">
+    return <div className="teacherCourses">
     {
-        showForm && <TeacherCreateCourseForm fetchCourses={fetchCourses} user={props.user}/>
+        showForm && <TeacherCreateCourseForm offModal={()=>setShowForm(false)} fetchCourses={fetchCourses} user={props.user}/>
     }
-    <div>
-        <button style={{backgroundColor:"black"}} onClick={()=>setShowForm(true)}>+ Create Courses</button>
+   <div>
+        <button className="teacherCourses_create" onClick={()=>setShowForm(true)}>+ Create Courses</button>
     </div>
-     <div className="teacherHome_courses">
+    
+     <div>
        {
            courses.map(course=>{
-               return <TeacherCard name={course.courseName} id={course.courseCode} description={course.courseDesc}/>
+               return <TeacherCard name={course.courseName} letter={course.courseCode} description={course.courseDesc}/>
            })
        }
      </div>

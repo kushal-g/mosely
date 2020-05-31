@@ -1,4 +1,5 @@
 import React,{useState} from "react"
+import "./TeacherCreateCourseForm.css"
 
 function TeacherCreateCourseForm(props){
     const [courseId,setCourseId]=useState("")
@@ -24,19 +25,25 @@ function TeacherCreateCourseForm(props){
             })
         })
         .then(response=>response.json())
-        .then(body=>{props.fetchCourses()})
+        .then(body=>{props.fetchCourses()
+        props.offModal()})
     })
 
 }
 
 
     return <div className="courseForm">
-        <form onSubmit={CreateCourse}>
-            <input placeholder="CourseId" onChange={event=>setCourseId(event.target.value)} value={courseId} type="text"/>>
-            <input placeholder="CourseName" onChange={event=>setCourseName(event.target.value)} value={courseName} type="text"/>
-            <input placeholder="Course Description" onChange={event=>setCourseDesc(event.target.value)} value={courseDesc} type="text"/>
+    <div className="courseForm_background" onClick={props.offModal}></div>
+    <div className="courseForm_content">
+    <h2><p>Create Course</p></h2>
+    <form onSubmit={CreateCourse}>
+            <input placeholder="Course code" onChange={event=>setCourseId(event.target.value)} value={courseId} type="text"/>
+            <input placeholder="Name" onChange={event=>setCourseName(event.target.value)} value={courseName} type="text"/>
+            <input placeholder="Description" onChange={event=>setCourseDesc(event.target.value)} value={courseDesc} type="text"/>
             <button type="submit">Submit </button>
         </form>
+    </div>
+        
     </div>
 }
 
