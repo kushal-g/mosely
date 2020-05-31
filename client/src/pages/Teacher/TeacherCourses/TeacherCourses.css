@@ -1,0 +1,8 @@
+.teacherCourses_create{
+    background-color: var(--primary-color);
+}
+.teacherCourses{
+    display: grid;
+    width: 100%;
+    text-align: left;
+}

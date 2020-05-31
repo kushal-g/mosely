@@ -4,7 +4,8 @@ import StudentLogRegister from "../Student/StudentLogRegister"
 import "./LandingPage.css"
 
 function LandingPage(){
-
+    
+    document.getElementsByTagName("body")[0].style.backgroundColor="#8357eb";
   const [tabSelected,setTabSelected]=useState("student");
   
   return (

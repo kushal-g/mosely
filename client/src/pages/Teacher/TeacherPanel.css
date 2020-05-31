@@ -90,7 +90,7 @@
 
 .teacherHome_colorBox {
     background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(90deg, var(--primary-color) 20%, rgba(0,212,255,1) 80%);
     border-radius: 8px;
     width: 75%;
     height: 150px;
@@ -109,32 +109,34 @@
 }
 
 .teacherHome_classes_courses{
+    margin-top: 10px;
     background: white;
     border-radius: 4px;
-    width:40%;
-    height: 100%;
+    width:100%;
+    height: fit-content;
     display: flex;
     float: left;
     justify-content: space-between;
-    padding: 0 40px;
+    padding: 10px 20px;
     position: relative;
     margin-top: 15px;
     margin-left: 15px;
 }
 .teacherHome_courses {
-    background: wheat;
+    background: white;
     border-radius: 4px;
     width: 100%;
-    height: 50%;
+    height: fit-content;
     position: relative;
     float: left;
     text-align: left;
+   
 }
 .teacherHome_classes{
-    background: wheat;
+    background: white;
     border-radius: 4px;
     width: 100%;
-    height: 50%;
+    height: fit-content;
     position: relative;
     float: left;
     text-align: left;
@@ -142,58 +144,25 @@
 }
 
 .teacherHome_deadlines{
+    text-align: left;
+    margin-top: 10px;
     background: white;
     border-radius: 4px;
-    width:33%;
-    height: 375px;
-    float: left;
-    text-align: left;
-    justify-content: space-between;
-    padding: 0 40px;
+    width:100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
     position: relative;
     margin-top: 15px;
-    margin-left: 15px;
-    
+    grid-row: 1/3;
+    grid-column: 2/3;
 }
-.teacherHome_material{
-  width: 100%;
-  height: auto;
-}
-.teacherCard{
-    border-radius: 8px;
-    background-color: teal;
-    height: 115px;
-    margin-top: 10px;
-}
-.teacherCard_letter{
-    background-color: tomato;
-    float: left;
-    width: 20%;
-    height: 100px;
-    text-align: center;
-    vertical-align: center;
-    position: relative;
-    margin-top: 15px;
-    font-size: 75px;
 
-}
-.teacherCard_info{
-    float: right;
-    width: 80%;
-    text-align: left;
-    height: 100px;
-    vertical-align: center;
-    position: relative;
-    margin-top: 15px;
-    font-size: 20px;
-}
-.teacherCard_info_heading{
-    margin-top: 10px;
-    margin-left: 10px;
-    font-size: 40px;
-}
-.teacherCard_info_desc{
-    margin-top: 10px;
-    margin-left: 10px;
-    font-size:30px;
+.teacherHome_material{
+  width: 75%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
 }

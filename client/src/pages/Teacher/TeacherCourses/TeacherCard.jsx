@@ -1,21 +1,23 @@
 import React, { useState } from "react"
-import "../TeacherPanel.css"
+import "./TeacherCard.css"
 
 
 
 function TeacherCard(props){
     return <div className="teacherCard" >
-      <span className="teacherCard_letter" role="img">
-        S
-      </span>
-      <div className="teacherCard_info">
-      {props.id}
-      <dt>
-      <button className="teacherCard_info_heading" ></button>
-    </dt>
-    <dd>{props.description}</dd>
+      <div className="teacherCard_letter" role="img">
+        {props.letter}
+      </div>
+      
+      <div className="teacherCard_name">
+       {props.name}
+      </div>
+      <div className="teacherCard_desc"> 
+       {props.description}
+      </div>
+   
     </div>
-  </div>
+  
 }
 
 export default TeacherCard;
