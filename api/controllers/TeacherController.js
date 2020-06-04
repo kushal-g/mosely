@@ -2,6 +2,8 @@ const admin = require('../utils/base');
 const chalk = require('chalk')
 const teachersDb = require('../models/teachers')
 const coursesDb = require('../models/courses')
+const classesDb = require('../models/classes')
+
 const languagesAllowed = require('../models/languagesAllowed')
 
 module.exports.createCourse = (req,res,next) =>{
@@ -100,4 +102,54 @@ module.exports.deleteCourse = (req,res,next) =>{
             }
         })
     })
+}
+
+module.exports.createClass = (req,res,next) =>{
+  console.log(chalk.yellow('Creating class...')); 
+  const {className, courseId} = req.body;
+  classesDb.createClass(courseId, className, req.user.uid)
+  .then(classId=>{
+      console.log(chalk.green('Created class'));
+      res.status(200).send({
+          statusCode:200,
+          data:{
+            msg:'Successfully created class',             
+            classId:classId
+          }
+      })
+  })  
+  .catch(e=>{
+    console.log(chalk.red(e.message))
+    res.status(500).send({
+        statusCode:500,
+        data:{
+          msg:e.message
+        }
+    })
+  })
+}
+
+module.exports.viewClassOfCourse = (req,res,next) =>{
+    const {courseId} = req.body
+    console.log(chalk.yellow('Getting classes...'))
+    classesDb.viewClassesOfCourse(courseId)
+    .then(classes=>{
+        console.log(chalk.green('Got classes'))
+        res.status(200).send({
+            statusCode:200,
+            data:{
+                msg:"Successfully fetched classes",
+                classes:classes
+            }
+        })
+    })
+    .catch(e=>{
+        console.log(chalk.red(e.message))
+        res.status(500).send({
+            statusCode:500,
+            data:{
+                msg:e.message
+            }
+        })
+    })    
 }

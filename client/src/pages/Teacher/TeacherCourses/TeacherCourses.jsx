@@ -13,6 +13,7 @@ function TeacherCourses(props){
     function fetchCourses(){
         props.user.getIdToken()
         .then(token=>{
+            console.log(token)
             fetch(`${process.env.REACT_APP_URL}/teacher/course/read`,{
                 method:"post",
                 headers:{
