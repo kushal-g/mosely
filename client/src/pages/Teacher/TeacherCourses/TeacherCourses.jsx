@@ -38,7 +38,7 @@ useEffect(()=>{fetchCourses()},[])
      <div>
        {
            courses.map(course=>{
-               return <TeacherCard name={course.courseName} letter={course.courseCode} description={course.courseDesc}/>
+               return <TeacherCard  user={props.user} fetchCourses={fetchCourses} uniqueCourseId={course.courseId} name={course.courseName} letter={course.courseCode} description={course.courseDesc}/>
            })
        }
      </div>
