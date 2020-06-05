@@ -27,6 +27,9 @@ module.exports.viewCourse = (req,res,next) =>{
     try{
         coursesDb.viewCourse(req.user.uid)
         .then(courses=>{
+            console.log
+            courses.sort((a,b)=>a.dateCreated._seconds - b.dateCreated._seconds).reverse()
+            console.log(courses)
             console.log(chalk.green('Got courses'))
             res.status(200).send({
                 statusCode:200,
