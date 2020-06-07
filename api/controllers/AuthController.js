@@ -32,11 +32,14 @@ module.exports.CheckAuthentication = (req,res,next)=>{
 
 
 module.exports.teacherAuthentication = (req,res,next)=>{
+    console.log(chalk.yellow('Checking authorization header...'))
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer ')){
-        let idToken = req.headers.authorization.split('Bearer ')[1]  
+        let idToken = req.headers.authorization.split('Bearer ')[1]
+        console.log(chalk.yellow('Verifying token...'))  
         admin.auth().verifyIdToken(idToken)
         .then(decodedToken=>{   
             if(decodedToken.role.teacher){
+                console.log(chalk.green('Teacher Authenticated!'))
                 req.user = decodedToken
                 next()
             }
