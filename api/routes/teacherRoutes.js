@@ -10,4 +10,7 @@ router.post('/course/delete',teacherAuthentication,TeacherController.deleteCours
 
 router.post('/course/class',teacherAuthentication,TeacherController.createClass)
 router.post('/course/class/read',teacherAuthentication,TeacherController.viewClassOfCourse)
+router.post('/course/class/delete',teacherAuthentication,TeacherController.deleteClass)
+router.post('/course/class/update',teacherAuthentication,TeacherController.editClass)
+
 module.exports = router

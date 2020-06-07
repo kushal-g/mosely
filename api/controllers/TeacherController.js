@@ -153,3 +153,48 @@ module.exports.viewClassOfCourse = (req,res,next) =>{
         })
     })    
 }
+
+module.exports.deleteClass = (req,res,next) =>{
+    const {courseId, classId} = req.body
+    console.log()
+    classesDb.deleteClass(courseId,classId,req.user.uid)   
+    .then(()=>{
+        res.status(200).send({
+            statusCode:200,
+            data:{
+                msg:'Successfully deleted the class'
+            }
+        })
+    })
+    .catch(e=>{
+        res.status(500).send({
+            statusCode:500,
+            data:{
+                msg:e || e.message
+            }
+        })
+    })
+}
+
+module.exports.editClass = (req,res,next) =>{
+    console.log(chalk.yellow('Editing class...'))
+    const {courseId, classId, className} = req.body
+    classesDb.editClass(courseId,classId,className,req.user.uid)
+    .then(()=>{
+        console.log(chalk.green('Edited class'))
+        res.status(200).send({
+            statusCode:200,
+            data:{
+                msg:'Successfully edited class'
+            }
+        })
+    })
+    .catch(e=>{
+        res.status(500).send({
+            statusCode:500,
+            data:{
+                msg: e.message || e
+            }
+        })
+    })
+}
