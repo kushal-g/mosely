@@ -33,6 +33,7 @@ function TeacherCard(props){
     })
   
   }
+<<<<<<< HEAD
   function ViewClass(){
     props.user.getIdToken()
     .then(token=>{
@@ -55,6 +56,8 @@ function TeacherCard(props){
   }
   
 
+=======
+>>>>>>> 63713e06fcc6cd4674655e0068a158f49ce740e1
     return <div className="teacherCard" >
     <div className="teacherCard_info">
       <div className="teacherCard_letter" role="img">
@@ -73,6 +76,7 @@ function TeacherCard(props){
       <button  onClick={DeleteCourse} className="teacherCard_delete">- Delete Course</button>
      <button  onClick={()=>{setShowForm(true)}} className="teacherCard_update">Update Course Details</button> 
       {showForm && <TeacherCreateCourseForm  uniqueCourseId={props.uniqueCourseId} change="true" fetchCourses={props.fetchCourses} user={props.user}  offModal={()=>setShowForm(false)}  courseCode={props.letter} courseName={props.name} courseDesc={props.description} />}
+<<<<<<< HEAD
      <button onClick={()=>{ViewClass(); setShowClasses(true)}} className="teacherCard_viewClass">View Classes</button>
      {showClasses && 
      <div>
@@ -85,6 +89,10 @@ function TeacherCard(props){
            })
        }
      </div>}
+=======
+     <button onClick={()=>{props.viewClasses(props.uniqueCourseId)}} className="teacherCard_viewClass">View Classes</button>
+    
+>>>>>>> 63713e06fcc6cd4674655e0068a158f49ce740e1
      
      </div>
      
