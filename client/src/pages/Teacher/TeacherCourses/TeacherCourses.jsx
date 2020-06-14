@@ -57,7 +57,8 @@ function TeacherCourses(props){
         })
       }
     
-useEffect(()=>{fetchCourses()},[])
+   useEffect(()=>{fetchCourses()},[])
+   useEffect(()=>{ViewClass(props.uniqueCourseId)},[])
     return (
     <div className="teacherCourses">
         {
