@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState} from "react"
 import "./TeacherCard.css"
 import TeacherCreateCourseForm from "./TeacherCreateCourseForm"
 import TeacherCreateClass from "./TeacherCreateClass"
@@ -54,6 +54,7 @@ function TeacherCard(props){
     })
   }
   
+
     return <div className="teacherCard" >
     <div className="teacherCard_info">
       <div className="teacherCard_letter" role="img">
@@ -77,7 +78,7 @@ function TeacherCard(props){
      <div>
      <button onClick={()=>setShowCreateClasses(true)} className="teacherCard_createClass">+ Create Class</button>
      {showCreateClasses && <TeacherCreateClass offModal={()=>setShowCreateClasses(false)} user={props.user} uniqueCourseId={props.uniqueCourseId}/>}
-     
+
      {
            classes.map(className=>{
               return  <TeacherClasses user={props.user} Name={className.className} />
