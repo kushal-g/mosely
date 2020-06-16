@@ -1,17 +1,15 @@
 import React, {useState,useEffect} from "react"
+import {Link} from "react-router-dom"
 import "./TeacherCard.css"
 import TeacherCreateCourseForm from "./TeacherCreateCourseForm"
-import TeacherCreateClass from "./TeacherCreateClass"
-import TeacherClasses from "./TeacherClasses"
+
 
  
 
 function TeacherCard(props){
 
   const [showForm,setShowForm]=useState(false)
-  const [showClasses,setShowClasses]=useState(false)
-  const [classes,setClasses]=useState([])
-  const [showCreateClasses,setShowCreateClasses]=useState(false)
+  
 
   function DeleteCourse(){
          
@@ -54,8 +52,8 @@ function TeacherCard(props){
       <button  onClick={DeleteCourse} className="teacherCard_delete">- Delete Course</button>
      <button  onClick={()=>{setShowForm(true)}} className="teacherCard_update">Update Course Details</button> 
       {showForm && <TeacherCreateCourseForm  uniqueCourseId={props.uniqueCourseId} change="true" fetchCourses={props.fetchCourses} user={props.user}  offModal={()=>setShowForm(false)}  courseCode={props.letter} courseName={props.name} courseDesc={props.description} />}
-     <button onClick={()=>{props.viewClasses(props.uniqueCourseId)}} className="teacherCard_viewClass">View Classes</button>
-    
+     <Link style={{textDecoration:"none"}} to={{pathname:"/teacher/dashboard/classes", state:{uniqueCourseId:props.uniqueCourseId}}}><button className="teacherCard_viewClass">View Classes</button></Link>
+     
      
      </div>
      

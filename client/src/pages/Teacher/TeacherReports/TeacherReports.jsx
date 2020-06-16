@@ -1,8 +1,8 @@
 import React from "react"
-
+import TeacherPanel from "../TeacherPanel/TeacherPanel"
 function TeacherReports(){
     return <div>
-        ff
+        <TeacherPanel tab="reports"/>
     </div>
 }
 

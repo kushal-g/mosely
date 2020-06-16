@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./TeacherCreateClass.css"
 
 function TeacherCreateClass(props){
 
     const [className,setClassName]=useState("")
+
     function CreateClass(event){
 
         event.preventDefault();
@@ -21,8 +22,9 @@ function TeacherCreateClass(props){
             })
         })
         .then(response=>response.json())
-        .then(body => {console.log(body)
-        props.offModal()})
+        .then(body => {console.log(body);
+        props.offModal();
+           props.ViewClass(props.uniqueCourseId)})
     }) 
 
 }
@@ -39,6 +41,7 @@ function TeacherCreateClass(props){
     </div>
         
     </div>
+    
 }
 
 export default TeacherCreateClass;

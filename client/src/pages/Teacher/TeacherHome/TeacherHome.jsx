@@ -1,8 +1,11 @@
 import React from "react"
 import TeacherCard from "../TeacherCourses/TeacherCard"
+import TeacherPanel from "../TeacherPanel/TeacherPanel"
 import "../TeacherPanel.css"
 function TeacherHome() {
-  return <div className="teacherHome_container">
+  return <div>
+  <TeacherPanel tab="home"/>
+  <div className="teacherHome_container">
     <div className="teacherHome_colorBox">
       <p className="teacherHome_colorBox-text">Welcome Back to the portal ,please complete the tasks</p>
     </div>
@@ -35,6 +38,7 @@ function TeacherHome() {
       </div>
       
     </div>
+  </div>
   </div>
 }
 
