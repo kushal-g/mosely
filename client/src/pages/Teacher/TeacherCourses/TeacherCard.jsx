@@ -2,7 +2,7 @@ import React, {useState,useEffect} from "react"
 import {Link} from "react-router-dom"
 import "./TeacherCard.css"
 import TeacherCreateCourseForm from "./TeacherCreateCourseForm"
-
+import { TrashIcon,EditIcon,EyeIcon} from 'react-line-awesome'
 
  
 
@@ -10,6 +10,8 @@ function TeacherCard(props){
 
   const [showForm,setShowForm]=useState(false)
   
+  var React = require('react')
+
 
   function DeleteCourse(){
          
@@ -37,7 +39,8 @@ function TeacherCard(props){
     return <div className="teacherCard" >
     <div className="teacherCard_info">
       <div className="teacherCard_letter" role="img">
-        {props.letter}
+        {props.letter} 
+       
       </div>
       
       <div className="teacherCard_name">
@@ -49,10 +52,10 @@ function TeacherCard(props){
       </div>
       </div>
       <div className="teacherCard_buttons">
-      <button  onClick={DeleteCourse} className="teacherCard_delete">- Delete Course</button>
-     <button  onClick={()=>{setShowForm(true)}} className="teacherCard_update">Update Course Details</button> 
+      <button  onClick={DeleteCourse} className="teacherCard_delete"><TrashIcon/> Delete Course</button>
+     <button  onClick={()=>{setShowForm(true)}} className="teacherCard_update"><EditIcon/> Update Course Details</button> 
       {showForm && <TeacherCreateCourseForm  uniqueCourseId={props.uniqueCourseId} change="true" fetchCourses={props.fetchCourses} user={props.user}  offModal={()=>setShowForm(false)}  courseCode={props.letter} courseName={props.name} courseDesc={props.description} />}
-     <Link style={{textDecoration:"none"}} to={{pathname:"/teacher/dashboard/classes", state:{uniqueCourseId:props.uniqueCourseId}}}><button className="teacherCard_viewClass">View Classes</button></Link>
+     <Link style={{textDecoration:"none"}} to={{pathname:"/teacher/dashboard/classes", state:{uniqueCourseId:props.uniqueCourseId}}}><button className="teacherCard_viewClass"><EyeIcon/> View Classes</button></Link>
      
      
      </div>

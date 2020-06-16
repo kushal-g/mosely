@@ -5,7 +5,7 @@ import TeacherCreateCourseForm from "./TeacherCreateCourseForm"
 import TeacherClassCard from "../TeacherClass/TeacherClassCard"
 import TeacherCreateClass from "../TeacherClass/TeacherCreateClass"
 import TeacherPanel from "../TeacherPanel/TeacherPanel"
-
+import {PlusIcon} from 'react-line-awesome'
 
 function TeacherCourses(props){
 
@@ -41,8 +41,9 @@ function TeacherCourses(props){
         }
         
      
-        <div>
-            <button className="teacherCourses_create" onClick={()=>setShowForm(true)}>+ Create Courses</button>
+        <div className="teacherCourses_top">
+            <h2><p>Courses</p></h2>
+            <button className="teacherCourses_create" onClick={()=>setShowForm(true)}><PlusIcon/> Create Courses</button>
         </div>
         <div style={{display:'flex'}}>
             <div>

@@ -1,8 +1,13 @@
 .teacherCourses_create{
     background-color: var(--primary-color);
+    margin-right:5px ;
 }
 .teacherCourses{
     display: grid;
     width: 100%;
     text-align: left;
+}
+.teacherCourses_top{
+    display: flex;
+    margin: 5px;
 }
