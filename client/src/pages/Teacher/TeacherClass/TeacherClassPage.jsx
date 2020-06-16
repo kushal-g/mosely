@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import TeacherPanel from "../TeacherPanel/TeacherPanel"
 import TeacherClassCard from "./TeacherClassCard"
 import TeacherCreateClass from "./TeacherCreateClass";
+import {PlusIcon} from 'react-line-awesome'
 function TeacherClassPage(props){
 
 
@@ -39,13 +40,15 @@ function TeacherClassPage(props){
     return <div className="ClassPage">
     <TeacherPanel user={props.user}/>
     <div className="courseAssignment">
-
+    <h2><p>ASSIGNMENTS</p></h2>
+    <div>jhdfsdfi</div>
     </div>
     <div className="Classes">
-    
-                
+    <div className="classButton">
+    <h2><p>CLASSES</p></h2>
+    <button onClick={()=>setShowCreateClasses(true)} className="teacherCard_createClass"><PlusIcon/> Create Class</button> 
+    </div>        
                 <div>
-                    <button onClick={()=>setShowCreateClasses(true)} className="teacherCard_createClass">+ Create Class</button>
                     {showCreateClasses && <TeacherCreateClass ViewClass={ViewClass} offModal={()=>setShowCreateClasses(false)} user={props.user} uniqueCourseId={props.location.state.uniqueCourseId}/>}
                     {
                        classes.map(classObj=><TeacherClassCard letter={classObj.className} />)

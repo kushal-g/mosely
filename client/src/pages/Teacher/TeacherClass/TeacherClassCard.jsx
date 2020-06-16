@@ -1,23 +1,26 @@
 import React from 'react'
+import { TrashIcon,EditIcon} from 'react-line-awesome'
 
 export default function TeacherClassCard(props) {
+
+  var randomColor=require('randomcolor');
+  
     return (
-        <div className="teacherCard" >
-    <div className="teacherCard_info">
-      <div className="teacherCard_letter" role="img">
+        <div className="teacherClassCard" >
+    <div className="teacherClassCard_info">
+      <div style={{backgroundColor:randomColor({luminosity:'light'})}} className="teacherClassCard_letter">
         {props.letter}
       </div>
       
-      <div className="teacherCard_name">
-       {props.name}
-      </div>
-      <div className="teacherCard_desc"> 
+      <div className="teacherClassCard_teacher"> 
       <div>Class Coordinator : </div>
        {props.description}
       </div>
       </div>
-      
-     
+      <div className="teacherClassCardButtons">
+     <a className="edit"><EditIcon/></a>
+     <a className="trash"><TrashIcon/></a>
+     </div>
     </div>
     )
 }

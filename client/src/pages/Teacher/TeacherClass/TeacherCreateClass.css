@@ -35,3 +35,56 @@
     margin-top: 10px;
     background-color: var(--secondary-color);
 }
+.classButton{
+    display: flex;
+    margin-left: 10px;
+    justify-content: space-between;
+}
+.teacherCard_createClass{
+    margin-right: 10px;
+}
+
+.teacherClassCard{
+    float: left;
+    min-height: 300px;
+    min-width: 250px;
+    margin: 35px;
+    background-color: white;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 5px 0px rgb(117, 116, 116);
+    -moz-box-shadow: 1px 1px 5px 0px rgb(117, 116, 116);
+    box-shadow: 1px 1px 5px 0px rgb(117, 116, 116);
+}
+.teacherClassCard_letter{
+    height: 225px;
+    border: 1px solid black;
+    padding-top: 35px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 95px;
+}
+.teacherClassCard_teacher{
+    padding:5px 10px;
+}
+.teacherClassCardButtons{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+
+}
+.teacherClassCardButtons .edit,.trash{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+   border-radius: 50%;
+   height: 40px;
+   width: 40px;
+  
+}
+.teacherClassCardButtons .edit{
+    background-color: #89db5a;
+}
+.teacherClassCardButtons .trash{
+    background-color:  rgb(216,53,53); 
+}
