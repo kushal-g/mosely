@@ -6,8 +6,9 @@ import PrivateTeacherRoute from "./components/PrivateTeacherRoute"
 import "./App.css"
 import LandingPage from './pages/LandingPage/LandingPage';
 import TeacherCourses from './pages/Teacher/TeacherCourses/TeacherCourses';
-
-
+import TeacherClassPage from './pages/Teacher/TeacherClass/TeacherClassPage';
+import TeacherReports from "./pages/Teacher/TeacherReports/TeacherReports"
+import TeacherHome from "./pages/Teacher/TeacherHome/TeacherHome"
 
 function App() {
   return (
@@ -15,7 +16,10 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <Route exact path="/" component={LandingPage} />
-          <PrivateTeacherRoute exact path="/teacher/dashboard" component={TeacherPanel}/>
+          <PrivateTeacherRoute exact path="/teacher/dashboard" component={TeacherHome}/>
+          <PrivateTeacherRoute exact path="/teacher/dashboard/courses" component={TeacherCourses}/>
+          <PrivateTeacherRoute exact path="/teacher/dashboard/reports" component={TeacherReports}/>
+          <PrivateTeacherRoute exact path="/teacher/dashboard/classes" component={TeacherClassPage}/>
         </div>
       </BrowserRouter>
     </AuthProvider>
