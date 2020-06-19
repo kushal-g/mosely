@@ -13,3 +13,12 @@ module.exports.createTeacherEntry = (uid,name,mossId) =>{
         console.log(chalk.yellow('User details saved'))
     })
 }
+
+module.exports.getTeacher = (uid) =>{
+    return new Promise((resolve,reject)=>{
+        db.collection('teachers').doc(uid)
+        .get()
+        .then(doc=>resolve(doc.data()))
+        .catch(e=>reject(e.message))
+    })
+}
