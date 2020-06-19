@@ -23,8 +23,22 @@ module.exports.viewClassesOfCourse = (courseId) =>{
         db.collection(`/courses/${courseId}/classes`)
         .get()
         .then(snapshot=>{
-            snapshot.forEach(docRef=>!docRef.data().isDeleted?classes.push({...docRef.data(),classId:docRef.id}):null)
-            Promise.all(classes).then(cls=>resolve(cls))
+            const coordinators = []
+            snapshot.forEach(docRef=>{
+                if(!docRef.data().isDeleted){
+                    const classDetails = docRef.data()
+                    coordinators.push(db.collection('teachers').doc(classDetails.classCoordinator).get())
+                    classes.push({...classDetails,classId:docRef.id})
+                }
+            })
+            Promise.all(coordinators).then(coords=>{
+                resolve(coords.map((coord,index)=>{
+                    return {
+                        ...classes[index],
+                        classCoordinator:{...coord.data(),uid:coord.id}
+                    }
+                }))
+            })
         })
         .catch(e=>reject(e.message))
     })
