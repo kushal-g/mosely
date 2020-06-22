@@ -52,7 +52,7 @@ function UpdateCourse(event){
             })
         })
         .then(response=>response.json())
-        .then(body=>{props.fetchCourses()})
+        .then(body=>{console.log(props.uniqueCourseId);props.fetchCourses()})
     })
   
   }
