@@ -51,7 +51,7 @@ function TeacherClassPage(props){
                 <div>
                     {showCreateClasses && <TeacherCreateClass ViewClass={ViewClass} offModal={()=>setShowCreateClasses(false)} user={props.user} uniqueCourseId={props.location.state.uniqueCourseId}/>}
                     {
-                       classes.map(classObj=><TeacherClassCard letter={classObj.className} />)
+                       classes.map(classObj=><TeacherClassCard offModal={()=>setShowCreateClasses(false)} uniqueCourseId={props.location.state.uniqueCourseId} user={props.user} ViewClass={ViewClass} letter={classObj.className} classId={classObj.classId} />)
                     }
                 </div>
             

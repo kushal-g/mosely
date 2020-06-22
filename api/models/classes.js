@@ -46,10 +46,12 @@ module.exports.viewClassesOfCourse = (courseId) =>{
 
 module.exports.deleteClass = (courseId, classId, teacherUid) =>{
     return new Promise((resolve,reject)=>{
-        const classRef = db.collection(`/courses/${courseId}/classes`).doc(classId)
-    
+        console.log(classId)
+        const classRef =db.collection("courses").doc(courseId).collection("classes").doc(classId);
+        
         classRef.get()
         .then(doc=>{
+            console.log(doc.data())
             if(doc.data().classCoordinator === teacherUid){
                 if(!doc.data().isDeleted){
                     classRef.update({
