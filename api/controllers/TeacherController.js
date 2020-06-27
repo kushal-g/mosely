@@ -217,17 +217,45 @@ module.exports.createCourseAssignment = (req,res,next) =>{
             console.log(chalk.red(e || e.message))
             res.status(500).send({
                 statusCode:500,
-                msg: e.message || e
+                data:{
+                    msg: e.message || e
+                }
             })
         })
     }else{
         res.status(400).send({
             statusCode:400,
-            msg: "Language not supported"
+            data:{
+                msg: "Language not supported"
+            }
+            
         })
     }
     
 }
+
+module.exports.getCourseAssignments = (req,res,next) =>{
+    courseAssignmentsDb.getAssignments({...req.body, uid:req.user.uid})
+    .then(assignments=>{
+        res.status(200).send({
+            statusCode:200,
+            data:{
+                courseAssignments:assignments,
+                msg:'Successfully retrieved course assignments'
+            }
+        })
+    })
+    .catch(e=>{
+        console.log(chalk.red(e || e.message))
+        res.status(500).send({
+            statusCode:500,
+            data:{
+                msg: e.message || e
+            }
+        })    
+    })
+}
+
 
 module.exports.deleteCourseAssignment = (req,res,next) =>{
     courseAssignmentsDb.deleteAssignment({...req.body,uid:req.user.uid})
