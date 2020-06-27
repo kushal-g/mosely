@@ -3,7 +3,7 @@ const chalk = require('chalk')
 const teachersDb = require('../models/teachers')
 const coursesDb = require('../models/courses')
 const classesDb = require('../models/classes')
-
+const courseAssignmentsDb = require('../models/courseAssignments')
 const languagesAllowed = require('../models/languagesAllowed')
 
 module.exports.createCourse = (req,res,next) =>{
@@ -194,6 +194,57 @@ module.exports.editClass = (req,res,next) =>{
             statusCode:500,
             data:{
                 msg: e.message || e
+            }
+        })
+    })
+}
+
+module.exports.createCourseAssignment = (req,res,next) =>{
+    //console.log(req.body)
+    console.log(req.file)
+    if(languagesAllowed.indexOf(req.body.language)!=-1){
+        courseAssignmentsDb.createAssignment({...req.body,attachment:req.file,uid:req.user.uid})
+        .then(id=>{
+            res.status(200).send({
+                statusCode:200,
+                data:{
+                    msg:"Successfully added assignment",
+                    assignmentId:id
+                }
+            })
+        })
+        .catch(e=>{
+            console.log(chalk.red(e || e.message))
+            res.status(500).send({
+                statusCode:500,
+                msg: e.message || e
+            })
+        })
+    }else{
+        res.status(400).send({
+            statusCode:400,
+            msg: "Language not supported"
+        })
+    }
+    
+}
+
+module.exports.deleteCourseAssignment = (req,res,next) =>{
+    courseAssignmentsDb.deleteAssignment({...req.body,uid:req.user.uid})
+    .then(()=>{
+        res.status(200).send({
+            statusCode:200,
+            data:{
+                msg:'Successfully deleted course assignment'
+            }
+        })
+    })
+    .catch(e=>{
+        console.log(chalk.red(e.message || e))
+        res.status(500).send({
+            statusCode:500,
+            data:{
+                msg:e.message || e
             }
         })
     })
