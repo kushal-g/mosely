@@ -34,6 +34,47 @@ module.exports.createAssignment = async ({uid,courseId , name, dueDate, descript
     }
 }
 
+module.exports.getAssignments = async ({uid, courseId}) =>{
+    const docRef = courseDb.doc(courseId)
+    const doc = await docRef.get()
+    if(doc.data().assignedTeachers.indexOf(uid)!=-1){
+        const querySnapshot = await docRef.collection('assignments').get()
+        //console.log(querySnapshot)
+        const assignments = []
+        const fileURLPromises = []
+        querySnapshot.forEach(document=>{
+            const {attachment , ...assignmentData} = document.data()
+            
+            if(!document.data().isDeleted){
+                const options ={
+                    version: 'v4',
+                    action: 'read',
+                    expires: Date.now() + 60 * 60 * 1000 //expires in one hour
+                }
+
+                fileURLPromises.push(bucket.file(attachment.gcs_fileName).getSignedUrl(options))
+                
+                assignments.push({
+                    ...assignmentData, 
+                    assignmentId:document.id, 
+                    attachment:{
+                        mimetype:attachment.mimetype,
+                        originalname:attachment.originalname
+                    }
+                })
+            }
+        })
+        const fileURLs = await Promise.all(fileURLPromises)
+        return assignments.map((assignment,index)=>{
+            assignment.attachment.fileURL = fileURLs[index][0]
+            return assignment
+        })
+    
+    }else{
+        throw new Error('Unauthorized to access this course')
+    }
+}
+
 module.exports.deleteAssignment =async ({uid, courseId, assignmentId}) =>{
     const docRef = courseDb.doc(courseId)
     const doc = await docRef.get()
