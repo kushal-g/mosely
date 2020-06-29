@@ -43,18 +43,11 @@ function TeacherClassPage(props){
     <TeacherPanel user={props.user}/>
     <div className="courseAssignment">
     <h2><p>ASSIGNMENTS</p></h2>
-<<<<<<< HEAD
-    <button onClick={()=>setShowCourseAssignment(true)} className="teacherCard_createClass"><PlusIcon/> Create Course Assignments</button> 
-    <div>
-    {showCourseAssignment && <TeacherCourseAssignment offModal={()=>setShowCreateClasses(false)} user={props.user} uniqueCourseId={props.location.state.uniqueCourseId}/>}
-    </div>
-=======
     <button className="teacherCard_createClass" onClick={()=>setShowCourseAssignment(true)} ><PlusIcon/> Create Course Assignment</button>
     {
      showCourseAssignment && <TeacherCourseAssignment offModal={()=>setShowCreateClasses(false)} user={props.user} uniqueCourseId={props.location.state.uniqueCourseId} />
     }
     <div>jhdfsdfi</div>
->>>>>>> master
     </div>
     <div className="Classes">
     <div className="classButton">
