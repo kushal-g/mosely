@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react"
 import TeacherPanel from "../TeacherPanel/TeacherPanel"
 import TeacherClassCard from "./TeacherClassCard"
 import TeacherCreateClass from "./TeacherCreateClass";
+import TeacherCourseAssignment from "./TeacherCourseAssignment"
 import {PlusIcon} from 'react-line-awesome'
 function TeacherClassPage(props){
 
 
     const [showCreateClasses,setShowCreateClasses]=useState(false);
     const [classes,setClasses]=useState([]);
+    const [showCourseAssignment,setShowCourseAssignment]=useState(false);
 
 
     function ViewClass(courseId){
@@ -41,6 +43,10 @@ function TeacherClassPage(props){
     <TeacherPanel user={props.user}/>
     <div className="courseAssignment">
     <h2><p>ASSIGNMENTS</p></h2>
+    <button className="teacherCard_createClass" onClick={()=>setShowCourseAssignment(true)} ><PlusIcon/> Create Course Assignment</button>
+    {
+     showCourseAssignment && <TeacherCourseAssignment offModal={()=>setShowCreateClasses(false)} user={props.user} uniqueCourseId={props.location.state.uniqueCourseId} />
+    }
     <div>jhdfsdfi</div>
     </div>
     <div className="Classes">
