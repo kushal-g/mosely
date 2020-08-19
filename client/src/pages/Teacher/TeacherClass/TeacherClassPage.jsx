@@ -9,8 +9,7 @@ function TeacherClassPage(props){
     const [showCourseAssignment,setShowCourseAssignment]=useState(false);
     const [showCreateClasses,setShowCreateClasses]=useState(false);
     const [classes,setClasses]=useState([]);
-    const [showCourseAssignment,setShowCourseAssignment]=useState(false);
-
+    
 
     function ViewClass(courseId){
         setClasses([])
@@ -45,7 +44,7 @@ function TeacherClassPage(props){
     <h2><p>ASSIGNMENTS</p></h2>
     <button className="teacherCard_createClass" onClick={()=>setShowCourseAssignment(true)} ><PlusIcon/> Create Course Assignment</button>
     {
-     showCourseAssignment && <TeacherCourseAssignment offModal={()=>setShowCreateClasses(false)} user={props.user} uniqueCourseId={props.location.state.uniqueCourseId} />
+     showCourseAssignment && <TeacherCourseAssignment offModal={()=>setShowCourseAssignment(false)} user={props.user} uniqueCourseId={props.location.state.uniqueCourseId} />
     }
     <div>jhdfsdfi</div>
     </div>
