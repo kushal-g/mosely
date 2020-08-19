@@ -10,7 +10,13 @@ function TeacherCourseAssignment(props){
     const [assignmentDocument,setAssignmentDocument]=useState("");
 
     function CreateCourseAssignment(event){
-
+      const form=new FormData();
+      form.append("attachment",assignmentDocument)
+      form.append("courseId",props.uniqueCourseId)
+      form.append("name",assignmentName)
+      form.append("dueDate",Date.now())
+      form.append("description",assignmentDescription)
+      form.append("language",assignmentLanguage)
         event.preventDefault();
         props.user.getIdToken()
     .then(token=>{
@@ -18,17 +24,8 @@ function TeacherCourseAssignment(props){
             method:"post",
             headers:{
                 "Authorization" : `Bearer ${token}`,
-                "Content-type":"application/json"
             },
-            body:JSON.stringify({
-                attachment:assignmentDocument,
-                courseId:props.uniqueCourseId,
-                name:assignmentName,
-                dueDate:assignmentDueDate,
-                description:assignmentDescription,
-                language:assignmentLanguage,
-                
-            })
+            body:form
         })
         .then(response=>response.json())
         .then(body => {console.log(body);
@@ -49,8 +46,8 @@ function TeacherCourseAssignment(props){
             <input placeholder="Assignment Language" onChange={event=>setAssignmentLanguage(event.target.value)} value={assignmentLanguage} type="text"/>
             <input placeholder="Assignment Due Date" onChange={event=>setAssignmentDueDate(event.target.value)} value={assignmentDueDate} type="text"/>
             <input placeholder="Assignment Description" onChange={event=>setAssignmentDescription(event.target.value)} value={assignmentDescription} type="text"/>
-            <input placeholder="Assignment Document" onChange={event=>setAssignmentDocument(event.target.value)} value={assignmentDocument} type="text"/>
-            <button type="Submit"> Submit</button>
+            <input placeholder="Assignment Document" onChange={event=>setAssignmentDocument(event.target.files[0])}  type="file"/>
+            <button type="Submit">Submit</button>
         </form>
     </div>
         
