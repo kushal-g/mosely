@@ -32,6 +32,7 @@ function TeacherCourseAssignment(props){
         .then(response=>response.json())
         .then(body => {console.log(body);
         props.offModal();
+        props.ViewCourseAssignment(props.uniqueCourseId);
           })
     }) 
 
