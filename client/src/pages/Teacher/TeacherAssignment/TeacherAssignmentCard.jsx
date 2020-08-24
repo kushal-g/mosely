@@ -14,7 +14,13 @@ function DeleteAssignment(){
             "Authorization" : `Bearer ${token}`,
             "Content-type":"application/json"
         },
-            })
+        body:JSON.stringify({
+         
+            courseId:props.uniqueCourseId, 
+            assignmentId:props.assignmentId
+           
+        })
+    })
     .then(response=>response.json())
     .then(body=>{console.log(body);
     props.ViewCourseAssignment(props.uniqueCourseId)})
