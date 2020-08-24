@@ -77,7 +77,7 @@ function TeacherClassPage(props){
      showCourseAssignment && <TeacherCourseAssignment offModal={()=>setShowCourseAssignment(false)} user={props.user} ViewCourseAssignment={ViewCourseAssignment} uniqueCourseId={props.location.state.uniqueCourseId} />
     }
         {
-           courseAssignment.map(assignObj=><TeacherAssignmentCard user={props.user} assignmentDescription={assignObj.description} ViewCourseAssignment={ViewCourseAssignment} uniqueCourseId={props.location.state.uniqueCourseId} assignmentLanguage={assignObj.language} assignmentName={assignObj.name} dueDate={assignObj.dueDate.seconds}/>)
+           courseAssignment.map(assignObj=><TeacherAssignmentCard user={props.user} assignmentDescription={assignObj.description} ViewCourseAssignment={ViewCourseAssignment} uniqueCourseId={props.location.state.uniqueCourseId} assignmentId={assignObj.assignmentId} assignmentLanguage={assignObj.language} assignmentName={assignObj.name} dueDate={assignObj.dueDate.seconds}/>)
         }
     </div>
     </div>
