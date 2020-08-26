@@ -4,6 +4,7 @@ const teachersDb = require('../models/teachers');
 const coursesDb = require('../models/courses');
 const classesDb = require('../models/classes');
 const courseAssignmentsDb = require('../models/courseAssignments');
+const classAssignmentsDb = require('../models/classAssignments');
 const languagesAllowed = require('../models/languagesAllowed');
 
 module.exports.searchTeacher = async (req, res, next) => {
@@ -288,6 +289,7 @@ module.exports.getCourseAssignments = (req, res, next) => {
 };
 
 module.exports.deleteCourseAssignment = (req, res, next) => {
+	console.log(req.body);
 	courseAssignmentsDb
 		.deleteAssignment({ ...req.body, uid: req.user.uid })
 		.then(() => {
@@ -299,12 +301,44 @@ module.exports.deleteCourseAssignment = (req, res, next) => {
 			});
 		})
 		.catch(e => {
-			console.log(chalk.red(e.message || e));
+			console.log(chalk.red(e));
 			res.status(500).send({
 				statusCode: 500,
 				data: {
-					msg: e.message || e,
+					msg: e,
 				},
 			});
 		});
+};
+
+module.exports.createClassAssignment = async (req, res, next) => {
+	try {
+		if (languagesAllowed.indexOf(req.body.language) != -1) {
+			console.log(chalk.yellow('Creating class assignment...'));
+			await classAssignmentsDb.createAssignment({
+				...req.body,
+				uid: req.user.uid,
+				attachment: req.file,
+			});
+			console.log(chalk.green('Created!'));
+			res.status(200).send({
+				statusCode: 200,
+				msg: 'Successfully created class assignment',
+			});
+		} else {
+			console.log(chalk.red('Language unsupported'));
+			res.status(400).send({
+				statusCode: 400,
+				data: {
+					msg: 'Language not supported',
+				},
+			});
+		}
+	} catch (e) {
+		console.error(e, chalk.red(e.message));
+		res.status(500).send({
+			statusCode: 500,
+			msg: e.message,
+		});
+	}
 };
