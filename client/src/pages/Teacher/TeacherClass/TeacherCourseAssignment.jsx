@@ -73,8 +73,8 @@ var assignmentLanguageList=[
             <input placeholder="Assignment Name" onChange={event=>setAssignmentName(event.target.value)} value={assignmentName} type="text"/>
             <DropDown list={assignmentLanguageList} onChange={setAssignmentLanguage} value={assignmentLanguage} />
             {/*<input placeholder="Assignment Language" onChange={event=>setAssignmentLanguage(event.target.value)} value={assignmentLanguage} type="text"/>*/}
-            <input placeholder="Assignment Due Date" onChange={event=>setAssignmentDueDate(event.target.value)} value={assignmentDueDate} type="text"/>
-            <input placeholder="Assignment Description" onChange={event=>setAssignmentDescription(event.target.value)} value={assignmentDescription} type="text"/>
+            <input placeholder="Assignment Due Date: " onChange={event=>setAssignmentDueDate(event.target.value)} value={assignmentDueDate} type="date"/>
+            <textarea rows="10" placeholder="Assignment Description" onChange={event=>setAssignmentDescription(event.target.value)} value={assignmentDescription} />
             <input placeholder="Assignment Document" onChange={event=>setAssignmentDocument(event.target.files[0])}  type="file"/>
             <button type="Submit">Submit</button>
         </form>
