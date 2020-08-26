@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 .classForm_background{
     position:absolute;
     z-index: 2;
@@ -30,7 +31,17 @@
  padding: 10px;
  border: 1px solid var(--primary-color);
  border-radius: 5px;
+ font-family: 'Poppins', sans-serif;
 }
+.classForm_content form textarea{
+    margin-top: 5px;
+    font-size: 20px;
+    width: 500px;
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+   }
 .classForm_content form button{
     margin-top: 10px;
     background-color: var(--secondary-color);
@@ -87,4 +98,13 @@
 }
 .teacherClassCardButtons .trash{
     background-color:  rgb(216,53,53); 
+}
+input[type="date"]:before{
+    color:rgb(117, 116, 116);
+    content:attr(placeholder);
+}
+
+input[type="date"].full:before {
+    color:black;
+    content:""!important;
 }
