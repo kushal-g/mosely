@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import TeacherPanel from "../TeacherPanel/TeacherPanel"
 import TeacherClassCard from "./TeacherClassCard"
 import TeacherCreateClass from "./TeacherCreateClass";
-import TeacherCourseAssignment from "./TeacherCourseAssignment"
+import TeacherCourseAssignment from "../TeacherAssignment/TeacherCourseAssignment"
 import TeacherAssignmentCard from "../TeacherAssignment/TeacherAssignmentCard"
 import "./TeacherClassPage.css"
 import {PlusIcon} from 'react-line-awesome'
@@ -98,8 +98,3 @@ function TeacherClassPage(props){
 }
 
 export default TeacherClassPage;
- /* {props.viewClasses(props.uniqueCourseId)}
- 
-            
-                        viewClasses={ViewClass}
-                        */
