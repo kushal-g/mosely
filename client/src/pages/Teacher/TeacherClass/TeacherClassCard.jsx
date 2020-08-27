@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { TrashIcon,EditIcon} from 'react-line-awesome'
+import {Link} from "react-router-dom"
+import { TrashIcon,EditIcon,EyeIcon} from 'react-line-awesome'
 import TeacherCreateClass from './TeacherCreateClass';
 
 export default function TeacherClassCard(props) {
@@ -50,6 +51,7 @@ export default function TeacherClassCard(props) {
      <a className="edit" onClick={()=>setShowForm(true)}><EditIcon/></a>
      {showForm && <TeacherCreateClass offModal={props.offModal()} ViewClass={props.ViewClass} uniqueCourseId={props.uniqueCourseId} changed="true" user={props.user}   classId={props.classId} className={props.letter} />}
      <a className="trash" onClick={DeleteClass}><TrashIcon/></a>
+     <Link style={{textDecoration:"none"}} to={{pathname:"/teacher/dashboard/class/assignment", state:{classId:props.classId,className:props.letter,uniqueCourseId:props.uniqueCourseId}}}><button className="teacherCard_viewClass"><EyeIcon/> View Assignments</button></Link>
      </div>
     </div>
     )
