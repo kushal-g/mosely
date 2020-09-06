@@ -342,3 +342,46 @@ module.exports.createClassAssignment = async (req, res, next) => {
 		});
 	}
 };
+
+module.exports.deleteClassAssignment = async (req, res, next) => {
+	try {
+		await classAssignmentsDb.deleteAssignment({ ...req.body, uid: req.user.uid });
+		res.status(200).send({
+			statusCode: 200,
+			data: {
+				msg: 'Successfully deleted class assignment',
+			},
+		});
+	} catch (e) {
+		console.error(chalk.red(e.message), e);
+		res.status(500).send({
+			statusCode: 500,
+			data: {
+				msg: e.message || e,
+			},
+		});
+	}
+};
+
+module.exports.getClassAssignments = (req, res, next) => {
+	classAssignmentsDb
+		.getAssignments({ ...req.body, uid: req.user.uid })
+		.then(assignments => {
+			res.status(200).send({
+				statusCode: 200,
+				data: {
+					courseAssignments: assignments,
+					msg: 'Successfully retrieved class assignments',
+				},
+			});
+		})
+		.catch(e => {
+			console.error(chalk.red(e.message), e);
+			res.status(500).send({
+				statusCode: 500,
+				data: {
+					msg: e.message,
+				},
+			});
+		});
+};

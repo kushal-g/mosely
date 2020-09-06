@@ -47,4 +47,16 @@ router.post(
 	upload.single('attachment'),
 	TeacherController.createClassAssignment
 );
+
+router.post(
+	'/course/class/assignment/delete',
+	teacherAuthentication,
+	TeacherController.deleteClassAssignment
+);
+
+router.post(
+	'/course/class/assignment/read',
+	teacherAuthentication,
+	TeacherController.getClassAssignments
+);
 module.exports = router;
