@@ -370,7 +370,7 @@ module.exports.getClassAssignments = (req, res, next) => {
 			res.status(200).send({
 				statusCode: 200,
 				data: {
-					courseAssignments: assignments,
+					classAssignments: assignments,
 					msg: 'Successfully retrieved class assignments',
 				},
 			});
