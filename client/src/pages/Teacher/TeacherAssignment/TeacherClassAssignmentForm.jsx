@@ -61,6 +61,7 @@ function TeacherClassAssignmentForm(props){
               .then(response=>response.json())
               .then(body => {console.log(body);
               props.offModal();
+              props.ViewClassAssignment();
                 })
           }) 
       

@@ -47,7 +47,7 @@ function TeacherClassAssignment(props)
     </div>
     <div className="assignments">
     {
-        showClassAssignmentForm && <TeacherClassAssignmentForm user={props.user} uniqueCourseId={props.location.state.uniqueCourseId} classId={props.location.state.classId} offModal={()=>setshowClassAssignmentForm(false)}/>
+        showClassAssignmentForm && <TeacherClassAssignmentForm user={props.user} ViewClassAssignment={ViewClassAssignment} uniqueCourseId={props.location.state.uniqueCourseId} classId={props.location.state.classId} offModal={()=>setshowClassAssignmentForm(false)}/>
     }
     {
         classAssignment.map(classAssignObj=><TeacherClassAssignmentCard user={props.user} classId={props.location.state.classId} assignmentDescription={classAssignObj.description} ViewClassAssignment={ViewClassAssignment} uniqueCourseId={props.location.state.uniqueCourseId} assignmentId={classAssignObj.assignmentId} assignmentLanguage={classAssignObj.language} assignmentName={classAssignObj.name} dueDate={classAssignObj.dueDate.seconds}/>)
