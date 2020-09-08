@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import "./TeacherCreateClass.css"
+import "../TeacherClass/TeacherCreateClass.css"
 import "../../../components/DropDown/Dropdown.css"
 import DropDown from "../../../components/DropDown/Dropdown"
 
