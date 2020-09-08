@@ -3,7 +3,7 @@ import TeacherPanel from "../TeacherPanel/TeacherPanel"
 import TeacherClassCard from "./TeacherClassCard"
 import TeacherCreateClass from "./TeacherCreateClass";
 import TeacherCourseAssignment from "../TeacherAssignment/TeacherCourseAssignment"
-import TeacherAssignmentCard from "../TeacherAssignment/TeacherAssignmentCard"
+import TeacherCourseAssignmentCard from "../TeacherAssignment/TeacherCourseAssignmentCard"
 import "./TeacherClassPage.css"
 import {PlusIcon} from 'react-line-awesome'
 function TeacherClassPage(props){
@@ -77,7 +77,7 @@ function TeacherClassPage(props){
      showCourseAssignment && <TeacherCourseAssignment offModal={()=>setShowCourseAssignment(false)} user={props.user} ViewCourseAssignment={ViewCourseAssignment} uniqueCourseId={props.location.state.uniqueCourseId} />
     }
         {
-           courseAssignment.map(assignObj=><TeacherAssignmentCard user={props.user} assignmentDescription={assignObj.description} ViewCourseAssignment={ViewCourseAssignment} uniqueCourseId={props.location.state.uniqueCourseId} assignmentId={assignObj.assignmentId} assignmentLanguage={assignObj.language} assignmentName={assignObj.name} dueDate={assignObj.dueDate.seconds}/>)
+           courseAssignment.map(assignObj=><TeacherCourseAssignmentCard user={props.user} assignmentDescription={assignObj.description} ViewCourseAssignment={ViewCourseAssignment} uniqueCourseId={props.location.state.uniqueCourseId} assignmentId={assignObj.assignmentId} assignmentLanguage={assignObj.language} assignmentName={assignObj.name} dueDate={assignObj.dueDate.seconds}/>)
         }
     </div>
     </div>
