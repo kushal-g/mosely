@@ -32,8 +32,8 @@ function TeacherClassAssignment(props)
             })
             .then(response=>response.json())
             .then(body=>{
-                console.log(body)
-               // setClassAssignment(body.data.)
+                console.log(body.data)
+                setClassAssignment(body.data.courseAssignments)
             })
         })
     }
@@ -44,6 +44,8 @@ function TeacherClassAssignment(props)
     <TeacherPanel user={props.user} />
     <div className="classButton"><h2><p>ASSIGNMENTS FOR CLASS {className} </p></h2>
     <button className="teacherCard_createClass"onClick={()=>setshowClassAssignmentForm(true)} ><PlusIcon/> Create Class Assignment</button>
+    </div>
+    <div className="assignments">
     {
         showClassAssignmentForm && <TeacherClassAssignmentForm user={props.user} uniqueCourseId={props.location.state.uniqueCourseId} classId={props.location.state.classId} offModal={()=>setshowClassAssignmentForm(false)}/>
     }
