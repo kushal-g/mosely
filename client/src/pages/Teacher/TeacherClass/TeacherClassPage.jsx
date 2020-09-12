@@ -5,7 +5,7 @@ import TeacherCreateClass from './TeacherCreateClass';
 import TeacherCourseAssignment from '../TeacherAssignment/TeacherCourseAssignment';
 import TeacherCourseAssignmentCard from '../TeacherAssignment/TeacherCourseAssignmentCard';
 import './TeacherClassPage.css';
-import { useDebounce } from 'use-debounce';
+import  useDebounce from './use-debounce';
 import { SearchIcon, PlusIcon } from 'react-line-awesome';
 function TeacherClassPage(props) {
 	const [showCourseAssignment, setShowCourseAssignment] = useState(false);
@@ -161,7 +161,7 @@ function TeacherClassPage(props) {
 						<PlusIcon /> Create Class
 					</button>
 				</div>
-				<div>
+				<div className="ViewClasses">
 					{showCreateClasses && (
 						<TeacherCreateClass
 							ViewClass={ViewClass}
