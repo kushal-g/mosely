@@ -36,6 +36,6 @@ module.exports.searchTeacherByName = async fullName => {
 		.orderBy('name')
 		.get();
 	const teachers = [];
-	queryDoc.docs.forEach(doc => teachers.push(doc.data()));
+	queryDoc.docs.forEach(doc => teachers.push({ teacherId: doc.id, ...doc.data() }));
 	return teachers;
 };

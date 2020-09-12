@@ -4,24 +4,36 @@ const db = admin.firestore();
 const bucket = admin.storage().bucket();
 
 const courseDb = db.collection('courses');
+
 module.exports.createAssignment = async ({
 	uid,
 	courseId,
+	classId,
 	name,
 	dueDate,
 	description,
 	language,
 	attachment,
 }) => {
-	const docRef = courseDb.doc(courseId);
-	const doc = await docRef.get();
+	console.log({
+		uid,
+		courseId,
+		classId,
+		name,
+		dueDate,
+		description,
+		language,
+		attachment,
+	});
+	const docRef = courseDb.doc(courseId).collection('classes').doc(classId);
+	const classData = await docRef.get();
 
-	console.log(chalk.yellow('Checking if teacher is course coordinator...'));
+	console.log(chalk.yellow('Checking if teacher is class coordinator...'));
 
-	if (doc.data().courseCoordinator == uid) {
-		console.log(chalk.green('Teacher is couse coordinator!'));
+	if (classData.data().classCoordinator == uid) {
+		console.log(chalk.green('Teacher is class coordinator!'));
 
-		const fileName = `${courseId}/${Date.now()}-${attachment.originalname}`;
+		const fileName = `${courseId}/${classId}/${Date.now()}-${attachment.originalname}`;
 
 		console.log('Generated file name: ', fileName);
 		console.log(chalk.yellow('Saving file to bucket...'));
@@ -49,12 +61,12 @@ module.exports.createAssignment = async ({
 	}
 };
 
-module.exports.getAssignments = async ({ uid, courseId }) => {
-	const docRef = courseDb.doc(courseId);
+module.exports.getAssignments = async ({ uid, courseId, classId }) => {
+	const docRef = courseDb.doc(courseId).collection('classes').doc(classId);
 	const doc = await docRef.get();
-	if (doc.data().assignedTeachers.indexOf(uid) != -1) {
+	if (doc.data().classCoordinator === uid) {
 		const querySnapshot = await docRef.collection('assignments').get();
-		//console.log(querySnapshot)
+
 		const assignments = [];
 		const fileURLPromises = [];
 		querySnapshot.forEach(document => {
@@ -89,11 +101,11 @@ module.exports.getAssignments = async ({ uid, courseId }) => {
 	}
 };
 
-module.exports.deleteAssignment = async ({ uid, courseId, assignmentId }) => {
-	const docRef = courseDb.doc(courseId);
+module.exports.deleteAssignment = async ({ uid, courseId, classId, assignmentId }) => {
+	const docRef = courseDb.doc(courseId).collection('classes').doc(classId);
 	const doc = await docRef.get();
 	console.log(chalk.yellow('Checking if teacher authorized to access course...'));
-	if (doc.data().courseCoordinator == uid) {
+	if (doc.data().classCoordinator == uid) {
 		console.log(chalk.green('Teacher authorized!'));
 		console.log(chalk.yellow('Deleting assignment...'));
 		const result = await docRef

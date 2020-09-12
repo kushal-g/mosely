@@ -1,28 +1,29 @@
 import React from 'react';
 import { TrashIcon, EditIcon } from 'react-line-awesome';
 import './TeacherAssignmentCard.css';
-function TeacherAssignment(props) {
+function TeacherClassAssignmentCard(props) {
 	var randomColor = require('randomcolor');
 
-	function DeleteAssignment() {
+	function DeleteClassAssignment() {
 		props.user.getIdToken().then(token => {
 			console.log(props.uniqueCourseId);
 			console.log(props.assignmentId);
-			fetch(`${process.env.REACT_APP_URL}/teacher/course/assignment/delete`, {
+			fetch(`${process.env.REACT_APP_URL}/teacher/course/class/assignment/delete`, {
 				method: 'post',
 				headers: {
 					Authorization: `Bearer ${token}`,
 					'Content-type': 'application/json',
 				},
 				body: JSON.stringify({
-					courseId: props.uniqueCourseId,
+                    courseId: props.uniqueCourseId,
+                    classId:props.classId,
 					assignmentId: props.assignmentId,
 				}),
 			})
 				.then(response => response.json())
 				.then(body => {
 					console.log(body);
-					props.ViewCourseAssignment(props.uniqueCourseId);
+					props.ViewClassAssignment();
 				});
 		});
 	}
@@ -42,9 +43,9 @@ function TeacherAssignment(props) {
 				{props.dueDate}
 				{props.assignmentLanguage}
 			</div>
-			<TrashIcon onClick={DeleteAssignment} />
+			<TrashIcon onClick={DeleteClassAssignment} />
 		</div>
 	);
 }
 
-export default TeacherAssignment;
+export default TeacherClassAssignmentCard;
