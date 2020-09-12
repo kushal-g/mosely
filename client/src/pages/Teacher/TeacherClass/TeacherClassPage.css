@@ -17,10 +17,10 @@
     display: grid;
     margin: 15px 10px;
 }
-.addCourseTeacher input{
-grid-column-start: 2;
+.addCourseTeacher h2{
+    grid-column-start: 1;
 }
-.addCourseTeacher input[type=text] {
+.searchResultsBox input[type=text] {
     width: 130px;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -34,8 +34,8 @@ grid-column-start: 2;
     transition: width 0.4s ease-in-out;
   }
   
-.addCourseTeacher input[type=text]:focus {
-    width: 100%;
+.searchResultsBox input[type=text]:focus {
+    width: 100%
   }
 
   .Classes{
@@ -46,4 +46,8 @@ grid-column-start: 2;
     max-height: 350px;
     overflow-y: scroll;
     width: 100%;
+  }
+  .searchResultsBox{
+     grid-column-start: 2;
+     float: right;
   }
