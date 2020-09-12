@@ -1,11 +1,15 @@
 .courseAssignment{
-    min-height: 350px;
+    height: fit-content;
+    width: 100%;
     margin-bottom: 25px;
 }
 .Classes{
     margin-top: 70px;
 }
 .assignments{
+    max-height: 350px;
+    overflow-y: scroll;
+    height: fit-content;
     margin-top: 35px;
     margin-left: 35px;
 }
@@ -31,5 +35,15 @@ grid-column-start: 2;
   }
   
 .addCourseTeacher input[type=text]:focus {
+    width: 100%;
+  }
+
+  .Classes{
+      width: 100%;
+      height: fit-content;
+  }
+  .ViewClasses{
+    max-height: 350px;
+    overflow-y: scroll;
     width: 100%;
   }
