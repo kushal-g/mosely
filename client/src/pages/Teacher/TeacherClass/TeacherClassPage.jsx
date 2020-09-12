@@ -4,10 +4,13 @@ import TeacherClassCard from './TeacherClassCard';
 import TeacherCreateClass from './TeacherCreateClass';
 import TeacherCourseAssignment from '../TeacherAssignment/TeacherCourseAssignment';
 import TeacherCourseAssignmentCard from '../TeacherAssignment/TeacherCourseAssignmentCard';
+import AddTeacher from "./AddTeacher";
 import './TeacherClassPage.css';
 import  useDebounce from './use-debounce';
 import { SearchIcon, PlusIcon } from 'react-line-awesome';
 function TeacherClassPage(props) {
+	const [teacherId,setTeacherId]=useState("");
+	const [addTeacherForm,setAddTeacherForm]=useState(false);
 	const [showCourseAssignment, setShowCourseAssignment] = useState(false);
 	const [courseAssignment, setCourseAssignment] = useState([]);
 	const [showCreateClasses, setShowCreateClasses] = useState(false);
@@ -45,9 +48,9 @@ function TeacherClassPage(props) {
 			}),
 		});
 		const body = await response.json();
-		console.log(body);
 		return body.data.teachers;
 	};
+  
 
 	function ViewCourseAssignment(courseId) {
 		setCourseAssignment([]);
@@ -108,12 +111,28 @@ function TeacherClassPage(props) {
 					<h2>
 						<p>Add a Course Teacher</p>
 					</h2>
+					<div className="searchResultsBox">
 					<input
 						type="text"
 						name="search"
 						placeholder="Search.."
 						onChange={e => setSearchTerm(e.target.value)}
 					/>
+					 {isSearching && <div>Searching ...</div>}
+					 {searchResults.map(result=>
+						 <div style={{
+							display: 'block',
+							width: '200px',
+							margin: '10px'
+						  }}
+						  onClick={()=>setAddTeacherForm(true)}>
+						 <h4>{result.name}</h4>
+						 </div>)}
+						 </div>
+						{addTeacherForm &&
+						<AddTeacher user={props.user} 
+						offModal={()=>setAddTeacherForm(false)} 
+						uniqueCourseId={props.location.state.uniqueCourseId}/>}
 				</div>
 				<div className="classButton">
 					<h2>
