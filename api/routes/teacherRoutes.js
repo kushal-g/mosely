@@ -15,6 +15,7 @@ router.post('/course', teacherAuthentication, TeacherController.createCourse);
 router.post('/course/read', teacherAuthentication, TeacherController.viewCourse);
 router.post('/course/update', teacherAuthentication, TeacherController.editCourse);
 router.post('/course/delete', teacherAuthentication, TeacherController.deleteCourse);
+router.post('/course/teachers/add', teacherAuthentication, TeacherController.addTeacherToCourse);
 
 /*Class routes */
 router.post('/course/class', teacherAuthentication, TeacherController.createClass);
