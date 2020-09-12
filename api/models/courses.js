@@ -102,7 +102,7 @@ function getTeachers(teacherIDs) {
 		const teachers = [];
 		teacherIDs.forEach((teacherId, index) => {
 			let docRef = db
-				.collection('/teachers')
+				.collection('teachers')
 				.doc(teacherId)
 				.get()
 				.then(docSnap => {
