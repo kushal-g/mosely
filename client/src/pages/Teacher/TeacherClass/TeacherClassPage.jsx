@@ -5,13 +5,40 @@ import TeacherCreateClass from "./TeacherCreateClass";
 import TeacherCourseAssignment from "../TeacherAssignment/TeacherCourseAssignment"
 import TeacherCourseAssignmentCard from "../TeacherAssignment/TeacherCourseAssignmentCard"
 import "./TeacherClassPage.css"
-import {PlusIcon} from 'react-line-awesome'
+import {SearchIcon, PlusIcon} from 'react-line-awesome'
 function TeacherClassPage(props){
 
     const [showCourseAssignment,setShowCourseAssignment]=useState(false);
     const [courseAssignment,setCourseAssignment]=useState([]);
     const [showCreateClasses,setShowCreateClasses]=useState(false);
+    const [searchTeacher,setSearchTeacher]=useState("");
+    const [courseTeachers,setCourseTeachers]=useState([]);
     const [classes,setClasses]=useState([]);
+
+    function CourseTeachers(word){
+        {
+            props.user.getIdToken()
+            .then(token=>{
+                console.log(token)
+                fetch(`${process.env.REACT_APP_URL}`,{
+                    method:"post",
+                    headers:{
+                        "Authorization" : `Bearer ${token}/teacher/search`,
+                        "Content-type":"application/json"
+                    },
+                    body:JSON.stringify(
+                      {
+                      searchTerm:word
+                      }
+                    )
+                })
+                .then(response=>response.json())
+                .then(body=>{
+                    console.log(body)
+                })
+            })
+        }
+    }
     
     function ViewCourseAssignment(courseId){
         setCourseAssignment([])
@@ -69,6 +96,10 @@ function TeacherClassPage(props){
     return <div className="ClassPage">
     <TeacherPanel user={props.user}/>
     <div className="courseAssignment">
+    <div className="addCourseTeacher">
+    <h2><p>Add a Course Teacher</p></h2>
+    <input onChange={event=>setSearchTeacher(event.target.value)} value={searchTeacher} type="text" name="search" placeholder="Search.."/>
+    </div>
     <div className="classButton"><h2><p>ASSIGNMENTS</p></h2>
     <button className="teacherCard_createClass" onClick={()=>setShowCourseAssignment(true)} ><PlusIcon/> Create Course Assignment</button>
     </div>
