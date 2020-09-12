@@ -11,9 +11,8 @@ function TeacherClassPage(props){
     const [showCourseAssignment,setShowCourseAssignment]=useState(false);
     const [courseAssignment,setCourseAssignment]=useState([]);
     const [showCreateClasses,setShowCreateClasses]=useState(false);
-    const [searchTeacher,setSearchTeacher]=useState("");
-    const [courseTeachers,setCourseTeachers]=useState([]);
     const [classes,setClasses]=useState([]);
+    
 
     function CourseTeachers(word){
         {
@@ -98,7 +97,7 @@ function TeacherClassPage(props){
     <div className="courseAssignment">
     <div className="addCourseTeacher">
     <h2><p>Add a Course Teacher</p></h2>
-    <input onChange={event=>setSearchTeacher(event.target.value)} value={searchTeacher} type="text" name="search" placeholder="Search.."/>
+    <input type="text" name="search" placeholder="Search.."/>
     </div>
     <div className="classButton"><h2><p>ASSIGNMENTS</p></h2>
     <button className="teacherCard_createClass" onClick={()=>setShowCourseAssignment(true)} ><PlusIcon/> Create Course Assignment</button>

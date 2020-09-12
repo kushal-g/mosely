@@ -33,7 +33,7 @@ function TeacherClassAssignment(props)
             .then(response=>response.json())
             .then(body=>{
                 console.log(body.data)
-                setClassAssignment(body.data.courseAssignments)
+                setClassAssignment(body.data.classAssignments)
             })
         })
     }

@@ -8,32 +8,29 @@ import { TrashIcon,EditIcon,EyeIcon} from 'react-line-awesome'
 
 function TeacherCard(props){
 
-  const [showForm,setShowForm]=useState(false)
-  
+  const [showForm,setShowForm]=useState(false);
   var React = require('react')
-
 
   function DeleteCourse(){
          
-        props.user.getIdToken()
-    .then(token=>{
-        fetch(`${process.env.REACT_APP_URL}/teacher/course/delete`,{
-            method:"post",
-            headers:{
-                "Authorization" : `Bearer ${token}`,
-                "Content-type":"application/json"
-            },
-            body:JSON.stringify({
-                courseId:props.uniqueCourseId
-  
-            })
-        })
-        .then(response=>response.json())
-        .then(body=>{props.fetchCourses()})
-    })
-  
-  }
+    props.user.getIdToken()
+.then(token=>{
+    fetch(`${process.env.REACT_APP_URL}/teacher/course/delete`,{
+        method:"post",
+        headers:{
+            "Authorization" : `Bearer ${token}`,
+            "Content-type":"application/json"
+        },
+        body:JSON.stringify({
+            courseId:props.uniqueCourseId
 
+        })
+    })
+    .then(response=>response.json())
+    .then(body=>{props.fetchCourses()})
+})
+
+}
   
 
     return <div className="teacherCard" >
