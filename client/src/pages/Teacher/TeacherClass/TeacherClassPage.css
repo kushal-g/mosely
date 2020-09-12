@@ -20,6 +20,18 @@
 .addCourseTeacher h2{
     grid-column-start: 1;
 }
+
+.searchResultsBox{
+    position: relative;
+}
+
+.searchResultsBox > div{
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    box-shadow: 1px 1px 5px 0px rgb(160, 160, 160);;
+}
+
 .searchResultsBox input[type=text] {
     width: 130px;
     box-sizing: border-box;

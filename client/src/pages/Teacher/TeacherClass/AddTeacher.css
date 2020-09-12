@@ -17,13 +17,22 @@
     background-color: white;
     padding: 20px 20px;
     border-radius: 5px;
+    max-width: 500px;
+}
+
+.AddTeacherForm_content h2{
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
 }
 
 .confirmNo{
     margin-top: 10px;
-    background-color: rgb(255, 38, 0);
+    background-color: rgb(226, 67, 39);
+    font-weight: 600;
 }
 .confirmYes{
     margin-top: 10px;
-    background-color: rgb(130, 255, 47);
+    background-color: var(--primary-color);
+    font-weight: 600;
 }

@@ -10,7 +10,7 @@ import useDebounce from '../../../hooks/useDebounce';
 
 import { SearchIcon, PlusIcon } from 'react-line-awesome';
 function TeacherClassPage(props) {
-	const [teacherId, setTeacherId] = useState('');
+	const [selectedTeacher, setSelectedTeacher] = useState({});
 	const [addTeacherForm, setAddTeacherForm] = useState(false);
 	const [showCourseAssignment, setShowCourseAssignment] = useState(false);
 	const [courseAssignment, setCourseAssignment] = useState([]);
@@ -22,7 +22,6 @@ function TeacherClassPage(props) {
 	const [searchResults, setSearchResults] = useState([]);
 
 	useEffect(() => {
-		console.log('Called effect');
 		if (debouncedSearchTerm) {
 			setIsSearching(true);
 			//api call
@@ -120,22 +119,30 @@ function TeacherClassPage(props) {
 							onChange={e => setSearchTerm(e.target.value)}
 						/>
 						{isSearching && <div>Searching ...</div>}
-						{searchResults.map(result => (
-							<div
-								style={{
-									display: 'block',
-									width: '200px',
-									margin: '10px',
-								}}
-								onClick={() => setAddTeacherForm(true)}
-							>
-								<h4>{result.name}</h4>
-							</div>
-						))}
+						<div>
+							{searchResults.map(result => (
+								<div
+									style={{
+										display: 'block',
+										width: '200px',
+										margin: '10px',
+										cursor: 'pointer',
+									}}
+									onClick={() => {
+										setSelectedTeacher(result);
+										setAddTeacherForm(true);
+									}}
+								>
+									<h4>{result.name}</h4>
+								</div>
+							))}
+						</div>
 					</div>
 					{addTeacherForm && (
 						<AddTeacher
 							user={props.user}
+							teacherId={selectedTeacher.teacherId}
+							teacherName={selectedTeacher.name}
 							offModal={() => setAddTeacherForm(false)}
 							uniqueCourseId={props.location.state.uniqueCourseId}
 						/>
