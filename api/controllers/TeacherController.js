@@ -25,6 +25,25 @@ module.exports.searchTeacher = async (req, res, next) => {
 		});
 	}
 };
+
+module.exports.addTeacherToCourse = async (req, res, next) => {
+	try {
+		console.log(chalk.yellow('Adding teacher to course...'));
+		await coursesDb.addTeacher({ uid: req.user.uid, ...req.body });
+		console.log(chalk.green('Added!'));
+		res.status(200).send({
+			statusCode: 200,
+			msg: 'Successfully added teacher to course',
+		});
+	} catch (e) {
+		console.error(e, chalk.red(e.message));
+		res.status(500).send({
+			statusCode: 500,
+			msg: e.message,
+		});
+	}
+};
+
 module.exports.createCourse = (req, res, next) => {
 	const { courseName, courseCode, courseDesc } = req.body;
 	coursesDb
