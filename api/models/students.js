@@ -53,6 +53,10 @@ module.exports.addToClass = async ({ uid, classId }) => {
 			}
 		}
 	}
+
+	if (!isClassFound) {
+		throw new Error('Class not found');
+	}
 	console.log(chalk.green('Found them!'));
 	console.log(requestedClassDetails);
 
