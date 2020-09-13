@@ -4,6 +4,7 @@ const db = admin.firestore();
 
 const courseDb = db.collection('courses');
 const studentDb = db.collection('students');
+const teacherDb = db.collection('teachers');
 
 module.exports.createStudentEntry = (uid, name, usn) => {
 	let userRef = db.collection('students').doc(uid);
@@ -39,6 +40,12 @@ module.exports.addToClass = async ({ uid, classId }) => {
 		for (let j = 0; j < classesQuery.docs.length; j++) {
 			if (classesQuery.docs[j].id === classId) {
 				isClassFound = true;
+				if (
+					coursesQuery.docs[i].data().isDeleted ||
+					classesQuery.docs[j].data().isDeleted
+				) {
+					throw new Error('Class not found');
+				}
 				requestedClassDetails = {
 					courseDetails: {
 						...coursesQuery.docs[i].data(),
@@ -84,4 +91,42 @@ module.exports.addToClass = async ({ uid, classId }) => {
 			classId: requestedClassDetails.classDetails.id,
 		});
 	console.log(chalk.green('Registered!'));
+};
+
+module.exports.viewClasses = async uid => {
+	const coursesQuery = await studentDb.doc(uid).collection('courses').get();
+	const classes = [];
+	for (let i = 0; i < coursesQuery.docs.length; i++) {
+		const course = coursesQuery.docs[i];
+
+		const courseDoc = await courseDb.doc(course.id).get();
+		const classDoc = await courseDb
+			.doc(course.id)
+			.collection('classes')
+			.doc(course.data().classId)
+			.get();
+
+		const courseCoordinatorDoc = await teacherDb.doc(courseDoc.data().courseCoordinator).get();
+		const classCoordinatorDoc = await teacherDb.doc(classDoc.data().classCoordinator).get();
+
+		if (!(courseDoc.data().isDeleted || classDoc.data().isDeleted)) {
+			classes.push({
+				courseDetails: {
+					id: courseDoc.id,
+					...courseDoc.data(),
+					courseCoordinator: {
+						id: courseCoordinatorDoc.id,
+						...courseCoordinatorDoc.data(),
+					},
+				},
+				classDetails: {
+					id: classDoc.id,
+					...classDoc.data(),
+					classCoordinator: { id: classCoordinatorDoc.id, ...classCoordinatorDoc.data() },
+				},
+			});
+		}
+	}
+
+	return classes;
 };
