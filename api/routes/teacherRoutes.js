@@ -2,7 +2,7 @@ const express = require('express');
 const multer = require('multer');
 
 const TeacherController = require('../controllers/TeacherController');
-const { teacherAuthentication } = require('../controllers/AuthController');
+const teacherAuthentication = require('../middlewares/TeacherAuthentication');
 
 const router = express.Router();
 const storage = multer.memoryStorage();

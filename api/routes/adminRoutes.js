@@ -1,13 +1,14 @@
-const express = require('express')
-const Authcontroller = require('../controllers/AuthController')
+const express = require('express');
+const Authcontroller = require('../controllers/AuthController');
+const CheckAuthentication = require('../middlewares/CheckAuthentication');
 
-const router = express.Router()
+const router = express.Router();
 
-const {CheckAuthentication, createTeacher, createStudent, checkRole} = Authcontroller;
+const { createTeacher, createStudent, checkRole } = Authcontroller;
 
-router.post('/role',checkRole)
+router.post('/role', checkRole);
 
-router.post("/teacher/create",CheckAuthentication,createTeacher)
-router.post("/student/create",CheckAuthentication,createStudent)
+router.post('/teacher/create', CheckAuthentication, createTeacher);
+router.post('/student/create', CheckAuthentication, createStudent);
 
-module.exports = router
+module.exports = router;
