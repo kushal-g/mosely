@@ -23,6 +23,7 @@ function StudentAddClass(props){
         })
         .then(response=>response.json())
         .then(body=>{
+            props.fetchStudentClasses()
         props.offModal()})
     }) 
     }

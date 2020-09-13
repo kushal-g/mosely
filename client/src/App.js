@@ -12,6 +12,7 @@ import TeacherClassPage from './pages/Teacher/TeacherClass/TeacherClassPage';
 import TeacherReports from "./pages/Teacher/TeacherReports/TeacherReports"
 import TeacherHome from "./pages/Teacher/TeacherHome/TeacherHome"
 import TeacherClassAssignment from "./pages/Teacher/TeacherAssignment/TeacherClassAssignment"
+import StudentAssignment from "./pages/Student/StudentAssignment/StudentAssignment"
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <PrivateTeacherRoute exact path="/teacher/dashboard/classes" component={TeacherClassPage}/>
           <PrivateTeacherRoute exact path="/teacher/dashboard/class/assignment" component={TeacherClassAssignment} />
           <PrivateStudentRoute exact path="/student/dashboard" component={StudentHome}/>
+          <PrivateStudentRoute exact path="/student/dashboard/assignment" component={StudentAssignment}/>
         </div>
       </BrowserRouter>
     </AuthProvider>
