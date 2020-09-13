@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrashIcon, EditIcon } from 'react-line-awesome';
+import {TrashIcon, EditIcon } from 'react-line-awesome';
 import './TeacherAssignmentCard.css';
 function TeacherClassAssignmentCard(props) {
 	var randomColor = require('randomcolor');
