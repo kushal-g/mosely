@@ -3,7 +3,9 @@ import {BrowserRouter,Route} from 'react-router-dom';
 import TeacherPanel from "./pages/Teacher/TeacherPanel/TeacherPanel"
 import {AuthProvider} from './context/Auth'
 import PrivateTeacherRoute from "./components/PrivateTeacherRoute"
+import PrivateStudentRoute from "./components/PrivateStudentRoute"
 import "./App.css"
+import StudentHome from "./pages/Student/StudentHome/StudentHome"
 import LandingPage from './pages/LandingPage/LandingPage';
 import TeacherCourses from './pages/Teacher/TeacherCourses/TeacherCourses';
 import TeacherClassPage from './pages/Teacher/TeacherClass/TeacherClassPage';
@@ -22,6 +24,7 @@ function App() {
           <PrivateTeacherRoute exact path="/teacher/dashboard/reports" component={TeacherReports}/>
           <PrivateTeacherRoute exact path="/teacher/dashboard/classes" component={TeacherClassPage}/>
           <PrivateTeacherRoute exact path="/teacher/dashboard/class/assignment" component={TeacherClassAssignment} />
+          <PrivateStudentRoute exact path="/student/dashboard" component={StudentHome}/>
         </div>
       </BrowserRouter>
     </AuthProvider>

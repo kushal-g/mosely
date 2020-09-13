@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import TeacherLogRegister from "../Teacher/TeacherLogRegister/TeacherLogRegister"
-import StudentLogRegister from "../Student/StudentLogRegister"
+import StudentLogRegister from "../Student/StudentLogRegister/StudentLogRegister"
 import "./LandingPage.css"
 
 function LandingPage(){

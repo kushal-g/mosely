@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import app from '../../utils/base'
+import app from "../../../utils/base"
 import "./StudentLogRegister.css"
 
 export default function StudentLogin() {
@@ -32,7 +32,7 @@ export default function StudentLogin() {
         .then(body=>{
             if(body.data.role.student){
                 app.auth().signInWithEmailAndPassword(loginEmail,loginPassword)
-                .then(user=>app.auth().currentUser.getIdToken())
+                .then(user=>window.location.href="/student/dashboard")
                 .then(result=>console.log(result))
             }
         }).catch(e=>console.log(e))
