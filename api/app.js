@@ -7,7 +7,7 @@ const cors = require('cors');
 const teacherRouter = require('./routes/teacherRoutes');
 const studentRouter = require('./routes/studentRoutes');
 const adminRouter = require('./routes/adminRoutes');
-const { addToClass, viewClasses } = require('./models/students');
+const { addToClass, viewClasses, getAssignments } = require('./models/students');
 
 const app = express();
 app.use(cors());

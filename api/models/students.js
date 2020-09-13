@@ -1,6 +1,7 @@
 const admin = require('../utils/base');
 const chalk = require('chalk');
 const db = admin.firestore();
+const bucket = admin.storage().bucket();
 
 const courseDb = db.collection('courses');
 const studentDb = db.collection('students');
@@ -129,4 +130,80 @@ module.exports.viewClasses = async uid => {
 	}
 
 	return classes;
+};
+
+module.exports.getAssignments = async ({ uid, courseId, classId }) => {
+	console.log(chalk.yellow('Verifying if user is registered to the class'));
+
+	const courseData = await studentDb.doc(uid).collection('courses').doc(courseId).get();
+	const isRegistered = false;
+
+	if (courseData.data()) {
+		if (course.data().classId === classId) {
+			isRegistered = true;
+		}
+	}
+
+	if (!isRegistered) {
+		throw new Error('User is not registered to the class');
+	}
+
+	console.log(chalk.yellow('Getting course level assignments...'));
+	const courseAssignmentsQuery = await courseDb.doc(courseId).collection('assignments').get();
+	console.log(chalk.green('Got them!'));
+	console.log(chalk.yellow('Getting class level assignments...'));
+	const classAssignmentsQuery = await courseDb
+		.doc(courseId)
+		.collection('classes')
+		.doc(classId)
+		.collection('assignments')
+		.get();
+	console.log(chalk.green('Got em!'));
+
+	const filteredCourseAssignments = courseAssignmentsQuery.docs
+		.filter(doc => !doc.data().isDeleted)
+		.map(doc => ({ ...doc.data(), id: doc.id }));
+
+	filteredCourseAssignments.sort(
+		(a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
+	);
+
+	const options = {
+		version: 'v4',
+		action: 'read',
+		expires: Date.now() + 60 * 60 * 1000, //expires in one hour
+	};
+
+	console.log(chalk.yellow('Getting assignments for course assignments...'));
+	for (let i = 0; i < filteredCourseAssignments.length; i++) {
+		const [fileURL] = await bucket
+			.file(filteredCourseAssignments[i].attachment.gcs_fileName)
+			.getSignedUrl(options);
+		filteredCourseAssignments[i].attachment.fileURL = fileURL;
+	}
+	console.log(chalk.green('Got em!'));
+
+	const filteredClassAssignments = classAssignmentsQuery.docs
+		.filter(doc => !doc.data().isDeleted)
+		.map(doc => ({ ...doc.data(), id: doc.id }));
+
+	filteredClassAssignments.sort(
+		(a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
+	);
+
+	console.log(chalk.yellow('Getting assignments for class assignments...'));
+	for (let i = 0; i < filteredClassAssignments.length; i++) {
+		const [fileURL] = await bucket
+			.file(filteredClassAssignments[i].attachment.gcs_fileName)
+			.getSignedUrl(options);
+		filteredClassAssignments[i].attachment.fileURL = fileURL;
+	}
+	console.log(chalk.green('Got em!'));
+
+	return {
+		courseId,
+		classId,
+		courseAssignments: filteredCourseAssignments,
+		classAssignments: filteredClassAssignments,
+	};
 };
