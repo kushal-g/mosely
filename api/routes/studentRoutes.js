@@ -6,5 +6,6 @@ const studentAuthentication = require('../middlewares/StudentAuthentication');
 
 router.post('/class/add', studentAuthentication, StudentController.addToClass);
 router.post('/class/read', studentAuthentication, StudentController.viewClasses);
+router.post('/class/assignments/read', studentAuthentication, StudentController.getAssignments);
 
 module.exports = router;
