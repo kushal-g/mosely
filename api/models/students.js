@@ -134,12 +134,12 @@ module.exports.viewClasses = async uid => {
 
 module.exports.getAssignments = async ({ uid, courseId, classId }) => {
 	console.log(chalk.yellow('Verifying if user is registered to the class'));
-
+	console.log(uid, classId, courseId);
 	const courseData = await studentDb.doc(uid).collection('courses').doc(courseId).get();
-	const isRegistered = false;
+	let isRegistered = false;
 
 	if (courseData.data()) {
-		if (course.data().classId === classId) {
+		if (courseData.data().classId === classId) {
 			isRegistered = true;
 		}
 	}
