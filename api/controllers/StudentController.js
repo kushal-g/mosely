@@ -38,7 +38,7 @@ module.exports.viewClasses = async (req, res, next) => {
 
 module.exports.getAssignments = async (req, res, next) => {
 	try {
-		const data = await students.getAssignments({ ...req.body });
+		const data = await students.getAssignments({ uid: req.user.uid, ...req.body });
 		res.status(200).send({
 			statusCode: 200,
 			msg: 'Successfully retrieved assignments',
