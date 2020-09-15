@@ -92,8 +92,13 @@
 .registeredClass{
 width: 100%;
 height: 100%;
+background-color: white;
 }
 
 h2{
     margin:15px;
+}
+.classSection{
+    background-color: white;
+    display: flex;
 }

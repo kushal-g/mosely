@@ -1,17 +1,26 @@
-.assignmentCard{
-    float: left;
-    min-height: 100px;
-    width: 250px;
-    margin: 15px;
+
+/*Assignment */
+.studentAssignment{
+    margin-bottom:10px;
     background-color: white;
-    border-radius: 5px;
-    -webkit-box-shadow: 1px 1px 5px 0px rgb(117, 116, 116);
-    -moz-box-shadow: 1px 1px 5px 0px rgb(117, 116, 116);
-    box-shadow: 1px 1px 5px 0px rgb(117, 116, 116);
+    display: grid;
+    width: 100%;
 }
-.assignmentSubHead{
-    padding: 5px 10px;
+.assignmentList{
+
+    background-color: var(--primary-color);
+    text-align: left;
 }
-.assignmentHead{
-    padding: 10px 10px;
+.assignmentHeader{
+    color: black;
+    display: flex;
+    background-color: white;
+}
+.goBackDiv{
+    float: right;
+}
+.goBackBtn{
+    text-decoration: none;
+    background-color: var(--secondary-color);
+    margin-top: 10px;
 }

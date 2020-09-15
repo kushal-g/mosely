@@ -50,7 +50,7 @@ function StudentHome(props){
       
       <div className="registeredClass">
           <h2><p>Registered Classes </p></h2>
-          <div>
+          <div className="classSection">
               {
               classes.map(classObj=>{
                   return <StudentClass
