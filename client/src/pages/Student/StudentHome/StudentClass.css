@@ -8,45 +8,42 @@
     -moz-box-shadow: 1px 1px 5px 0px rgb(117, 116, 116);
     box-shadow: 1px 1px 5px 0px rgb(117, 116, 116);
 }
-.studentClass_info{
-    float: left;
-    display: grid;
-    grid-template-columns: 150px 300px;
-}
-.studentClass_letter{
-    border-right: 1px solid grey;
-    grid-row: 1/3;
-    font-size: 35px;
-    padding-right: 10px;
-}
-.studentClass_name{
-    padding-left: 10px;
-    font-size: 25px;
-    
-}
-.studentClass_desc{
-    padding-left: 10px;
-    font-size:15px;
-    grid-column: 2/3;
-}
-.studentClass_buttons{
-    margin-top:25px;
-    display: grid;
-    grid-template-columns: 2fr 2fr 2fr;
-    grid-row-gap: 5px;
-    grid-column-gap: 2px ;
-    float:right;
-}
-.studentClass_delete{
 
+.studentClass_delete{
+   float: left;
     background-color: rgb(216,53,53);   
 }
-.studentClass_createClass{
-    background-color: slateblue;
-}
-.studentClass_update{
-    background-color: #89db5a;
-}
+
 .studentClass_viewClass{
     background-color: #6b9fe3;
+}
+.studentClass_viewClassDiv{
+    float: right;
+}
+.studentClassCard{
+    float: left;
+    min-height: 100px;
+    width: 250px;
+    margin: 15px;
+    background-color: white;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 5px 0px rgb(117, 116, 116);
+    -moz-box-shadow: 1px 1px 5px 0px rgb(117, 116, 116);
+    box-shadow: 1px 1px 5px 0px rgb(117, 116, 116);
+}
+.studentClassSubHead{
+    padding: 5px 10px;
+}
+.studentClassHead{
+    padding: 10px 10px;
+}
+.studentClassButtons{
+    margin:15px;
+    display:inline-flex;
+    padding: 0px;
+}
+.studentClassButtons button{
+    width: 30px;
+    height: 30px;
+    border-radius: 5%;
 }

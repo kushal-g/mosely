@@ -1,13 +1,16 @@
 import React from "react"
 import {useState,useEffect} from "react"
+import {Link} from "react-router-dom"
 import StudentAssignmentCard from "./StudentAssignmentCard"
+import "./StudentAssignment.css"
 
 function StudentAssignment(props){
     
-    const [assignment,setAssignment]=useState([])
+    const [courseAssignment,setCourseAssignment]=useState([]);
+    const [classAssignment,setClassAssignment]=useState([]);
 
-   function getAssignment(event){
-       event.preventDefault()
+   function getAssignment(){
+       
         props.user.getIdToken()
         .then(token=>{
             console.log(props.location.state.classId)
@@ -27,20 +30,46 @@ function StudentAssignment(props){
             .then(response=>response.json())
             .then(body=>{
                 console.log(body)
-                setAssignment(body.data)
+                setCourseAssignment(body.data.courseAssignments)
+                setClassAssignment(body.data.classAssignments)
             })
         })
     }
 
-   // useEffect(()=>{getAssignment()},[]);
+    useEffect(()=>{getAssignment()},[]);
     
-    return <div>
-        <h2><p>ASSIGNMENTS FOR CLASS {props.location.state.classId} </p></h2>
-        <button onClick={getAssignment}>do</button>
+    return <div className="studentAssignment">
+        <div className="assignmentHeader">
+        <div><h2><p>ASSIGNMENTS FOR CLASS {props.location.state.classNames} </p></h2></div>
+        <div className="goBackDiv">
+        <Link to={{pathname:"/student/dashboard"}}>
+            <button className="goBackBtn">
+            GO BACK TO CLASSES
+            </button>
+        </Link>
+        </div>
+        </div>
+       <div className="assignmentList">
         {
-       //assignment.map(assignObj=><StudentAssignmentCard name={assignObj.courseId}/>)
+            courseAssignment.map(classAssign=>
+                <StudentAssignmentCard 
+                assignmentName={classAssign.name}
+                assignmentDescription={classAssign.description}
+                dueDate={classAssign.dueDate.seconds}
+                assignmentLanguage={classAssign.language}
+                  />)
+            }
+            {
+                  classAssignment.map(classAssign=>
+                    <StudentAssignmentCard 
+                    assignmentName={classAssign.name}
+                    assignmentDescription={classAssign.description}
+                    dueDate={classAssign.dueDate.seconds}
+                    assignmentLanguage={classAssign.language}
+                      />)
         }
-</div>
+      </div>
+    </div>
 }
 
 export default StudentAssignment;

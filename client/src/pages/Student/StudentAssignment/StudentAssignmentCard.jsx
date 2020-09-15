@@ -1,26 +1,33 @@
 import React from 'react';
-import './StudentAssignment.css';
+import {TrashIcon,EyeIcon,EditIcon} from "react-line-awesome"
+import './StudentAssignmentCard.css';
 function StudentAssignmentCard(props) {
 	var randomColor = require('randomcolor');
+	
 	return (
-		<div
-			style={{ backgroundColor: randomColor({ luminosity: 'light' }) }}
-			className="assignmentCard"
-		>
-			<div className="assignmentHead">
-				{' '}
-				<h2>{props.assignmentName}</h2>
+	<div className="topLevel">
+		<div className="assignmentCard"
+		style={{ backgroundColor: randomColor({ luminosity: 'light' }) }} >
+			<div className="assignmentCard_info">
+					<div className="assignmentCard_letter" role="img">
+						{props.assignmentLanguage} 
+					</div>
+			
+					<div className="assignmentCard_name">
+					{props.name}
+					</div>
+					<div className="assignmentCard_desc"> 
+					{props.dueDate}
+					{props.assignmentDescription}
+					</div>
 			</div>
-			<div className="assignmentSubHead">
-				<textarea value={props.assignmentDescription}></textarea>
-				<hr></hr>
-				<div>{props.dueDate}</div>
-				<div>{props.assignmentLanguage}</div>
-				<button type="button">View Files</button>
-				<button type="button">Upload Assignment</button>
-				<button type="submit">Submit</button>
-			</div>
+		<div className="assignmentCard_buttons">
+		<button className="assignmentCard_delete"><TrashIcon/> View Document</button>
+		<button className="assignmentCard_viewClass"><EyeIcon/> Upload Files</button> 
+		<button  className="assignmentCard_update"><EditIcon/> Submit </button> 
 		</div>
+		</div>
+    </div>
 	);
 }
 export default StudentAssignmentCard;
