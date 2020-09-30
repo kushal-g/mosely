@@ -5,5 +5,6 @@ const router = express.Router();
 
 router.get('/link', CheckAuthentication, AuthController.getAuthLink);
 router.post('/authorize', CheckAuthentication, AuthController.authorizeUser);
+router.get('/isLinked', CheckAuthentication, AuthController.isUserLinked);
 
 module.exports = router;
