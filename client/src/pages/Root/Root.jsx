@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
+import GoogleSignIn from '../SignIn/GoogleSignIn';
 
 export default function Root(props) {
 	const params = new URLSearchParams(window.location.search);
@@ -18,5 +19,9 @@ export default function Root(props) {
 			.then(response => response.json())
 			.then(body => console.log(body));
 	}, []);
-	return <div></div>;
+	return (
+		<div>
+			<GoogleSignIn />
+		</div>
+	);
 }

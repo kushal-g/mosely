@@ -1,0 +1,38 @@
+.signDiv {
+	margin: 15% 35%;
+	background-color: white;
+	padding: 35px 70px;
+	border-radius: 5px;
+}
+
+.signInBtn {
+	background-color: white;
+	display: flex;
+
+	padding: 10px 20px;
+	border-radius: 5px;
+}
+.signUpBtn {
+	background-color: white;
+	display: flex;
+	margin-top: 25px;
+	padding: 10px 20px;
+	border-radius: 5px;
+}
+.signInBtn label {
+	margin-left: 15px;
+	font-size: 20px;
+}
+.signUpBtn label {
+	margin-left: 15px;
+	font-size: 20px;
+}
+.logo {
+	height: 20px;
+	width: 20px;
+	background-image: url('../../utils/googleImg.png');
+}
+.innerLogo {
+	max-width: 100%;
+	max-height: 100%;
+}
