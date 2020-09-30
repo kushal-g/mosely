@@ -6,7 +6,7 @@ export default function Root(props) {
 	const authCode = params.get('code');
 	console.log(authCode);
 	useEffect(() => {
-		fetch(`${process.env.REACT_APP_URL}/authorize`, {
+		fetch(`${process.env.REACT_APP_URL}/auth/authorize`, {
 			method: 'post',
 			headers: {
 				'Content-type': 'application/json',
