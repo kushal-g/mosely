@@ -116,3 +116,4 @@ dist
 .pnp.*
 
 moss-service-account.json
+credentials.json
