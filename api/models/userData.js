@@ -8,3 +8,8 @@ module.exports.saveTokensAndClassroomId = async (uid, tokens, classRoomId) => {
 		classRoomId,
 	});
 };
+
+module.exports.isUserLinked = async uid => {
+	const doc = await userDb.doc(uid).get();
+	return doc.data === undefined ? false : true;
+};

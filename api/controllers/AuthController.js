@@ -39,3 +39,20 @@ module.exports.authorizeUser = async (req, res, next) => {
 		next(e);
 	}
 };
+
+module.exports.isUserLinked = async (req, res, next) => {
+	try {
+		console.log(chalk.yellow('Checking linked status...'));
+		const isLinked = await userDb.isUserLinked(req.user.uid);
+		console.log(chalk.green(isLinked ? 'Linked!' : 'Not Linked!'));
+		res.status(200).send({
+			statusCode: 200,
+			msg: 'Succesfully retrieved linked status',
+			data: {
+				isLinked,
+			},
+		});
+	} catch {
+		next(e);
+	}
+};
