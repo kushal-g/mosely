@@ -1,6 +1,6 @@
 const express = require('express');
 const AuthController = require('../controllers/authController');
-const CheckAuthentication = require('../middlewares/TempAuthenticator.js');
+const CheckAuthentication = require('../middlewares/CheckAuthentication');
 const router = express.Router();
 
 router.get('/link', CheckAuthentication, AuthController.getAuthLink);
