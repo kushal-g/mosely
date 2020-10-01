@@ -1,15 +1,24 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Link, Route } from 'react-router-dom';
+import { AuthProvider } from './context/Auth';
+import PrivateRoute from './components/PrivateRoute';
+import Courses from './pages/Courses/Courses';
+import LinkDrive from './pages/LinkDrive/LinkDrive';
 import './App.css';
+import GoogleSignIn from './pages/GoogleSignIn/GoogleSignIn';
 import Root from './pages/Root/Root';
 
 function App() {
 	return (
-		<BrowserRouter>
-			<div className="App">
-				<Route exact path="/" component={Root} />
-			</div>
-		</BrowserRouter>
+		<AuthProvider>
+			<BrowserRouter>
+				<div className="App">
+					<Route exact path="/" component={GoogleSignIn} />
+					<PrivateRoute path="/link" component={LinkDrive} />
+					<PrivateRoute path="/courses" component={Courses} />
+				</div>
+			</BrowserRouter>
+		</AuthProvider>
 	);
 }
 

@@ -24,7 +24,7 @@
 .logo {
 	height: 25px;
 	width: 25px;
-	background-image: url('../../utils/googleImg-25x25.png');
+	background-image: url('../../assets/googleImg-25x25.png');
 }
 .innerLogo {
 	max-width: 100%;

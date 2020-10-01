@@ -1,9 +1,12 @@
 import React from 'react';
+import Navbar from '../../components/Navbar/Navbar';
 import './GoogleSignIn.css';
 import firebase from '../../utils/firebase';
 //import * as firebase from 'firebase';
 
 function GoogleSignIn() {
+	//const [signedIn, setSignedIn] = useState(false);
+
 	const signed = () => {
 		var provider = new firebase.auth.GoogleAuthProvider();
 
@@ -11,10 +14,7 @@ function GoogleSignIn() {
 			.auth()
 			.signInWithPopup(provider)
 			.then(function (result) {
-				// This gives you a Google Access Token. You can use it to access the Google API.
-				var token = result.credential.accessToken;
-				// The signed-in user info.
-				var user = result.user;
+				window.location.href = '/courses';
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -22,11 +22,14 @@ function GoogleSignIn() {
 	};
 
 	return (
-		<div className="signInDiv">
-			<button className="signInBtn" onClick={signed}>
-				<div className="logo"></div>
-				<label>Sign In with Google</label>
-			</button>
+		<div>
+			<Navbar />
+			<div className="signInDiv">
+				<button className="signInBtn" onClick={signed}>
+					<div className="logo"></div>
+					<label>Sign In with Google</label>
+				</button>
+			</div>
 		</div>
 	);
 }

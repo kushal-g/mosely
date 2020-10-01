@@ -1,19 +1,17 @@
-
-:root{
-  --primary-color:#8357eb;
-  --secondary-color: #ffaa3b;
+:root {
+	--primary-color: white;
+	--secondary-color: #ffaa3b;
 }
-
 
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-  font-family: "Poppins";
-  background:var(--primary-color);
+	font-family: 'Poppins';
+	background: var(--primary-color);
 }
