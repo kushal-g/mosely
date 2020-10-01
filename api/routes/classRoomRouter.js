@@ -1,6 +1,6 @@
 const express = require('express');
 const ClassroomController = require('../controllers/ClassRoomController');
-const CheckAuthentication = require('../middlewares/TempAuthenticator');
+const CheckAuthentication = require('../middlewares/CheckAuthentication');
 const GetAccessTokens = require('../middlewares/GetAccessTokens');
 const router = express.Router();
 
