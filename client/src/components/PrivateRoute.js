@@ -9,7 +9,6 @@ export default function PrivateRoute({ component: RouteComponent, ...rest }) {
 
 	async function userLinked() {
 		const token = await currentUser?.getIdToken();
-
 		const result = await fetch(`${process.env.REACT_APP_URL}/auth/isLinked`, {
 			method: 'get',
 			headers: {

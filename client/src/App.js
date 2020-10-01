@@ -14,8 +14,8 @@ function App() {
 			<BrowserRouter>
 				<div className="App">
 					<Route exact path="/" component={GoogleSignIn} />
-					<PrivateRoute path="/link" component={LinkDrive} />
-					<PrivateRoute path="/courses" component={Courses} />
+					<Route exact path="/link" component={LinkDrive} />
+					<PrivateRoute exact path="/courses" component={Courses} />
 				</div>
 			</BrowserRouter>
 		</AuthProvider>
