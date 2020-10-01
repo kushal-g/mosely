@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import GoogleSignIn from '../SignIn/GoogleSignIn';
+import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
 
 export default function Root(props) {
 	const params = new URLSearchParams(window.location.search);
