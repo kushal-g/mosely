@@ -21,15 +21,15 @@ module.exports.getCourses = async tokens => {
 	const {
 		data: { courses },
 	} = await classroom.courses.list();
-	console.log(courses);
+	return courses;
 };
 
-module.exports.getCourseWork = async courseId => {
-	const classroom = getClassroom();
+module.exports.getCourseWork = async (tokens, courseId) => {
+	const classroom = getClassroom(tokens);
 	const {
 		data: { courseWork },
 	} = await classroom.courses.courseWork.list({ courseId });
-	console.log(courseWork);
+	return courseWork;
 };
 
 module.exports.getSubmissions = async (courseId, courseWorkId) => {
