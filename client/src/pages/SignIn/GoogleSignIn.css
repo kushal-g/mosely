@@ -1,36 +1,30 @@
-.signDiv {
-	margin: 15% 35%;
+.signInDiv {
+	margin: 20% auto;
+	width: fit-content;
 	background-color: white;
-	padding: 35px 70px;
+	padding: 35px 60px;
 	border-radius: 5px;
 }
 
 .signInBtn {
 	background-color: white;
 	display: flex;
+	padding: 10px 20px;
+	border-radius: 5px;
+}
+.signInBtn:hover {
+	background-color: rgb(0, 174, 255);
+}
 
-	padding: 10px 20px;
-	border-radius: 5px;
-}
-.signUpBtn {
-	background-color: white;
-	display: flex;
-	margin-top: 25px;
-	padding: 10px 20px;
-	border-radius: 5px;
-}
 .signInBtn label {
 	margin-left: 15px;
 	font-size: 20px;
 }
-.signUpBtn label {
-	margin-left: 15px;
-	font-size: 20px;
-}
+
 .logo {
-	height: 20px;
-	width: 20px;
-	background-image: url('../../utils/googleImg.png');
+	height: 25px;
+	width: 25px;
+	background-image: url('../../utils/googleImg-25x25.png');
 }
 .innerLogo {
 	max-width: 100%;

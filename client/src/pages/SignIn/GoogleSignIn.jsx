@@ -15,29 +15,18 @@ function GoogleSignIn() {
 				var token = result.credential.accessToken;
 				// The signed-in user info.
 				var user = result.user;
-				// ...
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
 	};
 
-	var logo = '../utils/googleImg.png';
 	return (
-		<div className="signDiv">
-			<div className="signInDiv">
-				<button className="signInBtn" onClick={signed}>
-					<div className="logo"></div>
-					<label>Sign In with Google</label>
-				</button>
-			</div>
-
-			<div>
-				<button className="signUpBtn">
-					<div className="logo"></div>
-					<label>Sign Up with Google</label>
-				</button>
-			</div>
+		<div className="signInDiv">
+			<button className="signInBtn" onClick={signed}>
+				<div className="logo"></div>
+				<label>Sign In with Google</label>
+			</button>
 		</div>
 	);
 }
