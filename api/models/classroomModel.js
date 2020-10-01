@@ -1,4 +1,5 @@
 const { google } = require('googleapis');
+const { CourseWorkType } = require('../utils/enums');
 
 const getClassroom = tokens => {
 	const credentials = JSON.parse(process.env.CLASSROOM_CREDENTIALS);
@@ -29,7 +30,7 @@ module.exports.getCourseWork = async (tokens, courseId) => {
 	const {
 		data: { courseWork },
 	} = await classroom.courses.courseWork.list({ courseId });
-	return courseWork;
+	return courseWork.filter(work => work.workType === CourseWorkType.ASSIGNMENT);
 };
 
 module.exports.getSubmissions = async (courseId, courseWorkId) => {
