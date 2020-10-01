@@ -5,12 +5,14 @@ const chalk = require('chalk');
 const cors = require('cors');
 
 const authRouter = require('./routes/authRouter');
+const classRoomRouter = require('./routes/classRoomRouter');
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/auth', authRouter);
+app.use('/classroom', classRoomRouter);
 
 app.use((err, req, res, next) => {
 	console.error(err, chalk.red(err.message));
