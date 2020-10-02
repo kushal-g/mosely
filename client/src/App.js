@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import { AuthProvider } from './context/Auth';
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Courses from './pages/Courses/Courses';
 import LinkDrive from './pages/LinkDrive/LinkDrive';
 import './App.css';
