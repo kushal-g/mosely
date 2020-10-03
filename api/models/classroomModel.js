@@ -1,5 +1,5 @@
 const { google } = require('googleapis');
-const { CourseWorkType } = require('../utils/enums');
+const { CourseWorkType, SubmissionState } = require('../utils/enums');
 
 const getClassroom = tokens => {
 	const credentials = JSON.parse(process.env.CLASSROOM_CREDENTIALS);
@@ -13,8 +13,14 @@ module.exports.getClassroomUserId = async tokens => {
 	const classRoom = getClassroom(tokens);
 	const {
 		data: { id },
-	} = await classRoom.userProfiles.get({ userId: 'kushalgarg2000@gmail.com' });
+	} = await classRoom.userProfiles.get({ userId: 'me' });
 	return id;
+};
+
+module.exports.getUserDetails = async (tokens, userId) => {
+	const classroom = getClassroom(tokens);
+	const { data } = await classroom.userProfiles.get({ userId });
+	return data;
 };
 
 module.exports.getCourses = async tokens => {
@@ -33,11 +39,10 @@ module.exports.getCourseWork = async (tokens, courseId) => {
 	return courseWork.filter(work => work.workType === CourseWorkType.ASSIGNMENT);
 };
 
-module.exports.getSubmissions = async (courseId, courseWorkId) => {
-	const classroom = getClassroom();
+module.exports.getSubmissions = async (tokens, courseId, courseWorkId) => {
+	const classroom = getClassroom(tokens);
 	const {
 		data: { studentSubmissions },
 	} = await classroom.courses.courseWork.studentSubmissions.list({ courseId, courseWorkId });
-	console.log(studentSubmissions);
-	console.log(studentSubmissions[0].assignmentSubmission.attachments[0].driveFile);
+	return studentSubmissions.filter(submission => submission.state === SubmissionState.TURNED_IN);
 };
