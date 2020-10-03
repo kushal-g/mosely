@@ -1,0 +1,13 @@
+.linkBtn {
+	padding: 20px 20px;
+	background-color: white;
+	font-size: 20px;
+	font-weight: 400;
+	margin: 15% 38%;
+	border-radius: 5px;
+}
+.linkBtn:hover {
+	background-color: slateblue;
+	color: white;
+	font-weight: 500;
+}
