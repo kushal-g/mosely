@@ -54,7 +54,7 @@ module.exports.initialSync = async (req, res, next) => {
 
 				//Actually sends the files to moss
 				const url = await client.process();
-				//TODO: process url
+				//process url
 				const report = parseURL(url);
 				await reports.save(work.id, report);
 			}
