@@ -1,5 +1,11 @@
 import React from 'react';
+import Navbar from '../../components/Navbar/Navbar';
 
 export default function Courses() {
-	return <div>here are the courses</div>;
+	return (
+		<div>
+			<Navbar />
+			<div></div>
+		</div>
+	);
 }
