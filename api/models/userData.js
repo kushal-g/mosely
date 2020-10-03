@@ -2,6 +2,17 @@ const db = require('../utils/base').firestore();
 const chalk = require('chalk');
 const userDb = db.collection('users');
 
+module.exports.saveMossId = async (uid, mossId) => {
+	await userDb.doc(uid).update({
+		mossId,
+	});
+};
+
+module.exports.getMossId = async uid => {
+	const doc = await userDb.doc(uid).get();
+	return doc.data().mossId;
+};
+
 module.exports.saveTokensAndClassroomId = async (uid, tokens, classRoomId) => {
 	await userDb.doc(uid).create({
 		tokens,

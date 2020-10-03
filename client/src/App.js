@@ -6,7 +6,7 @@ import Courses from './pages/Courses/Courses';
 import LinkDrive from './pages/LinkDrive/LinkDrive';
 import './App.css';
 import GoogleSignIn from './pages/GoogleSignIn/GoogleSignIn';
-import Root from './pages/Root/Root';
+import Test from './pages/Test/Test';
 
 function App() {
 	return (
@@ -16,6 +16,7 @@ function App() {
 					<Route exact path="/" component={GoogleSignIn} />
 					<Route exact path="/link" component={LinkDrive} />
 					<PrivateRoute exact path="/courses" component={Courses} />
+					<Route exact path="/test" component={Test} />
 				</div>
 			</BrowserRouter>
 		</AuthProvider>
