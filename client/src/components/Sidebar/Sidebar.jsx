@@ -1,9 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { HomeIcon } from 'react-line-awesome';
 import './Sidebar.css';
-import SidebarElements from './SidebarElements';
+import SidebarElements from './components/SidebarElement/SidebarElements';
 
 export default function Sidebar(props) {
+	const [teachingCourses, setTeachingCourses] = useState([]);
+	const [enrolledCourses, setEnrolledCourses] = useState([]);
+
+	async function getCourses() {
+		const token = await props.currentUser.getIdToken();
+		const result = await fetch(`${process.env.REACT_APP_URL}/classroom/courses`, {
+			method: 'get',
+			headers: {
+				Authorization: `Bearer ${token}`,
+				'Content-type': 'application/json',
+			},
+		});
+
+		const body = await result.json();
+		setTeachingCourses(body.data.courses.teacher);
+		setEnrolledCourses(body.data.courses.student);
+		console.log(body.data);
+	}
+
+	useEffect(() => {
+		getCourses();
+	}, []);
+
 	return (
 		<aside className={props.open ? 'sidebar-active' : ''}>
 			<a href="/courses" className="allCourses">
@@ -12,21 +36,21 @@ export default function Sidebar(props) {
 				</div>
 				Classes
 			</a>
-			{props.teacher.length > 0 && (
+			{teachingCourses.length > 0 && (
 				<div>
 					<div className="sideHead">Teaching</div>
 					<div>
-						{props.teacher.map(course => {
+						{teachingCourses.map(course => {
 							return <SidebarElements details={course} />;
 						})}
 					</div>
 				</div>
 			)}
-			{props.student.length > 0 && (
+			{enrolledCourses.length > 0 && (
 				<div>
 					<div className="sideHead">Enrolled</div>
 					<div>
-						{props.student.map(course => {
+						{enrolledCourses.map(course => {
 							return <SidebarElements details={course} />;
 						})}
 					</div>

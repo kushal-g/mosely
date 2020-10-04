@@ -1,10 +1,8 @@
 import React from 'react';
+import randomColor from 'randomcolor';
 import './CourseCard.css';
 
 export default function CourseCard(props) {
-	var randomColor = require('randomcolor');
-	var color = randomColor();
-
 	return (
 		<div className="card">
 			<div
@@ -21,7 +19,7 @@ export default function CourseCard(props) {
 				<div className="courseSection">
 					{props.details.section ? props.details.section : ' '}
 				</div>
-				<div className="courseTeacher">Teacher's Name</div>
+				<div className="courseTeacher">{props.details.teacherInfo.name.fullName}</div>
 			</div>
 			<div className="bottom"></div>
 		</div>

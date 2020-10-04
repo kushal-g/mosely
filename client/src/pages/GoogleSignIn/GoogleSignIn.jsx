@@ -2,10 +2,13 @@ import React from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import './GoogleSignIn.css';
 import firebase from '../../utils/firebase';
-//import * as firebase from 'firebase';
+import { AuthContext } from '../../context/Auth';
+import { useContext } from 'react';
+import { useEffect } from 'react';
 
 function GoogleSignIn() {
 	//const [signedIn, setSignedIn] = useState(false);
+	const { loading, currentUser } = useContext(AuthContext);
 
 	const signed = () => {
 		var provider = new firebase.auth.GoogleAuthProvider();
@@ -20,6 +23,12 @@ function GoogleSignIn() {
 				console.log(error);
 			});
 	};
+
+	useEffect(() => {
+		if (!loading && currentUser) {
+			window.location.href = '/courses';
+		}
+	}, [loading, currentUser]);
 
 	return (
 		<div>
