@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/Auth';
 import './Navbar.css';
 import { useState } from 'react';
 
-export default function Navbar() {
+export default function Navbar(props) {
 	const { currentUser, loading } = useContext(AuthContext);
 	const [openSidebar, setOpenSidebar] = useState(false);
 	const hamburgerClass = 'hamburger hamburger-spin';
@@ -46,7 +46,7 @@ export default function Navbar() {
 					</button>
 				)}
 			</nav>
-			<Sidebar open={openSidebar} />
+			<Sidebar teacher={props.teacher} student={props.student} open={openSidebar} />
 		</div>
 	);
 }
