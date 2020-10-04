@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import './Courses.css';
 import { AuthContext } from '../../context/Auth';
 import Navbar from '../../components/Navbar/Navbar';
-import CourseCard from './CourseCard';
+import CourseCard from './components/CourseCard/CourseCard';
 
 export default function Courses() {
 	const { currentUser, loading } = useContext(AuthContext);

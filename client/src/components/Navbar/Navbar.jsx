@@ -46,7 +46,7 @@ export default function Navbar(props) {
 					</button>
 				)}
 			</nav>
-			<Sidebar teacher={props.teacher} student={props.student} open={openSidebar} />
+			{!loading && currentUser && <Sidebar currentUser={currentUser} open={openSidebar} />}
 		</div>
 	);
 }
