@@ -1,0 +1,46 @@
+.courseElement {
+	height: 4rem;
+	align-items: center;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	display: flex;
+}
+.courseSymbol {
+	color: white;
+	text-transform: uppercase;
+	height: 2rem;
+	min-width: 2rem;
+	align-self: center;
+	text-align: center;
+	line-height: 2rem;
+	font-size: 1rem;
+	border-radius: 50%;
+}
+.courseInfo {
+	margin-left: 1rem;
+	overflow: hidden;
+}
+.name {
+	letter-spacing: 0.01785714em;
+	font-family: 'Google Sans', Roboto, Arial, sans-serif;
+	font-size: 0.875rem;
+	font-weight: 500;
+	line-height: 1.25rem;
+	color: #3c4043;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	display: block;
+}
+.section {
+	letter-spacing: 0.025em;
+	font-family: Roboto, Arial, sans-serif;
+	font-size: 0.75rem;
+	font-weight: 400;
+	line-height: 1rem;
+	color: #5f6368;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	display: block;
+}

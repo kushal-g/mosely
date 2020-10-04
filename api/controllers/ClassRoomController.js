@@ -13,7 +13,7 @@ module.exports.getCourses = async (req, res, next) => {
 				student: [],
 			},
 		};
-
+		//console.log(data);
 		courses.map(course =>
 			course.teacherFolder
 				? data.courses.teacher.push(course)
