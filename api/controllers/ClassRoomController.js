@@ -7,6 +7,13 @@ module.exports.getCourses = async (req, res, next) => {
 		const courses = await classroom.getCourses(req.tokens);
 		console.log(chalk.green('Got em!'));
 
+		console.log(chalk.yellow('Fetching teacher details...'));
+		for (let i = 0; i < courses.length; i++) {
+			const teacherInfo = await classroom.getUserDetails(req.tokens, courses[i].ownerId);
+			courses[i].teacherInfo = { ...teacherInfo };
+		}
+		console.log(chalk.green('Fetched'));
+
 		const data = {
 			courses: {
 				teacher: [],
