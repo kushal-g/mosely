@@ -21,7 +21,10 @@ export default function CourseCard(props) {
 				</div>
 				<div className="courseTeacher">{props.details.teacherInfo.name.fullName}</div>
 			</div>
-			<div className="bottom"></div>
+			<div className="bottom">
+				{console.log(props.details.teacherInfo.photoUrl)}
+				<img className="teacherImg" src={props.details.teacherInfo.photoUrl}></img>
+			</div>
 		</div>
 	);
 }

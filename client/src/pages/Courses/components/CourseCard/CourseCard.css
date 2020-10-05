@@ -48,4 +48,14 @@
 .bottom {
 	width: 100%;
 	height: 150px;
+	padding: 0.5rem 0.5rem;
+}
+.teacherImg {
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	float: right;
+	height: 4.6875rem;
+	position: relative;
+	margin-top: -2.5rem;
+	width: 4.5rem;
 }
