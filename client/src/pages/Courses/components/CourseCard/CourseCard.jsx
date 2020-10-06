@@ -23,7 +23,10 @@ export default function CourseCard(props) {
 			</div>
 			<div className="bottom">
 				{console.log(props.details.teacherInfo.photoUrl)}
-				<img className="teacherImg" src={props.details.teacherInfo.photoUrl}></img>
+				<img
+					className="teacherImg"
+					src={'https:' + props.details.teacherInfo.photoUrl}
+				></img>
 			</div>
 		</div>
 	);
