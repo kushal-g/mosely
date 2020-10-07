@@ -2,6 +2,13 @@ const db = require('../utils/base').firestore();
 const chalk = require('chalk');
 const userDb = db.collection('users');
 
+module.exports.getUsersWithMoss = async () => {
+	const query = await userDb.where('mossId', '>', '').get();
+	const users = [];
+	query.forEach(doc => users.push(doc.data()));
+	return users;
+};
+
 module.exports.saveMossId = async (uid, mossId) => {
 	await userDb.doc(uid).update({
 		mossId,
