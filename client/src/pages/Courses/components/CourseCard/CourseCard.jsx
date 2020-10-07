@@ -2,7 +2,7 @@ import React from 'react';
 import randomColor from 'randomcolor';
 import './CourseCard.css';
 
-export default function CourseCard(props) {
+export default function CourseCard({ details }) {
 	return (
 		<div className="card">
 			<div
@@ -15,17 +15,18 @@ export default function CourseCard(props) {
 				}}
 				className="top"
 			>
-				<div className="courseName">{props.details.name}</div>
-				<div className="courseSection">
-					{props.details.section ? props.details.section : ' '}
-				</div>
-				<div className="courseTeacher">{props.details.teacherInfo.name.fullName}</div>
+				<div className="courseName">{details.name}</div>
+				<div className="courseSection">{details.section ? details.section : ' '}</div>
+				<div className="courseTeacher">{details.teacherInfo.name.fullName}</div>
 			</div>
 			<div className="bottom">
-				{console.log(props.details.teacherInfo.photoUrl)}
 				<img
 					className="teacherImg"
-					src={'https:' + props.details.teacherInfo.photoUrl}
+					src={
+						details.teacherInfo.photoUrl[0] === '/'
+							? 'https:' + details.teacherInfo.photoUrl
+							: details.teacherInfo.photoUrl
+					}
 				></img>
 			</div>
 		</div>
