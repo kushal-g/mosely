@@ -8,6 +8,7 @@ import DriveLoading from './pages/DriveLoading/DriveLoading';
 import './App.css';
 import GoogleSignIn from './pages/GoogleSignIn/GoogleSignIn';
 import Test from './pages/Test/Test';
+import CourseAssignment from './pages/CourseAssignment/CourseAssignment';
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 					<PrivateRoute exact path="/courses" component={Courses} />
 					<Route exact path="/loading" component={DriveLoading} />
 					<Route exact path="/test" component={Test} />
+					<PrivateRoute exact path="/course/assignment" component={CourseAssignment} />
 				</div>
 			</BrowserRouter>
 		</AuthProvider>
