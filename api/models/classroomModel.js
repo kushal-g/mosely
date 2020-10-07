@@ -28,7 +28,7 @@ module.exports.getCourses = async tokens => {
 	const {
 		data: { courses },
 	} = await classroom.courses.list();
-	return courses;
+	return courses === undefined ? [] : courses;
 };
 
 module.exports.getCourseWork = async (tokens, courseId) => {
@@ -36,7 +36,9 @@ module.exports.getCourseWork = async (tokens, courseId) => {
 	const {
 		data: { courseWork },
 	} = await classroom.courses.courseWork.list({ courseId });
-	return courseWork.filter(work => work.workType === CourseWorkType.ASSIGNMENT);
+	return courseWork === undefined
+		? []
+		: courseWork.filter(work => work.workType === CourseWorkType.ASSIGNMENT);
 };
 
 module.exports.getSubmissions = async (tokens, courseId, courseWorkId) => {
@@ -44,5 +46,7 @@ module.exports.getSubmissions = async (tokens, courseId, courseWorkId) => {
 	const {
 		data: { studentSubmissions },
 	} = await classroom.courses.courseWork.studentSubmissions.list({ courseId, courseWorkId });
-	return studentSubmissions.filter(submission => submission.state === SubmissionState.TURNED_IN);
+	return studentSubmissions === undefined
+		? []
+		: studentSubmissions.filter(submission => submission.state === SubmissionState.TURNED_IN);
 };
