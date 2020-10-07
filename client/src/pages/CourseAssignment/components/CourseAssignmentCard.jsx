@@ -1,5 +1,5 @@
 import React from 'react';
-import { QuestionCircleIcon } from 'react-line-awesome';
+import { ClipboardListIcon } from 'react-line-awesome';
 import './CourseAssignmentCard.css';
 
 export default function CourseAssignmentCard(props) {
@@ -49,10 +49,11 @@ export default function CourseAssignmentCard(props) {
 	return (
 		<div className="courseAssignmentCard">
 			<div className="icon">
-				<QuestionCircleIcon />
+				<ClipboardListIcon />
 			</div>
 			<div className="assignmentDetails">
 				<div className="assignmentDesc">{props.assignment.title}</div>
+
 				{props.assignment.dueDate && (
 					<span className="assignmentDueDate">
 						{mon} {monthExist.day ? monthExist.day : ''}

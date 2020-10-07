@@ -8,7 +8,7 @@ export default function CourseCard({ details }) {
 		<div className="card">
 			<Link
 				style={{ textDecoration: 'none' }}
-				to={{ pathname: '/course/assignment', state: { course: props.details } }}
+				to={{ pathname: '/course/assignment', state: { course: details } }}
 			>
 				<div
 					style={{
@@ -20,11 +20,9 @@ export default function CourseCard({ details }) {
 					}}
 					className="top"
 				>
-					<div className="courseName">{props.details.name}</div>
-					<div className="courseSection">
-						{props.details.section ? props.details.section : ' '}
-					</div>
-					<div className="courseTeacher">{props.details.teacherInfo.name.fullName}</div>
+					<div className="courseName">{details.name}</div>
+					<div className="courseSection">{details.section ? details.section : ' '}</div>
+					<div className="courseTeacher">{details.teacherInfo.name.fullName}</div>
 				</div>
 			</Link>
 			<div className="bottom">
