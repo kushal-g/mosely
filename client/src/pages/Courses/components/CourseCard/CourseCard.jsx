@@ -1,22 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useLocalStorage from '../../../../Hooks/useLocalStorage';
 import randomColor from 'randomcolor';
 import './CourseCard.css';
 
 export default function CourseCard({ details }) {
+	const [cardColor, setCardColor] = useLocalStorage(
+		details.id,
+		randomColor({
+			luminosity: 'dark',
+			format: 'rgba',
+			alpha: 0.75,
+		})
+	);
+
 	return (
 		<div className="card">
 			<Link
 				style={{ textDecoration: 'none' }}
-				to={{ pathname: '/course/assignment', state: { course: details } }}
+				to={{ pathname: `/course/assignment/${details.id}`, state: { course: details } }}
 			>
 				<div
 					style={{
-						backgroundColor: randomColor({
-							luminosity: 'dark',
-							format: 'rgba',
-							alpha: 0.75,
-						}),
+						backgroundColor: cardColor,
 					}}
 					className="top"
 				>

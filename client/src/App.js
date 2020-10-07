@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useParams } from 'react';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import { AuthProvider } from './context/Auth';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
@@ -20,7 +20,11 @@ function App() {
 					<PrivateRoute exact path="/courses" component={Courses} />
 					<Route exact path="/loading" component={DriveLoading} />
 					<Route exact path="/test" component={Test} />
-					<PrivateRoute exact path="/course/assignment" component={CourseAssignment} />
+					<PrivateRoute
+						exact
+						path="/course/assignment/:id"
+						component={CourseAssignment}
+					/>
 				</div>
 			</BrowserRouter>
 		</AuthProvider>
