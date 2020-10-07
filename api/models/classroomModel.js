@@ -31,6 +31,12 @@ module.exports.getCourses = async tokens => {
 	return courses === undefined ? [] : courses;
 };
 
+module.exports.getSingleCourse = async (tokens, courseId) => {
+	const classroom = getClassroom(tokens);
+	const { data } = await classroom.courses.get({ id: courseId });
+	return data;
+};
+
 module.exports.getCourseWork = async (tokens, courseId) => {
 	const classroom = getClassroom(tokens);
 	const {

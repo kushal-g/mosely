@@ -11,4 +11,11 @@ router.get(
 	GetAccessTokens,
 	ClassroomController.getCourseWork
 );
+router.get(
+	'/course/read',
+	CheckAuthentication,
+	GetAccessTokens,
+	ClassroomController.getSingleCourse
+);
+
 module.exports = router;

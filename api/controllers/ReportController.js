@@ -21,6 +21,22 @@ module.exports.saveMossId = async (req, res, next) => {
 	}
 };
 
+module.exports.getReport = async (req, res, next) => {
+	try {
+		console.log(chalk.yellow('Getting report...'));
+		const report = await reports.get(req.query.courseWorkId);
+		console.log(chalk.green('Got it!'));
+		res.status(200).send({
+			statusCode: 200,
+			dataa: {
+				report: report ? report : false,
+			},
+		});
+	} catch (e) {
+		next(e);
+	}
+};
+
 module.exports.initialSync = async (req, res, next) => {
 	try {
 		console.log(chalk.yellow('Syncing reports...'));
@@ -54,6 +70,7 @@ module.exports.initialSync = async (req, res, next) => {
 					client.addRawFile(submittedCode, createName(fullName, emailAddress));
 				}
 
+				console.log(chalk.yellow(`Sending ${work.id} for evaluation...`));
 				//Actually sends the files to moss
 				const url = await client.process();
 				//process url
