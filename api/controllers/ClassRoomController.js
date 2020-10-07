@@ -36,6 +36,29 @@ module.exports.getCourses = async (req, res, next) => {
 	}
 };
 
+module.exports.getSingleCourse = async (req, res, next) => {
+	try {
+		const {
+			tokens,
+			query: { courseId },
+		} = req;
+
+		const course = await classroom.getSingleCourse(tokens, courseId);
+		const teacherInfo = await classroom.getUserDetails(tokens, course.ownerId);
+
+		course.teacherInfo = teacherInfo;
+
+		res.status(200).send({
+			statusCode: 200,
+			data: {
+				course,
+			},
+		});
+	} catch (e) {
+		next(e);
+	}
+};
+
 module.exports.getCourseWork = async (req, res, next) => {
 	try {
 		const {
