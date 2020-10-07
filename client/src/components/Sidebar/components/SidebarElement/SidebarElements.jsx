@@ -5,6 +5,7 @@ export default function SidebarElements(props) {
 	var letter = props.details.name.charAt(0);
 	var randomColor = require('randomcolor');
 	var color = randomColor();
+
 	return (
 		<div className="courseElement">
 			<div
