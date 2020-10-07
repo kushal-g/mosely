@@ -31,7 +31,7 @@ export default function Courses() {
 
 	return (
 		<div>
-			<Navbar teacher={teacherCourses} student={studentCourses} />
+			<Navbar />
 			<div className="viewCourses">
 				{studentCourses.map(course => {
 					return <CourseCard details={course} />;
