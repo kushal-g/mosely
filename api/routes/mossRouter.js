@@ -12,4 +12,6 @@ router.post(
 	ReportController.initialSync
 );
 
+router.get('/reports/update', ReportController.incrementalSync);
+
 module.exports = router;

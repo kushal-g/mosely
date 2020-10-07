@@ -10,6 +10,7 @@ const mossRouter = require('./routes/mossRouter');
 const { getLanguage } = require('./utils/languageValidators');
 const { createName, decodeNameAndEmail } = require('./utils/fileNameUtilsForMoss');
 const parseURL = require('./utils/parseURL');
+const { getUsersWithMoss } = require('./models/userData');
 
 const app = express();
 app.use(cors());
