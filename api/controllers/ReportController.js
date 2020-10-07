@@ -8,6 +8,7 @@ const chalk = require('chalk');
 const { createName } = require('../utils/fileNameUtilsForMoss');
 const parseURL = require('../utils/parseURL');
 const reports = require('../models/report');
+const getLatestSubmissionDate = require('../utils/getLatestSubmissionDate');
 
 module.exports.saveMossId = async (req, res, next) => {
 	try {
@@ -22,6 +23,7 @@ module.exports.saveMossId = async (req, res, next) => {
 
 module.exports.initialSync = async (req, res, next) => {
 	try {
+		console.log(chalk.yellow('Syncing reports...'));
 		const { tokens } = req;
 		let courses = await classRoomDb.getCourses(tokens);
 		const mossId = await userDb.getMossId(req.user.uid);
@@ -33,10 +35,10 @@ module.exports.initialSync = async (req, res, next) => {
 			for (const work of courseWorks) {
 				const language = getLanguage(work.description);
 				const client = new MossClient(language, mossId);
-				const submissions = await classRoomDb.getSubmissions(tokens, course.id, work.id);
 
+				const submissions = await classRoomDb.getSubmissions(tokens, course.id, work.id);
 				//Since need at least 2 files for comparison
-				if (submissions < 2) {
+				if (submissions.length < 2) {
 					continue;
 				}
 
@@ -56,14 +58,102 @@ module.exports.initialSync = async (req, res, next) => {
 				const url = await client.process();
 				//process url
 				const report = parseURL(url);
-				await reports.save(work.id, report);
+				await reports.save({
+					courseWorkId: work.id,
+					report,
+					lastUpdateTime: getLatestSubmissionDate(submissions),
+					numSubmissions: submissions.length,
+				});
+				console.log(chalk.green(`Sync for ${work.id} complete`));
 			}
 		}
 
+		console.log(chalk.green('Syncing complete'));
 		res.status(200).send({
 			statusCode: 200,
 			msg: 'Moss id saved and initial sync complete',
 		});
+	} catch (e) {
+		next(e);
+	}
+};
+
+module.exports.incrementalSync = async (req, res, next) => {
+	try {
+		console.log(chalk.yellow('Begins incremental sync...'));
+		const users = await userDb.getUsersWithMoss();
+		for (user of users) {
+			const { tokens, mossId } = user;
+			let courses = await classRoomDb.getCourses(tokens);
+			courses = courses.filter(course => course.teacherFolder); // Only sync courses where user is teacher
+
+			for (const course of courses) {
+				let courseWorks = await classRoomDb.getCourseWork(tokens, course.id);
+				courseWorks = courseWorks.filter(work => getLanguage(work.description)); //Only sync coursework where i can find the language
+				for (const work of courseWorks) {
+					const language = getLanguage(work.description);
+					const client = new MossClient(language, mossId);
+
+					const submissions = await classRoomDb.getSubmissions(
+						tokens,
+						course.id,
+						work.id
+					);
+
+					const prevReport = await reports.get(work.id);
+					const currentLastUpdateTime = getLatestSubmissionDate(submissions);
+
+					//if a previous report exists
+					if (prevReport !== undefined) {
+						//No updates conditions
+						if (
+							prevReport.lastUpdateTime === currentLastUpdateTime &&
+							prevReport.numSubmissions === submissions.length
+						) {
+							//console.log('No updates');
+							continue;
+						}
+
+						//old report which now has only 1 submission
+						if (submissions.length < 2) {
+							//console.log('Discarding report');
+							await reports.delete(work.id);
+							continue;
+						}
+					}
+
+					if (submissions.length < 2) {
+						continue;
+					}
+
+					//console.log('Generating new report');
+					for (const singleSubmission of submissions) {
+						const driveId = extractDriveId(singleSubmission);
+						const submittedCode = await googleDrive.getFile(tokens, driveId);
+
+						const {
+							name: { fullName },
+							emailAddress,
+						} = await classRoomDb.getUserDetails(tokens, singleSubmission.userId);
+
+						client.addRawFile(submittedCode, createName(fullName, emailAddress));
+					}
+
+					//Actually sends the files to moss
+					const url = await client.process();
+					//process url
+					const report = parseURL(url);
+					await reports.save({
+						courseWorkId: work.id,
+						report,
+						lastUpdateTime: currentLastUpdateTime,
+						numSubmissions: submissions.length,
+					});
+				}
+			}
+		}
+		console.log(chalk.green('Incremental sync complete!'));
+		res.sendStatus(200);
 	} catch (e) {
 		next(e);
 	}
