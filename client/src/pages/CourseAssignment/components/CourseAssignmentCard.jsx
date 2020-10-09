@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ClipboardListIcon } from 'react-line-awesome';
 import './CourseAssignmentCard.css';
 
 export default function CourseAssignmentCard(props) {
+	// let { id } = useParams();
 	const monthExist = props.assignment.dueDate ? props.assignment.dueDate : 0;
 	var mon;
 	switch (monthExist.month) {
@@ -47,19 +49,24 @@ export default function CourseAssignmentCard(props) {
 			mon = '';
 	}
 	return (
-		<div className="courseAssignmentCard">
-			<div className="icon">
-				<ClipboardListIcon />
-			</div>
-			<div className="assignmentDetails">
-				<div className="assignmentDesc">{props.assignment.title}</div>
+		<Link
+			style={{ textDecoration: 'none' }}
+			to={{ pathname: `/course/assignment/report/${props.assignment.id}` }}
+		>
+			<div className="courseAssignmentCard">
+				<div className="icon">
+					<ClipboardListIcon />
+				</div>
+				<div className="assignmentDetails">
+					<div className="assignmentDesc">{props.assignment.title}</div>
 
-				{props.assignment.dueDate && (
-					<span className="assignmentDueDate">
-						{mon} {monthExist.day ? monthExist.day : ''}
-					</span>
-				)}
+					{props.assignment.dueDate && (
+						<span className="assignmentDueDate">
+							{mon} {monthExist.day ? monthExist.day : ''}
+						</span>
+					)}
+				</div>
 			</div>
-		</div>
+		</Link>
 	);
 }

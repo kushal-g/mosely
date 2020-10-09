@@ -11,9 +11,10 @@ export default function CourseAssignment(props) {
 	const { currentUser, loading } = useContext(AuthContext);
 	const [courseAssignment, setCourseAssignment] = useState([]);
 	const [course, setCourse] = useState(false);
+	let { id } = useParams();
 
 	const [cardColor, setCardColor] = useLocalStorage(
-		props.location.state.course.id,
+		id,
 		randomColor({
 			luminosity: 'dark',
 			format: 'rgba',
@@ -21,11 +22,10 @@ export default function CourseAssignment(props) {
 		})
 	);
 
-	let { id } = useParams();
 	async function getSingleCourse() {
 		const token = await currentUser.getIdToken();
 		const result = await fetch(
-			`${process.env.REACT_APP_URL}classroom/course/read/?courseId=${id}`,
+			`${process.env.REACT_APP_URL}/classroom/course/read/?courseId=${id}`,
 			{
 				method: 'get',
 				headers: {
