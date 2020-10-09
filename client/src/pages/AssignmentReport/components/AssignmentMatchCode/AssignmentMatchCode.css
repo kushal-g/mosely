@@ -2,12 +2,15 @@
 	display: flex;
 	margin: auto;
 	margin-top: 100px;
+	height: 100vh;
 }
 .file1 {
+	height: 100%;
 	margin: 1rem;
 	width: 50%;
 }
 .file2 {
+	height: 100%;
 	margin: 1rem;
 	width: 50%;
 }
