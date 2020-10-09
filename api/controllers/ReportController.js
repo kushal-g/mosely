@@ -107,7 +107,9 @@ module.exports.incrementalSync = async (req, res, next) => {
 			for (const course of courses) {
 				let courseWorks = await classRoomDb.getCourseWork(tokens, course.id);
 				courseWorks = courseWorks.filter(work => getLanguage(work.description)); //Only sync coursework where i can find the language
+
 				for (const work of courseWorks) {
+					console.log(`Checking ${work.id}...`);
 					const language = getLanguage(work.description);
 					const client = new MossClient(language, mossId);
 
@@ -127,13 +129,13 @@ module.exports.incrementalSync = async (req, res, next) => {
 							prevReport.lastUpdateTime === currentLastUpdateTime &&
 							prevReport.numSubmissions === submissions.length
 						) {
-							//console.log('No updates');
+							console.log('No updates');
 							continue;
 						}
 
 						//old report which now has only 1 submission
 						if (submissions.length < 2) {
-							//console.log('Discarding report');
+							console.log('Discarding report');
 							await reports.delete(work.id);
 							continue;
 						}
@@ -143,7 +145,7 @@ module.exports.incrementalSync = async (req, res, next) => {
 						continue;
 					}
 
-					//console.log('Generating new report');
+					console.log('Generating new report');
 					for (const singleSubmission of submissions) {
 						const driveId = extractDriveId(singleSubmission);
 						const submittedCode = await googleDrive.getFile(tokens, driveId);
