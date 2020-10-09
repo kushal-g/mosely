@@ -9,6 +9,8 @@ import './App.css';
 import GoogleSignIn from './pages/GoogleSignIn/GoogleSignIn';
 import Test from './pages/Test/Test';
 import CourseAssignment from './pages/CourseAssignment/CourseAssignment';
+import AssignmentReport from './pages/AssignmentReport/AssignmentReport';
+import AssignmentMatchCode from './pages/AssignmentReport/components/AssignmentMatchCode/AssignmentMatchCode';
 
 function App() {
 	return (
@@ -24,6 +26,16 @@ function App() {
 						exact
 						path="/course/assignment/:id"
 						component={CourseAssignment}
+					/>
+					<PrivateRoute
+						exact
+						path="/course/assignment/report/:id"
+						component={AssignmentReport}
+					/>
+					<PrivateRoute
+						exact
+						path="/course/assignments/matched"
+						component={AssignmentMatchCode}
 					/>
 				</div>
 			</BrowserRouter>

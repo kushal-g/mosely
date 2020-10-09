@@ -28,7 +28,7 @@ module.exports.getReport = async (req, res, next) => {
 		console.log(chalk.green('Got it!'));
 		res.status(200).send({
 			statusCode: 200,
-			dataa: {
+			data: {
 				report: report ? report : false,
 			},
 		});
