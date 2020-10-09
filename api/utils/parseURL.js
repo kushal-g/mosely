@@ -20,7 +20,7 @@ module.exports = function (url) {
 					: $(element).children('a')[0].attribs.href;
 
 			if (codeURL) {
-				codeURL = codeURL.split('.html')[0] + `-${index}.html`;
+				codeURL = codeURL.split('.html')[0] + `-${index % 3}.html`;
 				res = request('GET', codeURL);
 				let html_code = res.getBody('utf8');
 				const ch = cheerio.load(html_code);
