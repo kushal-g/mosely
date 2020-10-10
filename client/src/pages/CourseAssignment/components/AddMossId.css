@@ -1,0 +1,13 @@
+.moss_id_input_container{
+	background-color: rgb(255, 213, 75);
+	padding:10px 30px;
+	margin-bottom:10px;
+	border-radius: 10px;
+}
+
+.moss_id_input_container input{
+	background-color: rgb(255, 213, 75);
+	border:none;
+	border-bottom:1px solid black;
+	outline:none;
+}

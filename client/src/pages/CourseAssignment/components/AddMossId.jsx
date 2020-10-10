@@ -23,8 +23,8 @@ export default function AddMossId() {
     console.log(body);
   }
   return (
-    <div style={{ backgroundColor: "black", position: "absolute" }}>
-      <h3>Add your Moss ID</h3>
+    <div className="moss_id_input_container">
+      <p>If you'd like to see the plagiarism report for this assignment, kindly enter your MOSS ID or ask some other teacher who is part of this course to do so.</p>
       <input
         type="text"
         onChange={(event) => setMoss(event.target.value)}
