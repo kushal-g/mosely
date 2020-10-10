@@ -4,6 +4,7 @@ const ReportController = require('../controllers/ReportController');
 const GetAccessTokens = require('../middlewares/GetAccessTokens');
 const router = express.Router();
 
+router.get('/id/read',CheckAuthentication,ReportController.getMossId)
 router.post(
 	'/id/update',
 	CheckAuthentication,
@@ -15,5 +16,6 @@ router.post(
 router.get('/reports/update', ReportController.incrementalSync);
 
 router.get('/report', CheckAuthentication, ReportController.getReport);
+
 
 module.exports = router;

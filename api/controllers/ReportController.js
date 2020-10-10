@@ -10,6 +10,22 @@ const parseURL = require('../utils/parseURL');
 const reports = require('../models/report');
 const getLatestSubmissionDate = require('../utils/getLatestSubmissionDate');
 
+module.exports.getMossId = async (req,res,next) =>{
+	try{	
+		console.log(chalk.yellow('Checking if Moss ID present'))
+		const mossId = await userDb.getMossId(req.user.uid)
+		console.log(chalk.green(`Moss ID ${mossId?"Present":"Not Present"}`))
+		res.status(200).send({
+			statusCode:200,
+			data:{
+				mossId
+			}
+		})
+	}catch(e){
+		next(e)
+	}
+}
+
 module.exports.saveMossId = async (req, res, next) => {
 	try {
 		console.log(chalk.yellow('Saving moss id...'));
