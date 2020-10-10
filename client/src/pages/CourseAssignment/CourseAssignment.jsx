@@ -77,21 +77,22 @@ export default function CourseAssignment(props) {
     console.log(body.data);
   }
   useEffect(() => {
-
     getAssignment();
-    checkMoss().then(()=>{
+    checkMoss().then(() => {
       if (props.location.state) setCourse(props.location.state.course);
       else getSingleCourse();
-    })
-  }, [currentUser]);
+    });
+  }, [currentUser, id]);
 
   return (
     <div>
       <Navbar />
       {course && (
         <div className="assignmentBox">
-          {course.teacherFolder && !mossId &&<AddMossId />}
-        
+          {course.teacherFolder && !mossId && (
+            <AddMossId checkMoss={checkMoss} />
+          )}
+
           <div className="courseDesc" style={{ backgroundColor: cardColor }}>
             <div className="assignmentCourseDetails">
               <div className="assignmentCourseName">{course.name}</div>
@@ -105,7 +106,13 @@ export default function CourseAssignment(props) {
           </div>
           <div className="assignmentCard">
             {courseAssignment.map((assign) => {
-              return <CourseAssignmentCard assignment={assign} />;
+              var teacherPresent = course.teacherFolder ? true : false;
+              return (
+                <CourseAssignmentCard
+                  assignment={assign}
+                  teacher={teacherPresent}
+                />
+              );
             })}
           </div>
         </div>
