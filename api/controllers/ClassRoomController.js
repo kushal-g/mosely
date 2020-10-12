@@ -8,10 +8,18 @@ module.exports.getCourses = async (req, res, next) => {
 		console.log(chalk.green('Got em!'));
 
 		console.log(chalk.yellow('Fetching teacher details...'));
+		const teacherDetailsPromiseArray = []
+
 		for (let i = 0; i < courses.length; i++) {
-			const teacherInfo = await classroom.getUserDetails(req.tokens, courses[i].ownerId);
-			courses[i].teacherInfo = { ...teacherInfo };
+			teacherDetailsPromiseArray.push(classroom.getUserDetails(req.tokens, courses[i].ownerId));
 		}
+
+		const teacherDetails = await Promise.all(teacherDetailsPromiseArray)
+		
+		teacherDetails.map((teacherInfo,i)=>{
+			courses[i].teacherInfo = { ...teacherInfo };
+		})
+		
 		console.log(chalk.green('Fetched'));
 
 		const data = {
