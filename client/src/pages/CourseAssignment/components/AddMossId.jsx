@@ -35,7 +35,8 @@ export default function AddMossId(props) {
         onChange={(event) => setMoss(event.target.value)}
         value={moss}
       />
-      <button type="submit" onClick={addMoss}>
+      <br></br>
+      <button className="addMossIdBtn" type="submit" onClick={addMoss}>
         Submit
       </button>
     </div>
