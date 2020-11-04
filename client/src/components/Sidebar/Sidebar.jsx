@@ -10,6 +10,7 @@ export default function Sidebar(props) {
 
 	async function getCourses() {
 		const token = await props.currentUser.getIdToken();
+
 		const result = await fetch(`${process.env.REACT_APP_URL}/classroom/courses`, {
 			method: 'get',
 			headers: {
@@ -19,9 +20,8 @@ export default function Sidebar(props) {
 		});
 
 		const body = await result.json();
-		setTeachingCourses(body.data.courses.teacher);
-		setEnrolledCourses(body.data.courses.student);
-		console.log(body.data);
+		setTeachingCourses(body.data?.courses?.teacher ?? []);
+		setEnrolledCourses(body.data?.courses?.student ?? []);
 	}
 
 	useEffect(() => {
@@ -30,15 +30,15 @@ export default function Sidebar(props) {
 
 	return (
 		<aside className={props.open ? 'sidebar-active' : ''}>
-			<a href="/courses" className="allCourses">
-				<div className="home">
+			<a href='/courses' className='allCourses'>
+				<div className='home'>
 					<HomeIcon />
 				</div>
 				Classes
 			</a>
 			{teachingCourses.length > 0 && (
 				<div>
-					<div className="sideHead">Teaching</div>
+					<div className='sideHead'>Teaching</div>
 					<div>
 						{teachingCourses.map(course => {
 							return <SidebarElements details={course} />;
@@ -48,7 +48,7 @@ export default function Sidebar(props) {
 			)}
 			{enrolledCourses.length > 0 && (
 				<div>
-					<div className="sideHead">Enrolled</div>
+					<div className='sideHead'>Enrolled</div>
 					<div>
 						{enrolledCourses.map(course => {
 							return <SidebarElements details={course} />;
