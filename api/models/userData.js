@@ -9,7 +9,6 @@ module.exports.getUsersWithMoss = async () => {
 	return users;
 };
 
-
 module.exports.saveMossId = async (uid, mossId) => {
 	await userDb.doc(uid).update({
 		mossId,
@@ -18,7 +17,7 @@ module.exports.saveMossId = async (uid, mossId) => {
 
 module.exports.getMossId = async uid => {
 	const doc = await userDb.doc(uid).get();
-	return doc.data().mossId ? doc.data().mossId:false;
+	return doc.data().mossId ? doc.data().mossId : false;
 };
 
 module.exports.saveTokensAndClassroomId = async (uid, tokens, classRoomId) => {
@@ -38,4 +37,8 @@ module.exports.getTokens = async uid => {
 	const doc = await userDb.doc(uid).get();
 	console.log(chalk.green('Fetched!'));
 	return doc.data().tokens;
+};
+
+module.exports.removeUserData = async uid => {
+	await userDb.doc(uid).delete();
 };

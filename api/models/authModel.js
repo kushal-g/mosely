@@ -27,6 +27,13 @@ module.exports.confirmAuthorization = async authCode => {
 	return token;
 };
 
+module.exports.revokeTokens = async tokens => {
+	const oauthClient = getOAuthClient();
+	console.log(tokens);
+	const result = await oauthClient.revokeToken(tokens.refresh_token);
+	return result.data.success;
+};
+
 const getOAuthClient = () => {
 	const credentials = JSON.parse(process.env.CLASSROOM_CREDENTIALS);
 	const { client_secret, client_id, redirect_uris } = credentials.web;
