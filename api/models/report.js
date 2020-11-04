@@ -17,5 +17,8 @@ module.exports.get = async courseWorkId => {
 };
 
 module.exports.delete = async courseWorkId => {
-	await reportDb.doc(courseWorkId).delete();
+	const report = await reportDb.doc(courseWorkId).get();
+	if (report.exists) {
+		await reportDb.doc(courseWorkId).delete();
+	}
 };
