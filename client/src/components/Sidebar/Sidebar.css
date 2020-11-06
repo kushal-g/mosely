@@ -1,49 +1,65 @@
 aside {
-	padding-bottom: 0.5rem;
-	padding-top: 0.5rem;
-	top: 80px;
-	position: fixed;
-	height: 90vh;
-	left: -275px;
-	width: 275px;
-	background-color: white;
-	box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
-	transition: left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-	z-index: 2;
-	text-align: left;
-	overflow-x: hidden;
-	overflow-y: auto;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  top: 80px;
+  position: fixed;
+  height: 90vh;
+  left: -275px;
+  width: 275px;
+  background-color: white;
+  box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
+  transition: left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 2;
+  text-align: left;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .sidebar-active {
-	left: 0;
+  left: 0;
 }
 
 .allCourses {
-	text-decoration: none;
-	color: #5f6368;
-	height: 4rem;
-	align-items: center;
-	padding-left: 1rem;
-	padding-right: 1rem;
-	display: flex;
-	font-weight: 500;
+  text-decoration: none;
+  color: #5f6368;
+  height: 4rem;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  font-weight: 500;
 }
 .home {
-	padding: 1rem 1rem;
-	align-items: center;
-	width: 2.5rem;
-	color: #5f6368;
-	fill: #5f6368;
+  padding: 1rem 1rem;
+  align-items: center;
+  width: 2.5rem;
+  color: #5f6368;
+  fill: #5f6368;
 }
 .sideHead {
-	margin-top: 1rem;
-	align-items: center;
-	padding-left: 1rem;
-	padding-right: 1rem;
-	letter-spacing: 0.01785714em;
-	font-family: 'Google Sans', Roboto, Arial, sans-serif;
-	font-size: 0.875rem;
-	font-weight: 500;
-	line-height: 1.25rem;
-	color: #80868b;
+  margin-top: 1rem;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  letter-spacing: 0.01785714em;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: #80868b;
+}
+.unlink {
+  padding: 1rem 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: #5f6368;
+  height: 4rem;
+  align-items: center;
+  display: flex;
+  font-weight: 500;
+}
+.allCourses:hover {
+  text-decoration: underline;
+}
+.unlink:hover {
+  text-decoration: underline;
 }
