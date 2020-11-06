@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
+import {ChevronCircleDownIcon} from "react-line-awesome"
 import firebase from '../../utils/firebase';
 import { AuthContext } from '../../context/Auth';
+import PopUp from "./PopUp";
 import './Navbar.css';
 import { useState } from 'react';
 
 export default function Navbar() {
 	const { currentUser, loading } = useContext(AuthContext);
+	const [openDropdown,setOpenDropdown]=useState(false);
+	const [viewMoss,setViewMoss]=useState(false);
 	const [openSidebar, setOpenSidebar] = useState(false);
 	const hamburgerClass = 'hamburger hamburger-spin';
 
@@ -18,6 +22,7 @@ export default function Navbar() {
 				window.location.href = '/';
 			});
 	}
+	
 
 	return (
 		<div className="landingPage_container landingPage_center">
@@ -41,11 +46,24 @@ export default function Navbar() {
 				)}
 				<h1 className="landingPage_menu__logo">mosely</h1>
 				{!loading && currentUser && (
-					<button onClick={logout} className="landingPage_menu__list">
-						Logout
-					</button>
+					<div style={{position:"relative"}}>
+					<button onClick={()=>setOpenDropdown((prev)=>{return !prev})} className="landingPage_menu__list">
+						<ChevronCircleDownIcon/>
+					</button>	
+					{openDropdown &&
+					<div className="arrowDropdown">
+						<div onClick={()=>setViewMoss(true)}>View MOSS ID</div>
+						<div onClick={logout}>Logout</div>
+					</div>
+				    }
+					</div>				
 				)}
 			</nav>
+			{
+			 viewMoss && 
+			  <PopUp setViewMoss={setViewMoss}/>
+			}
+						
 			{!loading && currentUser && <Sidebar currentUser={currentUser} open={openSidebar} />}
 		</div>
 	);

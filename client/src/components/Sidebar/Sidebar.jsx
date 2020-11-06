@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect,useContext } from 'react';
+import firebase from '../../utils/firebase';
 import { HomeIcon } from 'react-line-awesome';
+import { AuthContext } from "../../context/Auth";
 import './Sidebar.css';
 import SidebarElements from './components/SidebarElement/SidebarElements';
 
 export default function Sidebar(props) {
+	const { currentUser, loading } = useContext(AuthContext);
 	const [teachingCourses, setTeachingCourses] = useState([]);
 	const [enrolledCourses, setEnrolledCourses] = useState([]);
 
@@ -23,6 +26,33 @@ export default function Sidebar(props) {
 		setTeachingCourses(body.data?.courses?.teacher ?? []);
 		setEnrolledCourses(body.data?.courses?.student ?? []);
 	}
+
+	function logout() {
+		firebase
+			.auth()
+			.signOut()
+			.then(() => {
+				window.location.href = '/';
+			});
+	}
+
+	async function unlinkDrive() {
+		const token = await currentUser.getIdToken();
+		const result = await fetch(
+		  `${process.env.REACT_APP_URL}/auth/unlink`,
+		  {
+			method: "post",
+			headers: {
+			  Authorization: `Bearer ${token}`,
+			  "Content-type": "application/json",
+			},
+		  }
+		);
+	
+		const body = await result.json();
+		console.log(body);
+		logout();
+	  }
 
 	useEffect(() => {
 		getCourses();
@@ -56,6 +86,9 @@ export default function Sidebar(props) {
 					</div>
 				</div>
 			)}
+			<div>
+				<div className="unlink" onClick={unlinkDrive}>Unlink Drive and Classroom</div>
+			</div>
 		</aside>
 	);
 }
