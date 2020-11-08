@@ -170,6 +170,12 @@ class MossClient {
 	async process() {
 		return new Promise((resolve, reject) => {
 			let socket = new net.Socket();
+
+			const timeoutId = setTimeout(() => {
+				socket.destroy();
+				reject();
+			}, 5000);
+
 			socket.connect(moss_port, moss_host, () => {
 				socket.write(`moss ${this.userId}\n`);
 				socket.write(`directory ${this.opts.d}\n`);
@@ -178,7 +184,6 @@ class MossClient {
 				socket.write(`show ${this.opts.n}\n`);
 				socket.write(`language ${this.opts.l}\n`);
 			});
-
 			socket.on('data', async data => {
 				if (data == 'no\n') reject(new Error('Invalid language specified'));
 
@@ -210,6 +215,7 @@ class MossClient {
 				}
 
 				if (String(data).startsWith('http://moss.stanford.edu')) {
+					clearTimeout(timeoutId);
 					socket.write('end\n');
 					socket.destroy();
 					resolve(data.toString('utf8'));
