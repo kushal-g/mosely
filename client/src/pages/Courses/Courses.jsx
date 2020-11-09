@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import Loader from "../../components/Loader/Loader";
 import "./Courses.css";
 import { AuthContext } from "../../context/Auth";
 import Navbar from "../../components/Navbar/Navbar";
@@ -32,10 +33,12 @@ export default function Courses() {
     getCourses();
   }, [currentUser]);
 
+
   return (
     <div>
       <Navbar />
       <div className="viewCourses">
+      {loading && <Loader/>}
         {studentCourses.map((course) => {
           return <CourseCard details={course} label="student" />;
         })}

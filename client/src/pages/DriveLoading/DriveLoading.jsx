@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import "./DriveLoading.css";
 import { useEffect } from 'react';
 import { AuthContext } from '../../context/Auth';
 
@@ -30,5 +31,17 @@ export default function DriveLoading() {
 		if (currentUser && !loading) linkClassDrive();
 	}, [currentUser, loading]);
 
-	return <div>!!!!!Loading!!!!</div>;
+	return (
+		<div class="lds-grid">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	);
 }

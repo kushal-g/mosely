@@ -4,11 +4,14 @@ import {ChevronCircleDownIcon} from "react-line-awesome"
 import firebase from '../../utils/firebase';
 import { AuthContext } from '../../context/Auth';
 import PopUp from "./PopUp";
+import MessagePopUp from "./MessagePopUp";
 import './Navbar.css';
 import { useState } from 'react';
 
 export default function Navbar() {
 	const { currentUser, loading } = useContext(AuthContext);
+	const [confirmMessage,setConfirmMessage]=useState("");
+	const [viewMessage,setViewMessage]=useState(false);
 	const [openDropdown,setOpenDropdown]=useState(false);
 	const [viewMoss,setViewMoss]=useState(false);
 	const [openSidebar, setOpenSidebar] = useState(false);
@@ -61,9 +64,12 @@ export default function Navbar() {
 			</nav>
 			{
 			 viewMoss && 
-			  <PopUp setViewMoss={setViewMoss}/>
+			  <PopUp setViewMoss={setViewMoss} setViewMessage={setViewMessage} setConfirmMessage={setConfirmMessage}/>
 			}
-						
+			{
+				viewMessage && 
+				<MessagePopUp setViewMessage={setViewMessage} message={confirmMessage} />
+			}
 			{!loading && currentUser && <Sidebar currentUser={currentUser} open={openSidebar} />}
 		</div>
 	);
