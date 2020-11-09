@@ -10,6 +10,7 @@ const mossRouter = require('./routes/mossRouter');
 
 const app = express();
 const userDb = require('./models/userData');
+const path = require('path');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -30,6 +31,12 @@ app.use(async (err, req, res, next) => {
 		statusCode: 500,
 		msg: err.message,
 	});
+});
+
+app.use(express.static(path.join(__dirname, '/client/build')));
+
+app.get('/*', (req, res) => {
+	res.sendFile(path.join(__dirname, '/client/build/index.html'));
 });
 
 app.listen(process.env.PORT, () => {
