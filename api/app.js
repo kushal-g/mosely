@@ -9,6 +9,8 @@ const classRoomRouter = require('./routes/classRoomRouter');
 const mossRouter = require('./routes/mossRouter');
 
 const app = express();
+const userDb = require('./models/userData');
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -16,8 +18,14 @@ app.use('/auth', authRouter);
 app.use('/classroom', classRoomRouter);
 app.use('/moss', mossRouter);
 
-app.use((err, req, res, next) => {
+app.use(async (err, req, res, next) => {
 	console.error(err, chalk.red(err.message));
+	if (err.message === 'invalid_grant' || err.message === 'Invalid Credentials') {
+		//access revoked
+		console.log(chalk.yellow('Access is revoked, deleting...'));
+		await userDb.removeUserData(req.user.uid);
+		console.log(chalk.green('Deleted!'));
+	}
 	res.status(500).send({
 		statusCode: 500,
 		msg: err.message,
