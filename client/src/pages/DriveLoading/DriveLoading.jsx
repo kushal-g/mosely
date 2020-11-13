@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import "./DriveLoading.css";
 import { useEffect } from 'react';
 import { AuthContext } from '../../context/Auth';
+import Loader from '../../components/Loader/Loader';
 
 export default function DriveLoading() {
 	const { currentUser, loading } = useContext(AuthContext);
@@ -23,7 +23,7 @@ export default function DriveLoading() {
 		});
 
 		const body = await result.json();
-		window.location.href = '/courses';
+		//window.location.href = '/courses';
 		console.log(body);
 	}
 
@@ -31,17 +31,5 @@ export default function DriveLoading() {
 		if (currentUser && !loading) linkClassDrive();
 	}, [currentUser, loading]);
 
-	return (
-		<div class="lds-grid">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
-	);
+	return <Loader />;
 }
