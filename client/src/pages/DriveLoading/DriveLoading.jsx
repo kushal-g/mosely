@@ -23,7 +23,7 @@ export default function DriveLoading() {
 		});
 
 		const body = await result.json();
-		//window.location.href = '/courses';
+		window.location.href = '/courses';
 		console.log(body);
 	}
 

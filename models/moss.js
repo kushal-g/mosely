@@ -23,6 +23,7 @@
 const fs = require('fs');
 const path = require('path');
 const net = require('net');
+const { time } = require('console');
 
 const moss_host = 'moss.stanford.edu';
 const moss_port = 7690;
@@ -168,13 +169,14 @@ class MossClient {
 	}
 
 	async process() {
+		
 		return new Promise((resolve, reject) => {
 			let socket = new net.Socket();
 
-			const timeoutId = setTimeout(() => {
-				socket.destroy();
-				reject();
-			}, 5000);
+			// const timeoutId = setTimeout(() => {
+			// 	socket.destroy();
+			// 	reject();
+			// }, 60000);
 
 			socket.connect(moss_port, moss_host, () => {
 				socket.write(`moss ${this.userId}\n`);
@@ -185,6 +187,7 @@ class MossClient {
 				socket.write(`language ${this.opts.l}\n`);
 			});
 			socket.on('data', async data => {
+				
 				if (data == 'no\n') reject(new Error('Invalid language specified'));
 
 				if (data == 'yes\n') {
@@ -215,7 +218,7 @@ class MossClient {
 				}
 
 				if (String(data).startsWith('http://moss.stanford.edu')) {
-					clearTimeout(timeoutId);
+					// clearTimeout(timeoutId);
 					socket.write('end\n');
 					socket.destroy();
 					resolve(data.toString('utf8'));
@@ -223,7 +226,38 @@ class MossClient {
 			});
 		});
 	}
+async verifyMossId(){
+	// const time=require('../utils/ExecTime')
+	// const t=new time();
+	// t.start();
+	return new Promise((resolve, reject) => {
+		let socket = new net.Socket();
 
+		const timeoutId = setTimeout(() => {
+			socket.destroy();
+			reject();
+		}, 40000);
+
+		socket.connect(moss_port, moss_host, () => {
+			socket.write(`moss ${this.userId}\n`);
+			socket.write(`directory ${this.opts.d}\n`);
+			socket.write(`X ${this.opts.x}\n`);
+			socket.write(`maxmatches ${this.opts.m}\n`);
+			socket.write(`show ${this.opts.n}\n`);
+			socket.write(`language ${this.opts.l}\n`);
+		});
+		socket.on('data', async data => {
+			
+			if(data)
+			{
+			// 	t.end();
+			// console.log(t.format())
+				clearTimeout(timeoutId);
+				resolve(true);
+			}
+		});
+	});
+}
 	async addRawFile(content, description) {
 		this.rawFiles.push({
 			content,
