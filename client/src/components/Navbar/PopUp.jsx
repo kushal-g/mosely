@@ -19,8 +19,8 @@ export default function PopUp(props) {
 			},
 		});
 
-		const body = await result.json();
-        setMossId(body.data.mossId);
+        const body = await result.json();
+        setMossId(body.data.mossId || "");
         // return mossId;
         console.log(mossId);
     }
