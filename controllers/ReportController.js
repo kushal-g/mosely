@@ -10,6 +10,7 @@ const parseURL = require('../utils/parseURL');
 const reports = require('../models/report');
 const getLatestSubmissionDate = require('../utils/getLatestSubmissionDate');
 const verifyMossId = require('../utils/verifyMossId');
+const ExecTime = require('../utils/ExecTime')
 
 module.exports.getMossId = async (req, res, next) => {
 	try {
@@ -120,6 +121,8 @@ module.exports.initialSync = async (req, res, next) => {
 
 module.exports.incrementalSync = async (req, res, next) => {
 	try {
+		const exe = new ExecTime()
+		exe.start()
 		console.log(chalk.yellow('Begins incremental sync...'));
 		const users = await userDb.getUsersWithMoss();
 		for (user of users) {
@@ -167,7 +170,7 @@ module.exports.incrementalSync = async (req, res, next) => {
 					if (submissions.length < 2) {
 						continue;
 					}
-
+					console.log(submissions)
 					console.log('Generating new report');
 					for (const singleSubmission of submissions) {
 						const driveId = extractDriveId(singleSubmission);
@@ -194,9 +197,11 @@ module.exports.incrementalSync = async (req, res, next) => {
 				}
 			}
 		}
+		exe.end()
+		console.log("Sync took", exe.format())
 		console.log(chalk.green('Incremental sync complete!'));
-		res.sendStatus(200);
+		
 	} catch (e) {
-		next(e);
+		console.error(e.message)
 	}
 };
