@@ -15,9 +15,9 @@ const path = require('path');
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use('/auth', authRouter);
-app.use('/classroom', classRoomRouter);
-app.use('/moss', mossRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/classroom', classRoomRouter);
+app.use('/api/moss', mossRouter);
 
 app.use(async (err, req, res, next) => {
 	console.error(err, chalk.red(err.message));
