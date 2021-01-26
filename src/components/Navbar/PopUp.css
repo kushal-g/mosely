@@ -1,0 +1,43 @@
+.popMoss {
+  text-align: left;
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  color: black;
+  padding: 1rem 1rem;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 5px;
+}
+.popMoss button {
+  background-color: var(--secondary-color);
+  color: black;
+  right: 0px;
+  margin: 10px 0px;
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 400;
+  border-radius: 5px;
+  border: none;
+}
+.popMoss input {
+  vertical-align: middle;
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 5px;
+}
+.backgroundArea {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 990;
+  background-color: gray;
+  opacity: 0.6;
+}
