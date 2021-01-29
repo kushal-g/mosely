@@ -2,6 +2,10 @@
 
 A Web Application built using FERN stack and MVC architecture for detecting plagiarism among students on submitting assignments by making using of Moss Stanford for ISE Department of Ramaiah Institute of Technology under the guidance of Dr. Mydhili K. Nair.
 
+### Demo
+
+<img src="https://media.giphy.com/media/uSH54opWClHwISKCC2/giphy.gif"/>
+
 ### Table of Contents
 
 ‒ [Hosting](#hosting)  
