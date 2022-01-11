@@ -18,7 +18,7 @@ A Web Application built using FERN stack and MVC architecture for detecting plag
 
 Project is currently hosted on [GCP App Engine](https://cloud.google.com/appengine).
 
-**Live URL:** https://mosely-dot-dsc-cloud-287107.el.r.appspot.com
+**Live URL:** https://mosely.azurewebsites.net/
 
 <a id="tech-stack"></a>
 
