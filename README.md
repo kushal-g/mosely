@@ -10,6 +10,7 @@ A Web Application built using FERN stack and MVC architecture for detecting plag
 
 ‒ [Hosting](#hosting)  
 ‒ [Tech Stack](#tech-stack)  
+‒ [Screenshots](#screenshots)  
 ‒ [Dev Environment Setup](#environment-setup)
 
 <a id="hosting"></a>
@@ -26,6 +27,13 @@ Project is currently hosted on [Azure App Service](https://azure.microsoft.com/e
 
 - React.JS and CSS
 - Node.JS, Express and Firebase
+
+<a id="screenshots"></a>
+## 📸 Screenshots
+<img src="https://imgur.com/rVLCnhy.png" alt="Dashboard"/>
+<img src="https://imgur.com/UOlS5Rj.png"/ alt="Graph">
+<img src="https://imgur.com/vekhqeQ.png" alt="Code Comparison"/>
+
 
 <a id="environment-setup"></a>
 
