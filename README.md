@@ -10,15 +10,16 @@ A Web Application built using FERN stack and MVC architecture for detecting plag
 
 ‒ [Hosting](#hosting)  
 ‒ [Tech Stack](#tech-stack)  
+‒ [Screenshots](#screenshots)  
 ‒ [Dev Environment Setup](#environment-setup)
 
 <a id="hosting"></a>
 
 ## 🚀 Hosting
 
-Project is currently hosted on [GCP App Engine](https://cloud.google.com/appengine).
+Project is currently hosted on [Azure App Service](https://azure.microsoft.com/en-in/services/app-service/).
 
-**Live URL:** https://mosely-dot-dsc-cloud-287107.el.r.appspot.com
+**Live URL:** https://mosely.azurewebsites.net/
 
 <a id="tech-stack"></a>
 
@@ -26,6 +27,13 @@ Project is currently hosted on [GCP App Engine](https://cloud.google.com/appengi
 
 - React.JS and CSS
 - Node.JS, Express and Firebase
+
+<a id="screenshots"></a>
+## 📸 Screenshots
+<img src="https://imgur.com/rVLCnhy.png" alt="Dashboard"/>
+<img src="https://imgur.com/UOlS5Rj.png"/ alt="Graph">
+<img src="https://imgur.com/vekhqeQ.png" alt="Code Comparison"/>
+
 
 <a id="environment-setup"></a>
 
