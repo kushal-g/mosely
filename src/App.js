@@ -11,6 +11,7 @@ import Test from './pages/Test/Test';
 import CourseAssignment from './pages/CourseAssignment/CourseAssignment';
 import AssignmentReport from './pages/AssignmentReport/AssignmentReport';
 import AssignmentMatchCode from './pages/AssignmentReport/components/AssignmentMatchCode/AssignmentMatchCode';
+import Contact from './pages/Contact/Contact';
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 				<div className="App">
 					<Route exact path="/" component={GoogleSignIn} />
 					<Route exact path="/link" component={LinkDrive} />
+					<Route exact path="/contact" component={Contact} />
 					<PrivateRoute exact path="/courses" component={Courses} />
 					<Route exact path="/loading" component={DriveLoading} />
 					<Route exact path="/test" component={Test} />

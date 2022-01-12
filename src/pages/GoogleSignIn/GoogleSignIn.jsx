@@ -5,6 +5,8 @@ import firebase from '../../utils/firebase';
 import { AuthContext } from '../../context/Auth';
 import { useContext } from 'react';
 import { useEffect } from 'react';
+import GRAPH from "../../assets/graph.png"
+import COMPARISON from "../../assets/comparison.png"
 
 function GoogleSignIn() {
 	//const [signedIn, setSignedIn] = useState(false);
@@ -33,12 +35,30 @@ function GoogleSignIn() {
 	return (
 		<div>
 			<Navbar />
-			<div className="signInDiv">
-				<button className="signInBtn" onClick={signed}>
+			<div className='landing'>
+				<section className='section-one'>
+					<div>
+						<div className='section-title'>
+							Focus on the assignment<br/>
+							Leave plagiarism checks to us
+						
+						</div>
+						<div className='section-subtitle'>
+						Experience Fast and Effective Code Plagiarism check with mosely
+
+						</div>
+						<button className="signInBtn" onClick={signed}>
 					<div className="logo"></div>
 					<label>Sign In with Google</label>
 				</button>
+							</div>
+					<div><img src={GRAPH} alt="graph"/></div>
+				</section>
+				
 			</div>
+			
+				
+			
 		</div>
 	);
 }

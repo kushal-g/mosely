@@ -7,6 +7,7 @@ import PopUp from "./PopUp";
 import MessagePopUp from "./MessagePopUp";
 import './Navbar.css';
 import { useState } from 'react';
+import { Link } from "react-router-dom"
 
 export default function Navbar() {
 	const { currentUser, loading } = useContext(AuthContext);
@@ -47,7 +48,9 @@ export default function Navbar() {
 						</div>
 					</button>
 				)}
-				<h1 className="landingPage_menu__logo">mosely</h1>
+				<h1 className="landingPage_menu__logo">
+					<Link to="/">mosely</Link>
+				</h1>
 				{!loading && currentUser && (
 					<div style={{position:"relative"}}>
 					<button onClick={()=>setOpenDropdown((prev)=>{return !prev})} className="landingPage_menu__list">
@@ -61,6 +64,13 @@ export default function Navbar() {
 				    }
 					</div>				
 				)}
+				{
+					!loading && !currentUser && <div style={{position:"relative"}}>
+						<div className="contact-us">
+							<Link to="/contact">Contact Us</Link>
+						</div>
+				</div>
+				}
 			</nav>
 			{
 			 viewMoss && 

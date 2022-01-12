@@ -1,0 +1,26 @@
+.ContactCard{
+    display: flex;
+    height:300px;
+    padding: 30px;
+    margin:20px;
+    box-shadow: rgb(201, 201, 201) 1px 1px 10px 1px;
+}
+
+.ContactCard img{
+    height: 250px;
+}
+
+.ContactCard > div{
+    display:flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.contact-name{
+    font-size: 50px;
+}
+.ContactCard a{
+    color:black;
+    margin: 5px 0;
+    font-size: 18px;
+}

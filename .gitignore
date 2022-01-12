@@ -120,3 +120,6 @@ dist
 app.yaml
 .gcloudignore
 build
+.env
+.vscode
+.DS_Store
