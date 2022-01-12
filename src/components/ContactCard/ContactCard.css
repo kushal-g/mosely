@@ -24,3 +24,16 @@
     margin: 5px 0;
     font-size: 18px;
 }
+
+@media screen and (max-width:800px) {
+    .ContactCard{
+        flex-direction: column;
+        height: unset;
+        align-items: center;
+        text-align: center;
+    }
+
+    .ContactCard img{
+        width: fit-content;
+    }
+}
