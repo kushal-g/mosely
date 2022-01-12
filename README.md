@@ -11,7 +11,6 @@ A Web Application built using FERN stack and MVC architecture for detecting plag
 ‒ [Hosting](#hosting)  
 ‒ [Tech Stack](#tech-stack)  
 ‒ [Screenshots](#screenshots)  
-‒ [Dev Environment Setup](#environment-setup)
 
 <a id="hosting"></a>
 
@@ -34,49 +33,3 @@ Project is currently hosted on [Azure App Service](https://azure.microsoft.com/e
 <img src="https://imgur.com/UOlS5Rj.png"/ alt="Graph">
 <img src="https://imgur.com/vekhqeQ.png" alt="Code Comparison"/>
 
-
-<a id="environment-setup"></a>
-
-## 🔨 Dev Environment Setup
-
-Let's get the website up the running on your local machine.
-
-### 0. Prerequisites
-
-- Install [Node.js](http://nodejs.org)
-
-### 1. Clone repo
-
-Clone the repo to your local machine
-
-```bash
-git clone https://github.com/kushal-g/mosely.git
-```
-
-Navigate to project directory
-
-```bash
-cd mosely
-```
-
-### 2. Install Dependencies
-
-```bash
-npm install
-```
-
-### 3. Build Project
-
-This will build the React.JS frontend as well as install server related dependencies.
-
-```bash
-npm run build
-```
-
-### 4. Start Server
-
-```bash
-npm start
-```
-
-A browser window will automatically open up with a live-reloading preview of the code.
